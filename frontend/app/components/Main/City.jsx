@@ -16,24 +16,29 @@ class Cities extends Component {
     let { src } = this.props;
     return (
       <div className="box2">
-        <div>Name: {src.Name}</div>
         <div className="container">
-          <div>
+          <div className="box2"><h1>{src.Name} </h1></div>
+          <div className={"right index box2"}><h1>{src.AQI} </h1></div>
+        </div>
+        <div className="container">
+          <div className="box4">
             <div>PM</div>
             <div>{src.PM}</div>
           </div>
-          <div>
+          <div className="box4">
             <div>Ozone</div>
             <div>{src.Ozone}</div>
           </div>
-          <div>
+          <div className="box4">
             <div>Pollen</div>
             <div>{src.Pollen}</div>
           </div>
+          <div className="box4">
+            <div>AQI</div>
+          </div>
         </div>
 
-        <div>AQI: {src.AQI}</div>
-        <div>code: {src.code}</div>
+        <div className="right arrow" ><a className="arrow" href={`city/${src.code}`}></a></div>
         <br/>
       </div>
     );

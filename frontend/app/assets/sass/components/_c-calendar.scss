@@ -4,19 +4,52 @@
 	border-color: #333366;
 	width: 100%;
 }
+.box1 {
+	border: 1px solid red;
+	float: left;
+	width: 100%; /* three boxes (use 25% for four, and 50% for two, etc) */
+	padding: 5px; /* if you want space between the images */
+	box-sizing: border-box;
+}
 .box2 {
 	border: 1px solid red;
 	float: left;
 	width: 50%; /* three boxes (use 25% for four, and 50% for two, etc) */
-	padding: 50px; /* if you want space between the images */
+	padding: 5px; /* if you want space between the images */
 	box-sizing: border-box;
 }
 .box3 {
 	border: 1px solid red;
 	float: left;
 	width: 33%; /* three boxes (use 25% for four, and 50% for two, etc) */
-	padding: 50px; /* if you want space between the images */
+	padding: 5px; /* if you want space between the images */
 	box-sizing: border-box;
+}
+.box4 {
+	border: 1px solid red;
+	float: left;
+	width: 25%; /* three boxes (use 25% for four, and 50% for two, etc) */
+	padding: 5px; /* if you want space between the images */
+	box-sizing: border-box;
+}
+.right {
+	border: 1px solid red;
+	float: right;
+}
+.arrow {
+	//background-image: url("https://luanneseymour.files.wordpress.com/2012/10/arrows_shapes_4.png");
+	background: url('https://luanneseymour.files.wordpress.com/2012/10/arrows_shapes_4.png') 10% 10% no-repeat; /* Добавляем фон */
+	background-size: cover; /* Масштабируем фон */
+	width: 100px;
+	height: 50px;
+	display: inline-block;
+}
+.index {
+	width: 100px;
+	height: 150px;
+	background-color: #0071e6;
+	//background-image: url("https://luanneseymour.files.wordpress.com/2012/10/arrows_shapes_4.png");
+	text-align: center;
 }
 .container :after {
 	content: "";

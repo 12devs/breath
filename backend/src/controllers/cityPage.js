@@ -6,7 +6,7 @@ export default {
     try {
       const code = req.params.code;
       const promises = [
-        DataForCity(code)
+        DataForCity(code),
       ];
       return Promise.all(promises)
         .then(result => {

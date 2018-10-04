@@ -25,9 +25,9 @@ class City extends Component {
   render() {
     const src = this.state.city;
     return (
-      <div> City
-        <div>Code: {src.Code}</div>
-        <div>AQI_Today: {src.AQI_Today}</div>
+      <div className={"container"}> City
+        {/*<div>Code: {src.Code}</div>*/}
+        <div className={"box1"}>AQI_Today: {src.AQI_Today}</div>
         <div>AQI_Historically: {src.AQI_Historically}</div>
         <div>Highest_PM: {src.Highest_PM}</div>
         <div>Lowest_PM: {src.Lowest_PM}</div>
