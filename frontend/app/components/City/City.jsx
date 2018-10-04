@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import services from '../../services';
+// import Graphic from './Graphic';
+import Graphic from './Graphic';
 
 class City extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: {},
+      city:{}
     };
     this.getCityPageData = this.getCityPageData.bind(this);
 
@@ -16,30 +18,71 @@ class City extends Component {
   }
 
   getCityPageData() {
+    console.log('getCityPageData');
     return services.getCityPageData(this.props.match.params.code)
       .then(res => {
-        this.setState({city:res})
+        // console.log(res);
+        this.setState({ city: res })
       })
   }
 
   render() {
+    console.log('render city');
     const src = this.state.city;
+    console.log(src);
     return (
       <div className={"container"}> City
         {/*<div>Code: {src.Code}</div>*/}
-        <div className={"box1"}>AQI_Today: {src.AQI_Today}</div>
-        <div>AQI_Historically: {src.AQI_Historically}</div>
-        <div>Highest_PM: {src.Highest_PM}</div>
-        <div>Lowest_PM: {src.Lowest_PM}</div>
-        <div>Pollen_Index: {src.Pollen_Index}</div>
-        <div>Lowest_Temperature: {src.Lowest_Temperature}</div>
-        <div>Highest_Temperature: {src.Highest_Temperature}</div>
-        <div>Most_Amount_of_Rain: {src.Most_Amount_of_Rain}</div>
-        <div>Polen_index_over_past_year: {src.Polen_index_over_past_year}</div>
-        <div>Humidity_throughtout_past_year: {src.Humidity_throughtout_past_year}</div>
-        <div>Ozone: {src.Ozone}</div>
-        <div>Current_Weather_Data: {src.Current_Weather_Data}</div>
-        <div>CO2: {src.CO2}</div>
+        <div className={"box1"}>
+          <h1>AQI_Today:</h1>
+          <h2>{src.AQI_Today}</h2>
+        </div>
+        <div className={"box1"}>AQI_Historically: {src.AQI_Historically}</div>
+
+        <div className={"box2"}>
+          <h1>Highest_PM:</h1>
+          <h2>{src.Highest_PM}</h2>
+        </div>
+
+        <div className={"box2"}>
+          <h1>Lowest_PM:</h1>
+          <h2>{src.Lowest_PM}</h2>
+        </div>
+
+        <div className={"box1"}>
+          <h1>Pollen_Index:</h1>
+          <h2>{src.Pollen_Index}</h2>
+        </div>
+        <div className={"box2"}>
+          <h1>Lowest_Temperature:</h1>
+          <h2>{src.Lowest_Temperature}</h2>
+        </div>
+        <div className={"box2"}>
+          <h1>Highest_Temperature:</h1>
+          <h2>{src.Highest_Temperature}</h2>
+        </div>
+        <div className={"box2"}>
+          <h1>Most_Amount_of_Rain:</h1>
+          <h2>{src.Most_Amount_of_Rain}</h2>
+        </div>
+        <div className={"box2"}>
+          <h1>Most_Amount_of_Snow:</h1>
+          <h2>{src.Most_Amount_of_Snow}</h2>
+        </div>
+        <div className={"box1"}>Humidity_throughtout_past_year: {src.Humidity_throughtout_past_year}</div>
+        <div className={"box1"}>
+          <h1>Polen_index_over_past_year</h1>
+          <Graphic src={src.Pollen_index_over_past_year} label={'Pollen_index'} type={'line'}/>
+        </div>
+        <div className={"box1"}>
+          <h1>Ozone:</h1>
+          <h2>{src.Ozone}</h2>
+        </div>
+        <div className={"box1"}>Current_Weather_Data: {src.Current_Weather_Data}</div>
+        <div className={"box1"}>
+          <h1>CO2:</h1>
+          <h2>{src.CO2}</h2>
+        </div>
         <br/>
       </div>
     )
