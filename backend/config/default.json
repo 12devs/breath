@@ -1,0 +1,15 @@
+{
+  "app": {
+    "host": "0.0.0.0",
+    "port": 8081
+  },
+  "static": {
+    "public": "public",
+    "resources": "public/resources",
+    "views": "src/views"
+  },
+  "logger": {
+    "level": "info",
+    "name": "backend"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "static": {
+    "views": "/views"
+  },
+  "database": {
+    "url": "mongodb://mongod:27017/icodb"
+  },
+  "logger": {
+    "level": "info"
+  },
+  "mqBroker": {
+    "transporter": "amqp://rabbitmqd:5672"
+  }
+}
