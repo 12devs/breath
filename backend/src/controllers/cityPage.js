@@ -1,4 +1,4 @@
-import { DataForCity } from "./../api/";
+import { Pollen_index_over_past_year } from "./../api/DataForCity";
 
 export default {
 
@@ -6,7 +6,7 @@ export default {
     try {
       const code = req.params.code;
       const promises = [
-        DataForCity(code),
+        Pollen_index_over_past_year(code)
       ];
       return Promise.all(promises)
         .then(result => {
