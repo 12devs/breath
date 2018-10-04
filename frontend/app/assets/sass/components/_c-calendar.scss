@@ -4,3 +4,22 @@
 	border-color: #333366;
 	width: 100%;
 }
+.box2 {
+	border: 1px solid red;
+	float: left;
+	width: 50%; /* three boxes (use 25% for four, and 50% for two, etc) */
+	padding: 50px; /* if you want space between the images */
+	box-sizing: border-box;
+}
+.box3 {
+	border: 1px solid red;
+	float: left;
+	width: 33%; /* three boxes (use 25% for four, and 50% for two, etc) */
+	padding: 50px; /* if you want space between the images */
+	box-sizing: border-box;
+}
+.container :after {
+	content: "";
+	clear: both;
+	display: table;
+}

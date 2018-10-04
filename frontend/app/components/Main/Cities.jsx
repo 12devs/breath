@@ -17,7 +17,7 @@ class Cities extends Component {
       cities = [];
     }
     return (
-      <div className="cities">
+      <div className="container">
         <h1>Cities</h1>
         { cities.length > 0 ? (cities.map((item, id) =>
             <City key={id} src={item} />

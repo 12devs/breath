@@ -15,11 +15,23 @@ class Cities extends Component {
   render() {
     let { src } = this.props;
     return (
-      <div className="cities">
+      <div className="box2">
         <div>Name: {src.Name}</div>
-        <div>PM: {src.PM}</div>
-        <div>Ozone: {src.Ozone}</div>
-        <div>Pollen: {src.Pollen}</div>
+        <div className="container">
+          <div>
+            <div>PM</div>
+            <div>{src.PM}</div>
+          </div>
+          <div>
+            <div>Ozone</div>
+            <div>{src.Ozone}</div>
+          </div>
+          <div>
+            <div>Pollen</div>
+            <div>{src.Pollen}</div>
+          </div>
+        </div>
+
         <div>AQI: {src.AQI}</div>
         <div>code: {src.code}</div>
         <br/>
