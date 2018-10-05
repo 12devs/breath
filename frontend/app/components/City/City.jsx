@@ -17,7 +17,6 @@ class City extends Component {
   }
 
   getCityPageData() {
-    console.log('getCityPageData');
     return services.getCityPageData(this.props.match.params.code, this.props.match.params.email)
       .then(res => {
         if (res.error) {
@@ -30,7 +29,6 @@ class City extends Component {
 
   render() {
     const src = this.state.city;
-    console.log(src);
     if (!src) {
       return (<h1>{JSON.stringify(this.state.error)}</h1>)
     }
