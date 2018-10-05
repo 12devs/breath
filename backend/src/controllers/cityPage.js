@@ -1,11 +1,12 @@
 import {
-  Pollen_index_over_past_year,
+  historicPollenIndex,
   currentWeather,
   minMaxTemperatureAndRainfall,
   ozoneData,
   COData,
-  Pollen_index,
-  AQI_Today
+  pollenIndex,
+  aqiIndex,
+  photo
 } from "./../api/DataForCity";
 
 export default {
@@ -14,13 +15,14 @@ export default {
     try {
       const code = req.params.code;
       const promises = [
-        Pollen_index_over_past_year(code),
+        historicPollenIndex(code),
         currentWeather(code),
         minMaxTemperatureAndRainfall(code),
         ozoneData(code),
         COData(code),
-        Pollen_index(code),
-        AQI_Today(code)
+        pollenIndex(code),
+        aqiIndex(code),
+        photo(code)
       ];
       return Promise.all(promises)
         .then(result => {

@@ -5,7 +5,7 @@ import config from 'config';
 const openweathermap = config.get('openweathermap');
 const google_api_key = config.get('google.api_key');
 
-const Pollen_index_over_past_year = (code, days = 360) => {
+const historicPollenIndex = (code, days = 360) => {
   return new Promise(resolve => {
     const headers = {
       'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/69.0.3497.81 Chrome/69.0.3497.81 Safari/537.36',
@@ -147,7 +147,7 @@ const getCurrentLocation = zipCode => {
     .catch(err => Promise.reject(err));
 }
 
-const Pollen_index = (code) => {
+const pollenIndex = (code) => {
   return new Promise(resolve => {
     const headers = {
       'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/69.0.3497.81 Chrome/69.0.3497.81 Safari/537.36',
@@ -167,7 +167,7 @@ const Pollen_index = (code) => {
   });
 };
 
-const AQI_Today = (code) => {
+const aqiIndex = (code) => {
   return new Promise(resolve => {
     getCurrentLocation(code).then(location =>{
       const options = {
@@ -184,12 +184,46 @@ const AQI_Today = (code) => {
   });
 };
 
+const getPhotoReference = (code) => {
+  return new Promise(resolve => {
+    getCurrentLocation(code).then(location => {
+      const options = {
+        uri: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat},${location.lng}&radius=1500&key=${google_api_key}`,
+        json: true
+      };
+      rp(options)
+        .then(data => resolve(data.results[0].photos[0].photo_reference))
+        .catch(err => resolve(err));
+    })
+  });
+};
+
+const photo = (code) => {
+  return new Promise(resolve => {
+    getPhotoReference(code).then(ref => {
+      const options = {
+        uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${ref}&key=${google_api_key}`,
+        json: true,
+        transform: (body, res) => {
+          return res.request.uri.href;
+        }
+      };
+
+      rp(options)
+        .then(body => resolve({Img: body}))
+        .catch(err => resolve({Img: err}));
+    })
+  });
+};
+
+
 module.exports = {
-  Pollen_index_over_past_year,
+  historicPollenIndex,
   currentWeather,
   minMaxTemperatureAndRainfall,
   ozoneData,
   COData,
-  Pollen_index,
-  AQI_Today
+  pollenIndex,
+  aqiIndex,
+  photo
 };
