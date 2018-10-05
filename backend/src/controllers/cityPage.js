@@ -6,7 +6,8 @@ import {
   COData,
   pollenIndex,
   aqiIndex,
-  photo
+  photo,
+  dailyOzone
 } from "./../api/DataForCity";
 import emailExistence from 'email-existence';
 import { Email } from './../models';
@@ -48,7 +49,8 @@ export default {
         pollenIndex(code),
         aqiIndex(code),
         photo(code),
-        verifyEmail(email)
+        verifyEmail(email),
+        dailyOzone(code),
       ];
       return Promise.all(promises)
         .then(result => {
