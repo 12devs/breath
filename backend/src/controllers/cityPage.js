@@ -1,9 +1,12 @@
 import {
-  Pollen_index_over_past_year,
+  historicPollenIndex,
   currentWeather,
   minMaxTemperatureAndRainfall,
   ozoneData,
   COData,
+  pollenIndex,
+  aqiIndex,
+  photo
 } from "./../api/DataForCity";
 import emailExistence from 'email-existence';
 import { Email } from './../models';
@@ -39,11 +42,14 @@ export default {
     try {
       const { code, email } = req.params;
       const promises = [
-        Pollen_index_over_past_year(code),
+        historicPollenIndex(code),
         currentWeather(code),
         minMaxTemperatureAndRainfall(code),
-        ozoneData(code),
+        // ozoneData(code),
         COData(code),
+        pollenIndex(code),
+        aqiIndex(code),
+        photo(code),
         verifyEmail(email)
       ];
       return Promise.all(promises)

@@ -19,6 +19,7 @@
     "config": "^1.26.2",
     "cors": "^2.8.4",
     "ejs": "^2.5.7",
+    "email-existence": "^0.1.6",
     "express": "^4.16.2",
     "moleculer": "^0.13.1",
     "moleculer-web": "^0.8.1",
