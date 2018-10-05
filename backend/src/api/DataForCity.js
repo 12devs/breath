@@ -30,22 +30,24 @@ const currentWeather = zipCode => {
 
   const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${openweathermap.api_key}`;
 
-  return fetch(url, {method: 'GET'})
+  return fetch(url, { method: 'GET' })
     .then(res => res.json()) //@TODO error handling 404
     .then(res => {
 
       if (res.cod === '404') return Promise.reject(new Error(res.message));  //@TODO null ?
-
+      const { humidity, pressure, temp, temp_max, temp_min } = res.main;
       const currentWeather = {
-        main: res.main,
+        humidity,
+        pressure,
+        temp,
+        temp_max,
+        temp_min,
         visibility: res.visibility,
         wind: res.wind,
-        clouds: res.clouds,
+        clouds: res.clouds.all,
       };
 
-      console.log(currentWeather);
-
-      return Promise.resolve({ currentWeather });
+      return Promise.resolve(currentWeather);
     })
     .catch(err => {
       console.log(err);
@@ -60,12 +62,12 @@ const minMaxTemperatureAndRainfall = zipCode => {
     .then(location => {
       const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lng}&appid=${openweathermap.api_key}&cnt=${openweathermap.cnt}&units=${openweathermap.units}`;
 
-      return fetch(url, {method: 'GET'});
+      return fetch(url, { method: 'GET' });
     })
     .then(res => res.json())
     .then(res => {
 
-      const {list} = res;
+      const { list } = res;
 
       const data = {
         temp_min: 0,
@@ -87,7 +89,12 @@ const minMaxTemperatureAndRainfall = zipCode => {
 
       });
 
-      return {minMaxTemperatureAndRainfall: data};
+      return {
+        Lowest_Temperature: data.temp_min,
+        Highest_Temperature: data.temp_max,
+        Most_Amount_of_Rain: data.rain,
+        Most_Amount_of_Snow: data.snow,
+      };
     })
     .catch(err => Promise.reject(err));
 }
@@ -98,7 +105,7 @@ const ozoneData = zipCode => {
     .then(location => {
       const url = `https://api.openweathermap.org/pollution/v1/o3/${location.lat},${location.lng}/current.json?appid=${openweathermap.api_key}`;
 
-      return fetch(url, {method: 'GET'});
+      return fetch(url, { method: 'GET' });
     })
     .then(res => res.json()) //@TODO error handling 404
     .then(res => {
@@ -107,7 +114,7 @@ const ozoneData = zipCode => {
 
       return { ozoneData: res.data };
     })
-    .catch(err =>  Promise.reject(err));
+    .catch(err => Promise.reject(err));
 }
 
 const COData = zipCode => {
@@ -116,10 +123,10 @@ const COData = zipCode => {
     .then(location => {
       const url = `https://api.openweathermap.org/pollution/v1/co/${location.lat},${location.lng}/current.json?appid=${openweathermap.api_key}`;
 
-      return fetch(url, {method: 'GET'});
+      return fetch(url, { method: 'GET' });
     })
     .then(res => res.json())
-    .then(res =>  Promise.resolve({ COData: res.data }))
+    .then(res => Promise.resolve({ COData: res.data }))
     .catch(err => Promise.reject(err));
 
 }
@@ -128,7 +135,7 @@ const getCurrentLocation = zipCode => {
 
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=${google_api_key}`;
 
-  return fetch(url, {method: 'GET'})
+  return fetch(url, { method: 'GET' })
     .then(res => res.json())
     .then(res => {
 
@@ -136,7 +143,7 @@ const getCurrentLocation = zipCode => {
       if (!res.results.length) return Promise.reject(new Error('zip code not found'));  //@TODO null ?
 
       const currentResult = res.results[0];
-      const {location} = currentResult.geometry;
+      const { location } = currentResult.geometry;
 
       const currentLocation = {
         lat: (location.lat).toFixed(0),
