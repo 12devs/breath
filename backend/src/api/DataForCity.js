@@ -28,7 +28,7 @@ const Pollen_index_over_past_year = async (code) => {
 
 const currentWeather = zipCode => {
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${openweathermap.api_key}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${openweathermap.api_key}&units=metric`;
 
   return fetch(url, { method: 'GET' })
     .then(res => res.json()) //@TODO error handling 404
@@ -57,9 +57,10 @@ const currentWeather = zipCode => {
 }
 
 const minMaxTemperatureAndRainfall = zipCode => {
-
+  let Name;
   return getCurrentLocation(zipCode)
     .then(location => {
+      Name = location.name;
       const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lng}&appid=${openweathermap.api_key}&cnt=${openweathermap.cnt}&units=${openweathermap.units}`;
 
       return fetch(url, { method: 'GET' });
@@ -68,7 +69,6 @@ const minMaxTemperatureAndRainfall = zipCode => {
     .then(res => {
 
       const { list } = res;
-
       const data = {
         temp_min: 0,
         temp_max: 0,
@@ -94,6 +94,7 @@ const minMaxTemperatureAndRainfall = zipCode => {
         Highest_Temperature: data.temp_max,
         Most_Amount_of_Rain: data.rain,
         Most_Amount_of_Snow: data.snow,
+        Name,
       };
     })
     .catch(err => Promise.reject(err));
@@ -148,6 +149,9 @@ const getCurrentLocation = zipCode => {
       const currentLocation = {
         lat: (location.lat).toFixed(0),
         lng: (location.lat).toFixed(0),
+        name: currentResult.address_components.find(elem => {
+          return elem.types.indexOf('locality') > -1;
+        }).long_name,
       };
 
       return Promise.resolve(currentLocation);

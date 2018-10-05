@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import services from '../../services';
-// import Graphic from './Graphic';
 import Graphic from './Graphic';
 
 class City extends Component {
@@ -31,7 +30,10 @@ class City extends Component {
     const src = this.state.city;
     console.log(src);
     return (
-      <div className={"container"}> City
+      <div className={"container"}>
+        <div className={"box1"}>
+          <h1>{src.Name}</h1>
+        </div>
         {/*<div>Code: {src.Code}</div>*/}
         <div className={"box1"}>
           <h1>AQI_Today:</h1>
