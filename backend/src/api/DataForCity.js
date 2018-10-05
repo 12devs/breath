@@ -28,7 +28,7 @@ const Pollen_index_over_past_year = async (code) => {
 
 const currentWeather = zipCode => {
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${openweathermap.api_key}&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${openweathermap.api_key}&units=${openweathermap.units}`;
 
   return fetch(url, { method: 'GET' })
     .then(res => res.json()) //@TODO error handling 404
@@ -69,6 +69,7 @@ const minMaxTemperatureAndRainfall = zipCode => {
     .then(res => {
 
       const { list } = res;
+
       const data = {
         temp_min: 0,
         temp_max: 0,
