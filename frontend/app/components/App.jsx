@@ -43,7 +43,7 @@ class App extends Component {
             </ul>
             <hr/>
             <Route exact path="/" component={Main}/>
-            <Route path="/city/:code" component={City}/>
+            <Route path="/city/:code/:email" component={City}/>
           </div>
         </Router>
       </div>

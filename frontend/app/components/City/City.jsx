@@ -6,7 +6,7 @@ class City extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      city:{}
+      city: {}
     };
     this.getCityPageData = this.getCityPageData.bind(this);
 
@@ -18,17 +18,21 @@ class City extends Component {
 
   getCityPageData() {
     console.log('getCityPageData');
-    return services.getCityPageData(this.props.match.params.code)
+    return services.getCityPageData(this.props.match.params.code, this.props.match.params.email)
       .then(res => {
-        // console.log(res);
-        this.setState({ city: res })
+        if (res.error) {
+          this.setState({ city: null, error: res.error })
+        } else {
+          this.setState({ city: res, error: null })
+        }
       })
   }
 
   render() {
-    console.log('render city');
     const src = this.state.city;
-    console.log(src);
+    if (!src) {
+      return (<h1>{JSON.stringify(this.state.error)}</h1>)
+    }
     return (
       <div className={"container"}>
         <div className={"box1"}>

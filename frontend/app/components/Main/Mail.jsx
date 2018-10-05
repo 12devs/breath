@@ -28,7 +28,7 @@ class Mail extends Component {
                value={this.state.email}/>
         <input type="text" onChange={(event) => this.handleChange('code', event.target.value)}
                value={this.state.code}/>
-        <a href={`city/${this.state.code}`}>get Info</a>
+        <a href={`city/${this.state.code}/${this.state.email}`}>get Info</a>
               </span>
     )
   }

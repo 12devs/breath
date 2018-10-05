@@ -7,10 +7,13 @@ const getMainPageData = () => {
     })
 };
 
-const getCityPageData = (code) => {
-  return axios.get(`/cityPage/${code}`)
+const getCityPageData = (code, email) => {
+  return axios.get(`/cityPage/${code}/${email}`)
     .then(result => {
       return result.data
+    })
+    .catch(result => {
+      return result.response.data;
     })
 };
 

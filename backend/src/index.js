@@ -5,6 +5,7 @@ import cors from 'cors';
 import config from 'config';
 import routes from './routes';
 import logger from './logger';
+import { getInstance } from "./db"
 
 const app = express();
 
@@ -18,7 +19,19 @@ app.use(cors());
 
 app.use(routes);
 
-app.get(['/', '/main', '/city/:code'], (req, res) => res.render('app'));
+app.get(['/', '/main', '/city/:code/:email'], (req, res) => res.render('app'));
+
+const db = getInstance();
+
+db
+  .authenticate()
+  .then(() => {
+    logger.info("DB successfully connected")
+  })
+  .catch(err => {
+    logger.error(`Unable to connect to the database:\n${err}`);
+    return false;
+  });
 
 app.listen(config.app.port, () =>
   logger.info(`Server listening on ${config.app.host}:${config.app.port}`)
