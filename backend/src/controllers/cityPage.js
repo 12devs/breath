@@ -4,6 +4,8 @@ import {
   minMaxTemperatureAndRainfall,
   ozoneData,
   COData,
+  Pollen_index,
+  AQI_Today
 } from "./../api/DataForCity";
 
 export default {
@@ -17,16 +19,18 @@ export default {
         minMaxTemperatureAndRainfall(code),
         ozoneData(code),
         COData(code),
+        Pollen_index(code),
+        AQI_Today(code)
       ];
       return Promise.all(promises)
         .then(result => {
           const data = {
             Code:code,
-              AQI_Today: 25,
+              AQI_today: 25,
               AQI_Historically:[],
               Highest_PM: 75,
               Lowest_PM: 25,
-              Pollen_Index: 34,
+              PolLen_Index: 34,
               Lowest_Temperature: 20,
               Highest_Temperature: 48,
               Most_Amount_of_Rain: 75,

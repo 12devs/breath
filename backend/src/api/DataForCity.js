@@ -9,10 +9,10 @@ const Pollen_index_over_past_year = (code, days = 360) => {
   return new Promise(resolve => {
     const headers = {
       'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/69.0.3497.81 Chrome/69.0.3497.81 Safari/537.36',
-      'Referer': 'https://www.pollen.com/forecast/extended/pollen/' + code + '/' + days,
+      'Referer': `https://www.pollen.com/forecast/extended/pollen/${code}/${days}`,
     };
     const options = {
-      uri: 'https://www.pollen.com/api/forecast/historic/pollen/' + code + '/' + days,
+      uri: `https://www.pollen.com/api/forecast/historic/pollen/${code}/${days}`,
       headers: headers,
       json: true
     };
@@ -138,8 +138,8 @@ const getCurrentLocation = zipCode => {
       const {location} = currentResult.geometry;
 
       const currentLocation = {
-        lat: (location.lat).toFixed(0),
-        lng: (location.lat).toFixed(0),
+        lat: (location.lat).toFixed(4),
+        lng: (location.lng).toFixed(4),
       };
 
       return Promise.resolve(currentLocation);
@@ -147,10 +147,49 @@ const getCurrentLocation = zipCode => {
     .catch(err => Promise.reject(err));
 }
 
+const Pollen_index = (code) => {
+  return new Promise(resolve => {
+    const headers = {
+      'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/69.0.3497.81 Chrome/69.0.3497.81 Safari/537.36',
+      'Referer': `https://www.pollen.com/forecast/current/pollen/${code}`,
+    };
+    const options = {
+      uri: `https://www.pollen.com/api/forecast/current/pollen/${code}`,
+      headers: headers,
+      json: true
+    };
+
+    rp(options)
+      .then(data => resolve({
+        Pollen_index: data.Location.periods[1].Index,
+      }))
+      .catch(err => resolve(err));
+  });
+};
+
+const AQI_Today = (code) => {
+  return new Promise(resolve => {
+    getCurrentLocation(code).then(location =>{
+      const options = {
+        uri: `http://aqimap.hellowynd.com:8000/api/air/closestStation?lat=${location.lat}&lng=${location.lng}`,
+        json: true
+      };
+
+      rp(options)
+        .then(data => resolve({
+          AQI_Today: data.aqi,
+        }))
+        .catch(err => resolve(err));
+    })
+  });
+};
+
 module.exports = {
   Pollen_index_over_past_year,
   currentWeather,
   minMaxTemperatureAndRainfall,
   ozoneData,
   COData,
+  Pollen_index,
+  AQI_Today
 };
