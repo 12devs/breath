@@ -105,7 +105,7 @@ const ozoneData = zipCode => {
 
       if (res.message === 'not found') return Promise.reject(new Error('ozone data not found'));  //@TODO null ?
 
-      return { ozoneData: res };
+      return { ozoneData: res.data };
     })
     .catch(err =>  Promise.reject(err));
 }
@@ -119,7 +119,7 @@ const COData = zipCode => {
       return fetch(url, {method: 'GET'});
     })
     .then(res => res.json())
-    .then(res =>  Promise.resolve({ COData: res }))
+    .then(res =>  Promise.resolve({ COData: res.data }))
     .catch(err => Promise.reject(err));
 
 }
