@@ -1,4 +1,4 @@
-import { Pollen_index_over_past_year } from "./../api/DataForCity";
+import { Pollen_index_over_past_year, currentWeather } from "./../api/DataForCity";
 
 export default {
 
@@ -6,7 +6,8 @@ export default {
     try {
       const code = req.params.code;
       const promises = [
-        Pollen_index_over_past_year(code)
+        Pollen_index_over_past_year(code),
+        currentWeather(code),
       ];
       return Promise.all(promises)
         .then(result => {
@@ -28,7 +29,7 @@ export default {
               CO2: 25,
           };
           result.forEach(elem => {
-            Object.assign(data, elem)
+            Object.assign(data, elem);
           });
           return res.status(200).json(data)
         });

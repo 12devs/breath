@@ -1,4 +1,8 @@
 import rp from 'request-promise';
+import fetch from 'node-fetch';
+import config from 'config';
+
+const openweathermap = config.get('openweathermap');
 
 const Pollen_index_over_past_year = async (code) => {
   const days = 360;
@@ -21,6 +25,35 @@ const Pollen_index_over_past_year = async (code) => {
   });
 }
 
+const currentWeather = zipCode => {
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${openweathermap.api_key}`;
+
+  return fetch(url, {method: 'GET'})
+    .then(res => res.json()) //@TODO error handling 404
+    .then(res => {
+
+      if (res.cod === '404') return Promise.reject(new Error(res.message));  //@TODO null ?
+
+      const currentWeather = {
+        main: res.main,
+        visibility: res.visibility,
+        wind: res.wind,
+        clouds: res.clouds,
+      };
+
+      console.log(currentWeather);
+
+      return Promise.resolve({ currentWeather });
+    })
+    .catch(err => {
+      console.log(err);
+
+      return Promise.reject(err);
+    });
+}
+
 module.exports = {
   Pollen_index_over_past_year,
+  currentWeather,
 };
