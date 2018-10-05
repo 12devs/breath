@@ -7,7 +7,6 @@
     "public": "public",
     "resources": "public/resources",
     "views": "/views"
-
   },
   "logger": {
     "level": "info",
