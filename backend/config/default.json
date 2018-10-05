@@ -6,7 +6,7 @@
   "static": {
     "public": "public",
     "resources": "public/resources",
-    "views": "src/views"
+    "views": "/views"
   },
   "logger": {
     "level": "info",
