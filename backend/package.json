@@ -13,8 +13,6 @@
   "author": "alexeyrkorkoza <Keane95@yandex.ru>",
   "license": "ISC",
   "dependencies": {
-    "@bct/bct-broker": "0.0.7",
-    "@bct/bct-calendar-db": "0.0.18",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "bunyan": "^1.6.0",
@@ -27,6 +25,7 @@
     "moment": "^2.21.0",
     "mongoose": "^5.2.5",
     "morgan": "^1.9.0",
+    "node-fetch": "^2.2.0",
     "pg": "^7.4.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
