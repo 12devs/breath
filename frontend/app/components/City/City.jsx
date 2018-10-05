@@ -29,13 +29,17 @@ class City extends Component {
 
   render() {
     const src = this.state.city;
+    console.log(src);
     if (!src) {
       return (<h1>{JSON.stringify(this.state.error)}</h1>)
     }
     return (
       <div className={"container"}>
         <div className={"box1"}>
-          <h1>{src.Name}</h1>
+          <div className={"box1"}>
+            <h1>{src.Name}</h1>
+            <img className={"img"} src={src.Img}/>
+          </div>
         </div>
         {/*<div>Code: {src.Code}</div>*/}
         <div className={"box1"}>
@@ -55,8 +59,8 @@ class City extends Component {
         </div>
 
         <div className={"box1"}>
-          <h1>Pollen_Index:</h1>
-          <h2>{src.Pollen_Index}</h2>
+          <h1>Pollen_index:</h1>
+          <h2>{src.Pollen_index}</h2>
         </div>
         <div className={"box2"}>
           <h1>Lowest_Temperature:</h1>
