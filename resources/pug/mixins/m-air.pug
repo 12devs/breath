@@ -1,0 +1,27 @@
+mixin m-air(air)
+    .l-air__card-grid
+        .l-air__card-item
+            .l-air__card-country
+                .l-air__country-img(style="background-image: url("+air.photo+")")
+                .l-air__country-title= air.city
+                    .l-air__country-title-img(style="background-image:url(../../public_html/img/figure.svg)")
+
+            .l-air__card-meta-grid
+                .l-air__card-meta-item
+                    .l-air__card-meta-title= air.metaTitleOne
+                    .l-air__card-meta-description= air.metaValueOne
+
+                .l-air__card-meta-item
+                    .l-air__card-meta-title= air.metaTitleTwo
+                    .l-air__card-meta-description= air.metaValueTwo
+
+                .l-air__card-meta-item
+                    .l-air__card-meta-title= air.metaTitleThree
+                    .l-air__card-meta-description= air.metaValueThree
+
+        .l-air__card-item.l-air__card-item--last
+            .l-air__card-number
+                .l-air__card-number-title(class= air.colorLabel)= air.number
+                .l-air__card-number-index Air Quality Index
+                a.c-button-card(href= air.url)
+                    img.c-button-card-ico(src="../../public_html/img/next.svg", alt="")

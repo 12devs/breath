@@ -1,0 +1,116 @@
+.l-footer{
+    margin-top: 13rem;
+    background: $color-background-coal;
+}
+
+.l-footer__wave {
+    width: 100%;
+    margin-bottom: -0.5rem;
+    background-color: $color-background-light-gray;
+}
+
+.l-footer__description-img {
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(-100% - 13rem);
+
+    @media screen and (max-width: $screen-xl - 1) {
+        display: none;
+    }
+}
+
+.l-footer__description {
+    height: 54rem;
+    position: relative;
+    background: $color-background-turquoise;
+
+    @media screen and (max-width: $screen-xl - 1) {
+        height: 30rem;
+    }
+}
+
+.l-footer__quote {
+    margin: 0 auto;
+    position: absolute;
+    bottom: 5.5rem;
+    max-width: 57rem;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    padding: 3.8rem 6.8rem 2.6rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    background: $color-background-white;
+}
+
+.l-footer__quote-site {
+    margin-top: 1.5rem;
+    max-height: 17rem;
+    display: block;
+    font-size: $font-size-large;
+    color: $color-text-black;
+    font-weight: $font-weight-bold;
+}
+
+.l-footer__quote-text {
+    font-size: $font-size-medium;
+    color: $color-text-black;
+}
+
+.l-footer__nav {
+    margin: 0 auto;
+    max-width: 75rem;
+    margin-top: 7.4rem;
+    margin-bottom: 3.5rem;
+}
+
+.l-footer__nav-grid {
+    display: flex;
+}
+
+.l-footer__nav-item {
+    width: 25%;
+}
+
+.l-footer__nav-title {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    font-weight: $font-weight-bold;
+    color: $color-text-white;
+    font-size: $font-size-regular;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+}
+
+.l-footer__nav-url {
+    display: block;
+    font-size: $font-size-small;
+    text-decoration: none;
+    margin-bottom: 2rem;
+    color: $color-text-graphite;
+}
+
+.l-footer__social {
+    width: 100%;
+    text-align: center;
+}
+
+.l-footer__copyright{
+    width: 30rem;
+    margin: 0 auto;
+    margin-top: 2.5rem;
+    font-size: $font-size-small;
+    padding-bottom: 7.2rem;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center 3rem;
+}
+
+.l-footer__social-url {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 1rem;
+    opacity: 0.5;
+}

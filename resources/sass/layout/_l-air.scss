@@ -1,0 +1,158 @@
+.l-air {
+    text-align: center;
+}
+
+.l-air__subtitle {
+    text-transform: uppercase;
+    font-size: $font-size-small;
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.5rem;
+    color: $color-text-silver;
+}
+
+.l-air__title {
+    margin-bottom: 6.3rem;
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+    color: $color-text-black;
+    letter-spacing: 0.1rem;
+}
+
+.l-air__card {
+    border-radius: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 - 1.5rem;
+
+    @media screen and (max-width: $screen-xl - 1) {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+}
+
+.l-air__card-grid {
+    display: flex;
+    width: 100%;
+    padding-left: 3rem;
+    justify-content: stretch;
+    margin: 0 1.5rem 3rem;
+    width: calc(50% - 3rem);
+    border-radius: 1rem;
+    background: $color-background-white;
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.1);
+
+    @media screen and (max-width: $screen-xl - 1) {
+        width: calc(100% - 3rem);
+    }
+}
+
+.l-air__card-item {
+    width: calc(100% - 16rem);
+    height: 100%;
+
+    &--last {
+        border-left: 1px solid $color-background-silver;
+        width: 16rem;
+    }
+}
+
+.l-air__card-country {
+    display: flex;
+    margin-top: 3rem;
+    align-items: center;
+}
+
+.l-air__country-img {
+    width: 9.4rem;
+    height: 9.4rem;
+    margin-right: 1.8rem;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center center;
+
+}
+
+.l-air__country-title {
+    font-weight: $font-weight-bold;
+    color: $color-text-black;
+    text-transform: uppercase;
+    font-size: $font-size-medium;
+}
+
+.l-air__country-title-img {
+    width: 1.7rem;
+    height: 0.7rem;
+}
+
+.l-air__card-meta-grid {
+    display: flex;
+    margin-top: 3.8rem;
+    margin-bottom: 3rem;
+}
+
+.l-air__card-meta-item {
+    width: 33.333%;
+    padding-left: 0.7rem;
+    text-align: left;
+}
+
+.l-air__card-meta-title {
+    color: $color-text-black;
+    font-size: $font-size-small;
+    text-transform: uppercase;
+    font-weight: $font-weight-light;
+}
+
+.l-air__card-meta-description {
+    margin-top: 1rem;
+    color: $color-text-silver;
+    font-size: $font-size-regular;
+    font-weight: $font-weight-light;
+}
+
+.l-air__card-number {
+    padding-top: 3rem;
+    height: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.l-air__card-number-title {
+    width: 7rem;
+    margin: 0 auto;
+    margin-bottom: 1.3rem;
+    padding: 2.4rem 0 6rem;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    font-size: $font-size-regular;
+    font-weight: $font-weight-bold;
+    color: $color-text-white;
+    text-align: center;
+
+    &--turquoise {
+        background: $color-label-turquoise;
+    }
+
+    &--scarlet {
+        background: $color-label-scarlet;
+    }
+
+    &--blue {
+        background: $color-label-blue;
+    }
+
+    &--orange {
+        background: $color-label-orange;
+    }
+
+    &--purple {
+        background: $color-label-purple;
+    }
+}
+
+.l-air__card-number-index {
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    font-size: $font-size-regular;
+    color: $color-text-black;
+}

@@ -1,0 +1,15 @@
+.c-button {
+    display: block;
+    width: 100%;
+    padding: 0 5.5rem;
+    border-radius: 0.5rem;
+    line-height: 6.6rem;
+    color: $color-text-white;
+    text-transform: uppercase;
+    font-size: $font-size-small;
+    font-weight: $font-weight-bold;
+    text-decoration: none;
+    background-color: $color-background-turquoise;
+    background-position: 90% center;
+    background-repeat: no-repeat;
+}
