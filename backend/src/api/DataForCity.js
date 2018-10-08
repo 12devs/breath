@@ -7,7 +7,7 @@ const google_api_key = config.get('google.api_key');
 const darksky_api_key = config.get('darksky.api_key');
 
 const historicPollenIndex = (code, days = 360) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const headers = {
       'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/69.0.3497.81 Chrome/69.0.3497.81 Safari/537.36',
       'Referer': `https://www.pollen.com/forecast/extended/pollen/${code}/${days}`,
@@ -22,7 +22,7 @@ const historicPollenIndex = (code, days = 360) => {
       .then(data => resolve({
         Pollen_index_over_past_year: data.Location.periods,
       }))
-      .catch(err => resolve(err));
+      .catch(err => resolve({}))
   });
 };
 
@@ -51,8 +51,7 @@ const currentWeather = zipCode => {
     })
     .catch(err => {
       console.log(err);
-
-      return Promise.reject(err);
+      return Promise.resolve({});
     });
 }
 
@@ -112,11 +111,11 @@ const ozoneData = zipCode => {
     .then(res => res.json()) //@TODO error handling 404
     .then(res => {
 
-      if (res.message === 'not found') return Promise.reject(new Error('ozone data not found'));  //@TODO null ?
+      if (res.message === 'not found') return {};  //@TODO null ?
 
       return { ozoneData: res.data };
     })
-    .catch(err => Promise.reject(err));
+    .catch(err => {});
 }
 
 const COData = zipCode => {
@@ -129,7 +128,7 @@ const COData = zipCode => {
     })
     .then(res => res.json())
     .then(res => Promise.resolve({ COData: res.data }))
-    .catch(err => Promise.reject(err));
+    .catch(err => Promise.resolve({}));
 
 }
 
@@ -141,8 +140,8 @@ const getCurrentLocation = zipCode => {
     .then(res => res.json())
     .then(res => {
 
-      if (res.status !== 'OK') return Promise.reject(new Error('zip code not found'));  //@TODO null ?
-      if (!res.results.length) return Promise.reject(new Error('zip code not found'));  //@TODO null ?
+      if (res.status !== 'OK') return Promise.resolve({});  //@TODO null ?
+      if (!res.results.length) return Promise.resolve({});  //@TODO null ?
 
       const currentResult = res.results[0];
       const { location } = currentResult.geometry;
@@ -157,7 +156,7 @@ const getCurrentLocation = zipCode => {
 
       return Promise.resolve(currentLocation);
     })
-    .catch(err => Promise.reject(err));
+    .catch(err => Promise.resolve({}));
 }
 
 const pollenIndex = (code) => {
@@ -176,7 +175,7 @@ const pollenIndex = (code) => {
       .then(data => resolve({
         Pollen_index: data.Location.periods[1].Index,
       }))
-      .catch(err => resolve(err));
+      .catch(err => resolve({}));
   });
 };
 
@@ -192,7 +191,7 @@ const aqiIndex = (code) => {
         .then(data => resolve({
           AQI_Today: data.aqi,
         }))
-        .catch(err => resolve(err));
+        .catch(err => resolve({}));
     })
   });
 };
@@ -206,7 +205,7 @@ const getPhotoReference = (code) => {
       };
       rp(options)
         .then(data => resolve(data.results[0].photos[0].photo_reference))
-        .catch(err => resolve(err));
+        .catch(err => resolve({}));
     })
   });
 };
@@ -243,7 +242,7 @@ const dailyOzone = zipCode => {
 
       return Promise.resolve({ ozone });
     })
-    .catch(err => Promise.reject(err));
+    .catch(err => Promise.resolve({}));
 }
 
 module.exports = {
