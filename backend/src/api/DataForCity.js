@@ -282,5 +282,5 @@ module.exports = {
   aqiIndex,
   dailyOzone,
   getPhoto,
-  apiWaqiInfo
+  apiWaqiInfo,
 };
