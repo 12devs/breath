@@ -1,0 +1,24 @@
+.c-input {
+    width: 100%;
+    border-radius: 0.5rem;
+    font-size: $font-size-small;
+    line-height: 6.5rem;
+
+    &--email {
+        padding-right: 14.5rem;
+        padding-left: 5.2rem;
+        color: $color-text-white;
+        background-color: $color-background-graphite;
+        background-position: 1.5rem center;
+        background-repeat: no-repeat;
+    }
+
+    &--zip {
+        padding-left: 5.2rem;
+        color: $color-text-gray;
+        border: 1px solid $color-background-silver;
+        background-color: $color-background-light-gray;
+        background-position: 1.5rem center;
+        background-repeat: no-repeat;
+    }
+}

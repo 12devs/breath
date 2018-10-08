@@ -1,0 +1,98 @@
+include ../mixins/m-air.pug
+
+-
+    var data = [
+        {
+            photo: 'https://www.visitportugal.com/sites/www.visitportugal.com/files/mediateca/23_660x371.jpg',
+            city: 'Houston',
+            metaTitleOne: 'PM 2.5',
+            metaTitleTwo: 'Ozone',
+            metaTitleThree: 'Pollen',
+            metaValueOne: 'Value',
+            metaValueTwo: 'Value',
+            metaValueThree: 'Value',
+            number: 78,
+            url: 'https://wynd.com/',
+            colorLabel: 'l-air__card-number-title--turquoise',
+        },
+
+        {
+            photo: 'https://www.visitportugal.com/sites/www.visitportugal.com/files/mediateca/23_660x371.jpg',
+            city: 'San Francisco',
+            metaTitleOne: 'PM 2.5',
+            metaTitleTwo: 'Ozone',
+            metaTitleThree: 'Pollen',
+            metaValueOne: 'Value',
+            metaValueTwo: 'Value',
+            metaValueThree: 'Value',
+            number: 151,
+            url: 'https://wynd.com/',
+            colorLabel: 'l-air__card-number-title--scarlet',
+        },
+
+        {
+            photo: 'https://www.visitportugal.com/sites/www.visitportugal.com/files/mediateca/23_660x371.jpg',
+            city: 'New York',
+            metaTitleOne: 'PM 2.5',
+            metaTitleTwo: 'Ozone',
+            metaTitleThree: 'Pollen',
+            metaValueOne: 'Value',
+            metaValueTwo: 'Value',
+            metaValueThree: 'Value',
+            number: 45,
+            url: 'https://wynd.com/',
+            colorLabel: 'l-air__card-number-title--blue',
+        },
+
+        {
+            photo: 'https://www.visitportugal.com/sites/www.visitportugal.com/files/mediateca/23_660x371.jpg',
+            city: 'San Francisco',
+            metaTitleOne: 'PM 2.5',
+            metaTitleTwo: 'Ozone',
+            metaTitleThree: 'Pollen',
+            metaValueOne: 'Value',
+            metaValueTwo: 'Value',
+            metaValueThree: 'Value',
+            number: 101,
+            url: 'https://wynd.com/',
+            colorLabel: 'l-air__card-number-title--orange',
+        },
+
+        {
+            photo: 'https://www.visitportugal.com/sites/www.visitportugal.com/files/mediateca/23_660x371.jpg',
+            city: 'Miami',
+            metaTitleOne: 'PM 2.5',
+            metaTitleTwo: 'Ozone',
+            metaTitleThree: 'Pollen',
+            metaValueOne: 'Value',
+            metaValueTwo: 'Value',
+            metaValueThree: 'Value',
+            number: 68,
+            url: 'https://wynd.com/',
+            colorLabel: 'l-air__card-number-title--turquoise',
+        },
+
+        {
+            photo: 'https://www.visitportugal.com/sites/www.visitportugal.com/files/mediateca/23_660x371.jpg',
+            city: 'Boston',
+            metaTitleOne: 'PM 2.5',
+            metaTitleTwo: 'Ozone',
+            metaTitleThree: 'Pollen',
+            metaValueOne: 'Value',
+            metaValueTwo: 'Value',
+            metaValueThree: 'Value',
+            number: 78,
+            url: 'https://wynd.com/',
+            colorLabel: 'l-air__card-number-title--purple',
+        },
+    ]
+
+.l-section
+    .l-container
+        .l-air
+            .l-air__subtitle Air quality across
+            .l-air__title United States
+
+            .l-air__card
+                for cart in data
+                    +m-air(cart)

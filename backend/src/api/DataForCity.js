@@ -23,7 +23,7 @@ const historicPollenIndex = (code, days = 360) => {
       .then(data => resolve({
         Pollen_index_over_past_year: data.Location.periods,
       }))
-      .catch(err => resolve(err));
+      .catch(err => resolve({}))
   });
 };
 
@@ -51,9 +51,7 @@ const currentWeather = zipCode => {
       return Promise.resolve(currentWeather);
     })
     .catch(err => {
-      console.log(err);
-
-      return Promise.reject(err);
+      return Promise.resolve({});
     });
 }
 
@@ -113,11 +111,11 @@ const ozoneData = zipCode => {
     .then(res => res.json()) //@TODO error handling 404
     .then(res => {
 
-      if (res.message === 'not found') return Promise.reject(new Error('ozone data not found'));  //@TODO null ?
+      if (res.message === 'not found') return {};  //@TODO null ?
 
       return { ozoneData: res.data };
     })
-    .catch(err => Promise.reject(err));
+    .catch(err => {});
 }
 
 const COData = zipCode => {
@@ -130,7 +128,7 @@ const COData = zipCode => {
     })
     .then(res => res.json())
     .then(res => Promise.resolve({ COData: res.data }))
-    .catch(err => Promise.reject(err));
+    .catch(err => Promise.resolve({}));
 
 }
 
@@ -150,7 +148,7 @@ const pollenIndex = (code) => {
       .then(data => resolve({
         Pollen_index: data.Location.periods[1].Index,
       }))
-      .catch(err => resolve(err));
+      .catch(err => resolve({}));
   });
 };
 
@@ -166,7 +164,7 @@ const aqiIndex = (code) => {
         .then(data => resolve({
           AQI_Today: data.aqi,
         }))
-        .catch(err => resolve(err));
+        .catch(err => resolve({}));
     })
   });
 };
@@ -180,7 +178,7 @@ const getPhotoReference = (code) => {
       };
       rp(options)
         .then(data => resolve(data.results[0].photos[0].photo_reference))
-        .catch(err => resolve(err));
+        .catch(err => resolve({}));
     })
   });
 };
