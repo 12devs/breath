@@ -211,11 +211,11 @@ const getPhotoReference = (code) => {
   });
 };
 
-const photo = (code) => {
+const getPhoto = (code, maxWidth=1600) => {
   return new Promise(resolve => {
     getPhotoReference(code).then(ref => {
       const options = {
-        uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=4000&photoreference=${ref}&key=${google_api_key}`,
+        uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=${maxWidth}&photoreference=${ref}&key=${google_api_key}`,
         json: true,
         transform: (body, res) => {
           return res.request.uri.href;
@@ -239,4 +239,5 @@ module.exports = {
   pollenIndex,
   aqiIndex,
   photo,
+  getPhoto,
 };

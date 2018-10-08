@@ -6,15 +6,7 @@ import Cities from "./Cities";
 class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      cities: []
-    };
-    this.getMainPageData = this.getMainPageData.bind(this);
-
-  }
-
-  componentDidMount() {
-    this.getMainPageData()
+    this.state = {};
   }
 
   getMainPageData() {
@@ -26,11 +18,16 @@ class Main extends Component {
   }
 
   render() {
+    const {src} = this.props;
     return (
       <div>
-        <div>Main</div>
-        <Mail/>
-        <Cities cities={this.state.cities}/>
+        <Mail email={src.email} code={src.code} getCity={this.props.getCity} changeState={this.props.changeState}/>
+        {(()=>{
+          if (src.error){
+            return (<h3>{src.error}</h3>)
+          }
+        })()}
+        <Cities cities={src.cities}/>
       </div>
     )
   }
