@@ -229,22 +229,6 @@ const photo = (code) => {
   });
 };
 
-const dailyOzone = zipCode => {
-
-  return getCurrentLocation(zipCode)
-    .then(location => {
-      const url = `https://api.darksky.net/forecast/${darksky_api_key}/${location.lat},${location.lng}`;
-
-      return fetch(url, { method: 'GET' });
-    })
-    .then(res => res.json())
-    .then(res => {
-      const { ozone } = res.currently;
-
-      return Promise.resolve({ ozone });
-    })
-    .catch(err => Promise.reject(err));
-}
 
 module.exports = {
   historicPollenIndex,
@@ -255,5 +239,4 @@ module.exports = {
   pollenIndex,
   aqiIndex,
   photo,
-  dailyOzone
 };
