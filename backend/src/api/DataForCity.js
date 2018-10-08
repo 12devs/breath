@@ -5,6 +5,7 @@ import config from 'config';
 const openweathermap = config.get('openweathermap');
 const google_api_key = config.get('google.api_key');
 const darksky_api_key = config.get('darksky.api_key');
+const api_waqi_info = config.get('api_waqi_info');
 
 const historicPollenIndex = (code, days = 360) => {
   return new Promise(resolve => {
@@ -201,7 +202,7 @@ const getPhotoReference = (code) => {
   return new Promise(resolve => {
     getCurrentLocation(code).then(location => {
       const options = {
-        uri: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat},${location.lng}&radius=1500&key=${google_api_key}`,
+        uri: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat},${location.lng}&radius=2000&key=${google_api_key}`,
         json: true
       };
       rp(options)
@@ -246,6 +247,31 @@ const dailyOzone = zipCode => {
     .catch(err => Promise.reject(err));
 }
 
+const apiWaqiInfo = (code) => {
+  return new Promise(resolve => {
+    getCurrentLocation(code).then(location => {
+      const options = {
+        uri: `https://api.waqi.info/feed/geo:${location.lat};${location.lng}/?token=${api_waqi_info.api_key}`,
+        json: true
+      };
+
+      rp(options)
+        .then(data => {
+          const apiWaqi = data.data.iaqi
+          return resolve({
+            PM10: apiWaqi.pm10.v,
+            PM25: apiWaqi.pm25.v,
+            NO2: apiWaqi.no2.v,
+            O3: apiWaqi.o3.v,
+            SO2: apiWaqi.so2.v,
+            CO: apiWaqi.co.v
+          })
+        })
+        .catch(err => resolve(err));
+    })
+  });
+};
+
 module.exports = {
   historicPollenIndex,
   currentWeather,
@@ -255,5 +281,6 @@ module.exports = {
   pollenIndex,
   aqiIndex,
   dailyOzone,
-  getPhoto
+  getPhoto,
+  apiWaqiInfo
 };
