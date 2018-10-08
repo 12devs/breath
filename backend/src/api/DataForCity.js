@@ -148,8 +148,8 @@ const getCurrentLocation = zipCode => {
       const { location } = currentResult.geometry;
 
       const currentLocation = {
-        lat: (location.lat).toFixed(0),
-        lng: (location.lat).toFixed(0),
+        lat: (location.lat).toFixed(4),
+        lng: (location.lng).toFixed(4),
         name: currentResult.address_components.find(elem => {
           return elem.types.indexOf('locality') > -1;
         }).long_name,
