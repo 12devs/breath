@@ -9,15 +9,14 @@ export default class Test extends Component {
   }
 
   componentDidMount() {
-    console.log('this.props.src', this.props.src);
     if (this.props.src) {
-      this.newChart(this.props.src)
+      this.newChart(this.props)
     }
   }
 
   componentDidUpdate(prevProps) {
     console.log('componentDidUpdate');
-    if (this.props.src !== prevProps.src) {
+    if (this.props !== prevProps) {
       this.newChart(this.props);
     }
   }

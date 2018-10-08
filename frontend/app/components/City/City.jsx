@@ -5,31 +5,11 @@ import Graphic from './Graphic';
 class City extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      city: {}
-    };
-    this.getCityPageData = this.getCityPageData.bind(this);
-
-  }
-
-  componentDidMount() {
-    return this.getCityPageData()
-  }
-
-  getCityPageData() {
-    return services.getCityPageData(this.props.match.params.code, this.props.match.params.email)
-      .then(res => {
-        if (res.error) {
-          this.setState({ city: null, error: res.error })
-        } else {
-          this.setState({ city: res, error: null })
-        }
-      })
+    this.state = {};
   }
 
   render() {
-    const src = this.state.city;
-    console.log(src);
+    const {src} = this.props;
     if (!src) {
       return (<h1>{JSON.stringify(this.state.error)}</h1>)
     }
