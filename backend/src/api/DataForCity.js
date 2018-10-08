@@ -4,7 +4,6 @@ import config from 'config';
 
 const openweathermap = config.get('openweathermap');
 const google_api_key = config.get('google.api_key');
-const darksky_api_key = config.get('darksky.api_key');
 
 const historicPollenIndex = (code, days = 360) => {
   return new Promise(resolve => {
@@ -238,6 +237,5 @@ module.exports = {
   COData,
   pollenIndex,
   aqiIndex,
-  photo,
   getPhoto,
 };
