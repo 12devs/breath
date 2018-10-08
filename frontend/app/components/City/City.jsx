@@ -22,7 +22,6 @@ class City extends Component {
             <img className={"img"} src={src.Img}/>
           </div>
         </div>
-        {/*<div>Code: {src.Code}</div>*/}
         <div className={"box1"}>
           <h1>AQI_Today:</h1>
           <h2>{src.AQI_Today}</h2>

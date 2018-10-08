@@ -20,15 +20,15 @@ class Cities extends Component {
         <div className="l-air__card-item">
           <div className="l-air__card-country">
             <div className="l-air__country-img"
-                 style={{ backgroundImage: `url(${src.photo}` }}/>
-            <div className="l-air__country-title">{src.Name}
+                 style={{ backgroundImage: `url(${src.Img}` }}/>
+            <div className="l-air__country-title">{src.Name} ({src.Code})
               <div className="l-air__country-title-img"/>
             </div>
           </div>
           <div className="l-air__card-meta-grid">
             <div className="l-air__card-meta-item">
               <div className="l-air__card-meta-title">PM 2.5</div>
-              <div className="l-air__card-meta-description">Value</div>
+              <div className="l-air__card-meta-description">{src.pm25}</div>
             </div>
             <div className="l-air__card-meta-item">
               <div className="l-air__card-meta-title">Ozone</div>
@@ -45,16 +45,15 @@ class Cities extends Component {
             <div className="l-air__card-number-title l-air__card-number-title--turquoise">{src.AQI_Today}</div>
             <div className="l-air__card-number-index">Air Quality Index</div>
             <div className="c-button-card c-button-card-ico"
-            //      onClick={async () => {
-            //   await this.props.changeState('code', src.code);
-            //   await this.props.getCity();
-            // }}
+                 onClick={() => {
+                   this.props.changeState('code', src.code);
+                   this.props.getCity();
+                 }}
             />
           </div>
         </div>
       </div>
-    )
-      ;
+    );
   }
 }
 
