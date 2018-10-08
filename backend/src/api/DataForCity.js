@@ -4,6 +4,7 @@ import config from 'config';
 
 const openweathermap = config.get('openweathermap');
 const google_api_key = config.get('google.api_key');
+const darksky_api_key = config.get('darksky.api_key');
 
 const historicPollenIndex = (code, days = 360) => {
   return new Promise(resolve => {
@@ -147,8 +148,8 @@ const getCurrentLocation = zipCode => {
       const { location } = currentResult.geometry;
 
       const currentLocation = {
-        lat: (location.lat).toFixed(0),
-        lng: (location.lat).toFixed(0),
+        lat: (location.lat).toFixed(4),
+        lng: (location.lng).toFixed(4),
         name: currentResult.address_components.find(elem => {
           return elem.types.indexOf('locality') > -1;
         }).long_name,
@@ -228,6 +229,22 @@ const getPhoto = (code, maxWidth=1600) => {
   });
 };
 
+const dailyOzone = zipCode => {
+
+  return getCurrentLocation(zipCode)
+    .then(location => {
+      const url = `https://api.darksky.net/forecast/${darksky_api_key}/${location.lat},${location.lng}`;
+
+      return fetch(url, { method: 'GET' });
+    })
+    .then(res => res.json())
+    .then(res => {
+      const { ozone } = res.currently;
+
+      return Promise.resolve({ ozone });
+    })
+    .catch(err => Promise.reject(err));
+}
 
 module.exports = {
   historicPollenIndex,
@@ -237,5 +254,6 @@ module.exports = {
   COData,
   pollenIndex,
   aqiIndex,
+  dailyOzone,
   getPhoto
 };

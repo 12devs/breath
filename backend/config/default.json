@@ -20,11 +20,9 @@
     "host": "127.0.0.1"
   },
   "openweathermap": {
-    "api_key": "d19fd84baf2d0d61dcb0e3a0c890ba47",
     "cnt": 8,
     "units": "metric"
   },
-  "google": {
-    "api_key": "AIzaSyBm14psj1plbzjQEFAfVvML-nClpO7HERs"
-  }
+  "google": {},
+  "darksky": {}
 }

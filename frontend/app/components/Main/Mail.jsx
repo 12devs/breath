@@ -19,8 +19,6 @@ class Mail extends Component {
     return this.setState({ [key]: value })
   }
 
-
-
   render() {
     return (
       <span>
