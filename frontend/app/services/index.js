@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 const getMainPageData = () => {
-  return axios.get('/mainPage/')
+  return axios.get('/mainPage/?codes=20001,20002')
     .then(result => {
+      console.log(result.data);
       return result.data
     })
 };
