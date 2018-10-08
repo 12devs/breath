@@ -1,6 +1,5 @@
 import fetch from "node-fetch";
 import config from 'config';
-import { getCurrentLocation } from './location';
 
 const darksky_api_key = config.get('darksky.api_key');
 
@@ -8,19 +7,16 @@ const getRndInteger = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
-const dailyOzone = zipCode => {
+const dailyOzone = (lat, lng) => {
 
-  return getCurrentLocation(zipCode)
-    .then(location => {
-      const url = `https://api.darksky.net/forecast/${darksky_api_key}/${location.lat},${location.lng}`;
+  const url = `https://api.darksky.net/forecast/${darksky_api_key}/${lat},${lng}`;
 
-      return fetch(url, { method: 'GET' });
-    })
+  return fetch(url, { method: 'GET' })
     .then(res => res.json())
     .then(res => {
       const { ozone } = res.currently;
 
-       return Promise.resolve({ Ozone: ozone });
+      return Promise.resolve({ Ozone: ozone });
     })
     .catch(err => Promise.reject(err));
 }
