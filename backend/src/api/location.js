@@ -20,9 +20,9 @@ const getCurrentLocation = zipCode => {
       const currentLocation = {
         lat: (location.lat).toFixed(4),
         lng: (location.lng).toFixed(4),
-        // name: currentResult.address_components.find(elem => {
-        //   return elem.types.indexOf('locality') > -1;
-        // }).long_name,
+        name: currentResult.address_components.find(elem => {
+          return elem.types.indexOf('locality') > -1;
+        }),
       };
 
       return Promise.resolve(currentLocation);

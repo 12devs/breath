@@ -9,7 +9,7 @@ export default {
     const zipCodes = codes.split(',');
 
     const data = zipCodes.map(async code => {
-      const ozone = await dailyOzone();
+      const ozone = await dailyOzone(code);
 
       return { code, ...ozone };
     });

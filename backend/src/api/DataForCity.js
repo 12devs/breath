@@ -1,6 +1,7 @@
 import rp from 'request-promise';
 import fetch from 'node-fetch';
 import config from 'config';
+import { getCurrentLocation } from './location';
 
 const openweathermap = config.get('openweathermap');
 const google_api_key = config.get('google.api_key');
@@ -8,7 +9,7 @@ const darksky_api_key = config.get('darksky.api_key');
 const api_waqi_info = config.get('api_waqi_info');
 
 const historicPollenIndex = (code, days = 360) => {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const headers = {
       'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/69.0.3497.81 Chrome/69.0.3497.81 Safari/537.36',
       'Referer': `https://www.pollen.com/forecast/extended/pollen/${code}/${days}`,
@@ -130,33 +131,6 @@ const COData = zipCode => {
     .then(res => Promise.resolve({ COData: res.data }))
     .catch(err => Promise.resolve({}));
 
-}
-
-const getCurrentLocation = zipCode => {
-
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=${google_api_key}`;
-
-  return fetch(url, { method: 'GET' })
-    .then(res => res.json())
-    .then(res => {
-
-      if (res.status !== 'OK') return Promise.resolve({});  //@TODO null ?
-      if (!res.results.length) return Promise.resolve({});  //@TODO null ?
-
-      const currentResult = res.results[0];
-      const { location } = currentResult.geometry;
-
-      const currentLocation = {
-        lat: (location.lat).toFixed(4),
-        lng: (location.lng).toFixed(4),
-        name: currentResult.address_components.find(elem => {
-          return elem.types.indexOf('locality') > -1;
-        }).long_name,
-      };
-
-      return Promise.resolve(currentLocation);
-    })
-    .catch(err => Promise.resolve({}));
 }
 
 const pollenIndex = (code) => {
