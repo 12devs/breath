@@ -1,0 +1,28 @@
+.l-quote {
+    margin-top: 11rem;
+    padding: 7rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.l-quote__container {
+    margin: 0 auto;
+    padding: 4.2rem 7.9rem 3rem;
+    max-width: 57rem;
+    background-color: $color-background-brown;
+    text-align: center;
+    border-radius: 1rem;
+}
+
+.l-quote__text {
+    margin-bottom: 1.3rem;
+    font-size: $font-size-medium;
+    color: $color-text-white;
+}
+
+.l-quote__url {
+    color: $color-text-turquoise;
+    font-weight: bold;
+    font-size: $font-size-large;
+}

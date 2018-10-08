@@ -70,6 +70,11 @@
     background-size: cover;
     background-position: center center;
 
+    @media screen and (max-width: $screen-lg - 1) {
+        width: 6rem;
+        height: 6rem;
+    }
+
 }
 
 .l-air__country-title {
