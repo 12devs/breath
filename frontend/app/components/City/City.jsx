@@ -10,6 +10,7 @@ class City extends Component {
 
   render() {
     const {src} = this.props;
+    console.log(src);
     if (!src) {
       return (<h1>{JSON.stringify(this.state.error)}</h1>)
     }

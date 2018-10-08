@@ -7,6 +7,12 @@ import Main from './Main/Main';
 import City from './City/City';
 import services from "../services";
 
+import wave_bottom from "../assets/img/wave_bottom.svg";
+import about from "../assets/img/about.png";
+import fb from "../assets/img/fb.png";
+import tw from "../assets/img/tw.png";
+import inst from "../assets/img/inst.png";
+
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
@@ -37,7 +43,7 @@ class App extends Component {
     return services.getCityPageData(this.state.code, this.state.email)
       .then(res => {
         if (res.error) {
-          this.setState({ city: null, error: res.error, currentPage: "Main"  })
+          this.setState({ city: null, error: res.error, currentPage: "Main" })
         } else {
           this.setState({ city: res, error: null, currentPage: "City" })
         }
@@ -52,7 +58,7 @@ class App extends Component {
   }
 
   changeState(key, value) {
-    this.setState({ [key]: value });
+    return this.setState({ [key]: value });
   }
 
   render() {
@@ -63,7 +69,7 @@ class App extends Component {
       <div>
         <input type="button" onClick={() => this.changeState('currentPage', "Main")}
                value={"Main"}/>
-        {(()=>{
+        {(() => {
           switch (currentPage) {
             case "Main":
               return (<Main src={this.state} getCity={this.getCity} changeState={this.changeState}/>);
