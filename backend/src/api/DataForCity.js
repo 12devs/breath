@@ -220,12 +220,12 @@ const historicTemperatureAndHumidity = (code) => {
         const item = {
           date: day.date,
           temp: 0,
-          visibility: 0,
+          humidity: 0,
         };
 
         if (hourly.length) {
           item.temp = (hourly[0] || {}).tempC;
-          item.visibility= (hourly[0] || {}).visibility;
+          item.humidity= (hourly[0] || {}).humidity;
         }
 
         return item;
