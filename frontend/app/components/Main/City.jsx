@@ -15,6 +15,24 @@ class Cities extends Component {
   render() {
     let { src } = this.props;
     console.log('city', this.props);
+    let color;
+    const colors = [
+      "l-air__card-number-title--turquoise",
+      "l-air__card-number-title--scarlet",
+      "l-air__card-number-title--blue",
+      "l-air__card-number-title--orange",
+      "l-air__card-number-title--purple",
+    ];
+
+    const values = [50, 100, 150, 200, 1000];
+
+    for (let i = 0; i < values.length; i++) {
+      if (src.AQI_Today < values[i]) {
+        color = colors[i];
+        break
+      }
+    }
+
     return (
       <div className="l-air__card-grid">
         <div className="l-air__card-item">
@@ -42,7 +60,7 @@ class Cities extends Component {
         </div>
         <div className="l-air__card-item l-air__card-item--last">
           <div className="l-air__card-number">
-            <div className="l-air__card-number-title l-air__card-number-title--turquoise">{src.AQI_Today}</div>
+            <div className={"l-air__card-number-title " + color}>{src.AQI_Today}</div>
             <div className="l-air__card-number-index">Air Quality Index</div>
             <div className="c-button-card c-button-card-ico"
                  onClick={() => {

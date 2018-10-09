@@ -4,6 +4,10 @@ import Graphic from './Graphic';
 import Footer from "../footer";
 import logoInside from "./../../assets/img/logo-inside.png";
 import figure from "./../../assets/img/figure.svg";
+import climate01 from "./../../assets/img/climate-01.svg";
+import climate02 from "./../../assets/img/climate-02.svg";
+import climate03 from "./../../assets/img/climate-03.svg";
+import climate04 from "./../../assets/img/climate-04.svg";
 
 class City extends Component {
   constructor(props) {
@@ -62,38 +66,39 @@ class City extends Component {
                 <div className="l-charts__title">Most amount of rain in a day</div>
                 <img src={figure} alt=""/>
                 <div className="l-charts__data">
-                  <div className="l-charts__data-ico"></div>
-                  <div className="l-charts__data-number">44.00''</div>
+                  <div className="l-charts__data-ico"><img src={climate04} alt=""/></div>
+                  <div className="l-charts__data-number">{src.Most_Amount_of_Rain}%</div>
                 </div>
               </div>
               <div className="l-charts__item">
-                <div className="l-charts__title">Most amount of rain in a day</div>
+                <div className="l-charts__title">Most amount of snow in a day</div>
                 <img src={figure} alt=""/>
                 <div className="l-charts__data">
-                  <div className="l-charts__data-ico"></div>
-                  <div className="l-charts__data-number">24.00''</div>
+                  <div className="l-charts__data-ico"><img src={climate03} alt=""/></div>
+                  <div className="l-charts__data-number">{src.Most_Amount_of_Snow}%</div>
                 </div>
               </div>
               <div className="l-charts__item">
                 <div className="l-charts__title">Highest Temperature</div>
                 <img src={figure} alt=""/>
                 <div className="l-charts__data">
-                  <div className="l-charts__data-ico"></div>
-                  <div className="l-charts__data-number">22 °C''</div>
+                  <div className="l-charts__data-ico"><img src={climate01} alt=""/></div>
+                  <div className="l-charts__data-number">{src.Highest_Temperature}°C''</div>
                 </div>
               </div>
               <div className="l-charts__item">
                 <div className="l-charts__title">Lowest Temperature</div>
                 <img src={figure} alt=""/>
                 <div className="l-charts__data">
-                  <div className="l-charts__data-ico"></div>
-                  <div className="l-charts__data-number">22 °C''</div>
+                  <div className="l-charts__data-ico"><img src={climate02} alt=""/></div>
+                  <div className="l-charts__data-number">{src.Lowest_Temperature}°C''</div>
                 </div>
               </div>
             </div>
             <div className="l-charts__container">
               <div className="l-charts__title">Pollen Index</div>
               <img src={figure} alt=""/>
+              <Graphic src={src.Pollen_index_over_past_year} label={"Pollen Index"} type={'line'}/>
             </div>
           </div>
         </div>
