@@ -24,6 +24,7 @@ const getCurrentLocation = zipCode => {
         lat: (location.lat).toFixed(4),
         lng: (location.lng).toFixed(4),
         name: (name || {}).long_name,
+        currentResult
       };
 
       return Promise.resolve(currentLocation);

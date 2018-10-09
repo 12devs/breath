@@ -55,6 +55,9 @@ body {
     background: #1D1D1D; }
 
 .c-button-card-ico {
+  background-image: url("./../img/next.svg");
+  float: bottom;
+  background-repeat: no-repeat;
   height: 3.8rem; }
 
 .c-button {
@@ -326,6 +329,7 @@ body {
   font-size: 2rem; }
 
 .l-air__country-title-img {
+  background-image: url("./../img/figure.svg");
   width: 1.7rem;
   height: 0.7rem; }
 
@@ -547,6 +551,7 @@ body {
   width: 25%; }
 
 .l-footer__nav-title {
+  background-image: url("./../img/figure.svg");
   margin-bottom: 2rem;
   padding-bottom: 1rem;
   font-weight: 600;
@@ -567,6 +572,7 @@ body {
   text-align: center; }
 
 .l-footer__copyright {
+  background-image: url("./../img/figure.svg");
   width: 30rem;
   margin: 0 auto;
   margin-top: 2.5rem;

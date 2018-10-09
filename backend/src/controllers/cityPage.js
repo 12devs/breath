@@ -58,7 +58,8 @@ export default {
         .then(result => {
           const data = {
             Code: code,
-            Name: location.name
+            Name: location.name,
+            location
           };
           result.forEach(elem => {
             Object.assign(data, elem);
@@ -66,9 +67,11 @@ export default {
           return res.status(200).json(data)
         })
         .catch(err => {
+          console.log(1, err);
           return res.status(500).json({ error: err.message })
         })
     } catch (err) {
+      console.log(2, err);
       return res.status(500).json({ error: err.message })
     }
   }
