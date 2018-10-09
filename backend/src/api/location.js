@@ -11,8 +11,8 @@ const getCurrentLocation = zipCode => {
     .then(res => res.json())
     .then(res => {
 
-      if (res.status !== 'OK') return Promise.reject(new Error('zip code not found'));  //@TODO null ?
-      if (!res.results.length) return Promise.reject(new Error('zip code not found'));  //@TODO null ?
+      if (res.status !== 'OK') return Promise.reject(new Error(`zip code ${zipCode} not found`));  //@TODO null ?
+      if (!res.results.length) return Promise.reject(new Error(`zip code ${zipCode} not found`));  //@TODO null ?
 
       const currentResult = res.results[0];
       const { location } = currentResult.geometry;

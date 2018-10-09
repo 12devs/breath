@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import services from '../../services';
 import Graphic from './Graphic';
+import GraphicTemperature from './GraphicTemperature';
+import GraphicHumidity from './GraphicHumidity';
 import Footer from "../footer";
 import logoInside from "./../../assets/img/logo-inside.png";
 import figure from "./../../assets/img/figure.svg";
@@ -48,9 +50,15 @@ class City extends Component {
               <img src={figure} alt=""/>
             </div>
 
+            {/*<div className="l-charts__container">*/}
+              {/*<div className="l-charts__title">You AQI Overtime</div>*/}
+              {/*<img src={figure} alt=""/>*/}
+            {/*</div> */}
+
             <div className="l-charts__container">
-              <div className="l-charts__title">You AQI Overtime</div>
+              <div className="l-charts__title">You Temperature</div>
               <img src={figure} alt=""/>
+              <GraphicTemperature src={src.result}/>
             </div>
 
             <div className="l-charts__container">
@@ -60,6 +68,7 @@ class City extends Component {
             <div className="l-charts__container">
               <div className="l-charts__title">Relative Humididy</div>
               <img src={figure} alt=""/>
+              <GraphicHumidity src={src.result}/>
             </div>
             <div className="l-charts__grid">
               <div className="l-charts__item">
