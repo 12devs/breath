@@ -12,7 +12,8 @@ class Footer extends Component {
 
   render() {
     return (
-      <div className="l-footer"><img className="l-footer__wave" src={wave_bottom} alt=""/>
+      <div className="l-footer">
+        <img className="l-footer__wave" src={wave_bottom} alt=""/>
         <div className="l-footer__description">
           <div className="l-footer__quote"><img className="l-footer__description-img" src={about} alt="" srcSet=""/>
             <div className="l-footer__quote-text">If you don't like what you see and want to learn more visit us at

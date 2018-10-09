@@ -195,7 +195,7 @@ const apiWaqiInfo = (location) => {
           for (let key in apiWaqi) {
             result[key] = apiWaqi[key].v;
           }
-          return resolve(result);
+          return resolve({apiWaqiInfo:result});
         })
         .catch(err => resolve(err));
   });
