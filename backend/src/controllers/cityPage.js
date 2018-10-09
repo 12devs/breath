@@ -9,6 +9,7 @@ import {
   getPhoto,
   apiWaqiInfo,
   historicTemperatureAndHumidity,
+  getHistoricalData
 } from "./../api/DataForCity";
 import emailExistence from 'email-existence';
 import { getCurrentLocation } from '../api/location';
@@ -55,6 +56,7 @@ export default {
         verifyEmail(email),
         apiWaqiInfo(location),
         historicTemperatureAndHumidity(code),
+        getHistoricalData(location)
       ];
       return Promise.all(promises)
         .then(result => {
