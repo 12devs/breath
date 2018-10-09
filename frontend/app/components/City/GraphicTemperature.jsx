@@ -24,7 +24,7 @@ export default class Test extends Component {
   newChart(props) {
     let { src} = props;
     const labels = src.map(elem => elem.date);
-    const Data = src.map(elem => elem.temp);
+    const Data = src.map(elem => elem.temperature);
     const data = {
       labels,
       datasets: [{

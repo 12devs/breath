@@ -23,6 +23,7 @@ class City extends Component {
 
   render() {
     const { src } = this.props;
+    console.log(src);
     if (!src) {
       return (<h1>{JSON.stringify(this.state.error)}</h1>)
     }
@@ -57,7 +58,7 @@ class City extends Component {
               <Item title="PM1.0 particles in air" img={climate04} value={src.apiWaqiInfo.pm10} unit={"''"}/>
               <Item title="NO2 volume mixing ratio" img={climate04} value={src.apiWaqiInfo.no2} unit={"''"}/>
               <Item title="SO2 volume mixing ratio" img={climate04} value={src.apiWaqiInfo.so2} unit={"''"}/>
-              <Item title="Clouds" img={climate04} value={src.clouds} />
+              <Item title="Cloudiness" img={climate04} value={src.clouds} unit={"%"}/>
               <Item title="Humidity" img={climate04} value={src.humidity} unit={"%"}/>
               <Item title="Pressure" img={climate04} value={src.pressure} unit={"bar"}/>
               <Item title="visibility" img={climate04} value={src.visibility} unit={"m"}/>
@@ -77,7 +78,7 @@ class City extends Component {
             <div className="l-charts__container">
               <div className="l-charts__title">Your Temperature</div>
               <img src={figure} alt=""/>
-              <GraphicTemperature src={src.result}/>
+              <GraphicTemperature src={src.Historical}/>
             </div>
 
             {/*<div className="l-charts__container">*/}
@@ -88,7 +89,7 @@ class City extends Component {
             <div className="l-charts__container">
               <div className="l-charts__title">Relative Humididy</div>
               <img src={figure} alt=""/>
-              <GraphicHumidity src={src.result}/>
+              <GraphicHumidity src={src.Historical}/>
             </div>
 
             <div className="l-charts__grid">

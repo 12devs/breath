@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import figure from "./../../assets/img/figure.svg";
 
 export default props => {
-  if (!props.value){
+  if (!props.value && props.value !== 0) {
     return null
   }
   return (

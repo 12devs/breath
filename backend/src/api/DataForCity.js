@@ -138,27 +138,27 @@ const pollenIndex = (code) => {
 
 const aqiIndex = (location) => {
   return new Promise(resolve => {
-      const options = {
-        uri: `http://aqimap.hellowynd.com:8000/api/air/closestStation?lat=${location.lat}&lng=${location.lng}`,
-        json: true
-      };
-      rp(options)
-        .then(data => resolve({
-          AQI_Today: data.aqi,
-        }))
-        .catch(err => resolve({}));
-    });
+    const options = {
+      uri: `http://aqimap.hellowynd.com:8000/api/air/closestStation?lat=${location.lat}&lng=${location.lng}`,
+      json: true
+    };
+    rp(options)
+      .then(data => resolve({
+        AQI_Today: data.aqi,
+      }))
+      .catch(err => resolve({}));
+  });
 };
 
 const getPhotoReference = (location) => {
   return new Promise(resolve => {
-      const options = {
-        uri: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat},${location.lng}&radius=2000&key=${google_api_key}`,
-        json: true
-      };
-      rp(options)
-        .then(data => resolve(data.results[0].photos[0].photo_reference))
-        .catch(err => resolve({}));
+    const options = {
+      uri: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat},${location.lng}&radius=2000&key=${google_api_key}`,
+      json: true
+    };
+    rp(options)
+      .then(data => resolve(data.results[0].photos[0].photo_reference))
+      .catch(err => resolve({}));
   });
 };
 
@@ -183,21 +183,21 @@ const getPhoto = (location, maxWidth = 1600) => {
 
 const apiWaqiInfo = (location) => {
   return new Promise(resolve => {
-      const options = {
-        uri: `https://api.waqi.info/feed/geo:${location.lat};${location.lng}/?token=${api_waqi_info.api_key}`,
-        json: true
-      };
+    const options = {
+      uri: `https://api.waqi.info/feed/geo:${location.lat};${location.lng}/?token=${api_waqi_info.api_key}`,
+      json: true
+    };
 
-      rp(options)
-        .then(data => {
-          const apiWaqi = data.data.iaqi;
-          const result = {};
-          for (let key in apiWaqi) {
-            result[key] = apiWaqi[key].v;
-          }
-          return resolve({apiWaqiInfo:result});
-        })
-        .catch(err => resolve(err));
+    rp(options)
+      .then(data => {
+        const apiWaqi = data.data.iaqi;
+        const result = {};
+        for (let key in apiWaqi) {
+          result[key] = apiWaqi[key].v;
+        }
+        return resolve({ apiWaqiInfo: result });
+      })
+      .catch(err => resolve(err));
   });
 };
 
@@ -225,7 +225,7 @@ const historicTemperatureAndHumidity = (code) => {
 
         if (hourly.length) {
           item.temp = (hourly[0] || {}).tempC;
-          item.humidity= (hourly[0] || {}).humidity;
+          item.humidity = (hourly[0] || {}).humidity;
         }
 
         return item;
@@ -238,19 +238,21 @@ const historicTemperatureAndHumidity = (code) => {
 
 const getStationId = (location) => {
   return new Promise(resolve => {
-      const options = {
-        uri: `https://api-ak.wunderground.com/api/d8585d80376a429e/conditions/labels/lang:EN/units:english/bestfct:1/v:2.0/q/${location.lat},${location.lng}.json`,
-        json: true
-      };
-      rp(options)
-        .then(data => {
-          return resolve(data.current_observation.station.id)
-        })
-        .catch(err => resolve({}));
-    })
+    const options = {
+      uri: `https://api-ak.wunderground.com/api/d8585d80376a429e/conditions/labels/lang:EN/units:english/bestfct:1/v:2.0/q/${location.lat},${location.lng}.json`,
+      json: true
+    };
+    rp(options)
+      .then(data => {
+        return resolve(data.current_observation.station.id)
+      })
+      .catch(err => resolve({}));
+  })
 };
 
-const getHistoricalData = (code, start = '20181005', end = '20181008') => {
+const getHistoricalData = (code, days = 365) => {
+  const end = new Date().toISOString().split("T")[0].replace(/-/g, '');
+  const start = new Date(new Date() - days * 24 * 60 * 60 * 1000).toISOString().split("T")[0].replace(/-/g, '');
   return new Promise(resolve => {
     getStationId(code).then(id => {
       const options = {
@@ -259,7 +261,12 @@ const getHistoricalData = (code, start = '20181005', end = '20181008') => {
       };
       rp(options)
         .then(data => {
-          return resolve({Historical: data.history.days})
+          const result = data.history.days.map(elem => {
+            elem.summary.date = new Date(elem.summary.date.epoch * 1000).toISOString().split('T')[0];
+            return elem.summary
+          });
+
+          return resolve({ Historical: result })
         })
         .catch(err => resolve({}));
     })
