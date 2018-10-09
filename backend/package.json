@@ -23,7 +23,7 @@
     "express": "^4.16.2",
     "moleculer": "^0.13.1",
     "moleculer-web": "^0.8.1",
-    "moment": "^2.21.0",
+    "moment": "^2.22.2",
     "mongoose": "^5.2.5",
     "morgan": "^1.9.0",
     "node-fetch": "^2.2.0",

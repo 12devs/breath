@@ -1,11 +1,12 @@
 import rp from 'request-promise';
 import fetch from 'node-fetch';
 import config from 'config';
-import { getCurrentLocation } from './location';
+import moment from 'moment';
 
 const openweathermap = config.get('openweathermap');
 const google_api_key = config.get('google.api_key');
 const api_waqi_info = config.get('api_waqi_info');
+const wwo_api_key = config.get('worldweatheronline.api_key');
 
 const historicPollenIndex = (code, days = 360) => {
   return new Promise(resolve => {
@@ -27,9 +28,9 @@ const historicPollenIndex = (code, days = 360) => {
   });
 };
 
-const currentWeather = zipCode => {
+const currentWeather = code => {
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${openweathermap.api_key}&units=${openweathermap.units}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?zip=${code},us&appid=${openweathermap.api_key}&units=${openweathermap.units}`;
 
   return fetch(url, { method: 'GET' })
     .then(res => res.json()) //@TODO error handling 404
@@ -200,6 +201,41 @@ const apiWaqiInfo = (location) => {
   });
 };
 
+const historicTemperatureAndHumidity = (code) => {
+
+  const currentMoment = moment();
+  const endDate = currentMoment.format("YYYY-MM-DD");
+  const startDate = currentMoment.subtract(30, 'days').format("YYYY-MM-DD");
+
+  const url = `http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=${wwo_api_key}&q=${code}&format=json&date=${startDate}&enddate=${endDate}&tp=24`;
+
+  return fetch(url, { method: 'GET' })
+    .then(res => res.json())
+    .then(res => {
+      const { weather } = res.data;
+
+      const result = weather.map(day => {
+
+        const { hourly } = day;
+        const item = {
+          date: day.date,
+          temp: 0,
+          visibility: 0,
+        };
+
+        if (hourly.length) {
+          item.temp = (hourly[0] || {}).tempC;
+          item.visibility= (hourly[0] || {}).visibility;
+        }
+
+        return item;
+      });
+
+      return { result }
+    })
+    .catch(() => ({}));
+}
+
 module.exports = {
   historicPollenIndex,
   currentWeather,
@@ -210,4 +246,5 @@ module.exports = {
   aqiIndex,
   getPhoto,
   apiWaqiInfo,
+  historicTemperatureAndHumidity,
 };
