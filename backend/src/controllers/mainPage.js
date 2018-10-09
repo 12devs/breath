@@ -16,7 +16,7 @@ export default {
         pollenIndex(code),
         aqiIndex(location),
         apiWaqiInfo(location)
-          .then(pm => ({pm25:pm.pm25})),
+          .then(apiWaqiInfo => ({pm25:apiWaqiInfo.apiWaqiInfo.pm25})),
         getPhoto(location),
       ];
       return Promise.all(promises)

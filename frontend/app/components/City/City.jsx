@@ -14,6 +14,13 @@ import climate01 from "./../../assets/img/climate-01.svg";
 import climate02 from "./../../assets/img/climate-02.svg";
 import climate03 from "./../../assets/img/climate-03.svg";
 import climate04 from "./../../assets/img/climate-04.svg";
+import climate05 from "./../../assets/img/climate-05.svg";
+import climate06 from "./../../assets/img/climate-06.svg";
+import climate07 from "./../../assets/img/climate-07.svg";
+import climate08 from "./../../assets/img/climate-08.svg";
+import climate09 from "./../../assets/img/climate-09.svg";
+import climate10 from "./../../assets/img/climate-10.svg";
+import climate11 from "./../../assets/img/climate-11.svg";
 
 class City extends Component {
   constructor(props) {
@@ -53,15 +60,15 @@ class City extends Component {
 
             <div className="l-charts__grid">
               <Item title="CO volume mixing ratio" img={climate04} value={src.apiWaqiInfo.co} unit={"''"}/>
-              <Item title="Ozone layer thickness" img={climate04} value={src.apiWaqiInfo.o3} unit={"''"}/>
-              <Item title="PM2.5 particles in air" img={climate04} value={src.apiWaqiInfo.pm25} unit={"''"}/>
-              <Item title="PM1.0 particles in air" img={climate04} value={src.apiWaqiInfo.pm10} unit={"''"}/>
+              <Item title="Ozone layer thickness" img={climate06} value={src.apiWaqiInfo.o3} unit={"''"}/>
+              <Item title="PM2.5 particles in air" img={climate07} value={src.apiWaqiInfo.pm25} unit={"''"}/>
+              <Item title="PM1.0 particles in air" img={climate07} value={src.apiWaqiInfo.pm10} unit={"''"}/>
               <Item title="NO2 volume mixing ratio" img={climate04} value={src.apiWaqiInfo.no2} unit={"''"}/>
               <Item title="SO2 volume mixing ratio" img={climate04} value={src.apiWaqiInfo.so2} unit={"''"}/>
-              <Item title="Cloudiness" img={climate04} value={src.clouds} unit={"%"}/>
+              <Item title="Cloudiness" img={climate08} value={src.clouds} unit={"%"}/>
               <Item title="Humidity" img={climate04} value={src.humidity} unit={"%"}/>
               <Item title="Pressure" img={climate04} value={src.pressure} unit={"bar"}/>
-              <Item title="visibility" img={climate04} value={src.visibility} unit={"m"}/>
+              <Item title="visibility" img={climate10} value={src.visibility} unit={"m"}/>
             </div>
 
             {/*<div className="l-charts__container">*/}
