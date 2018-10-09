@@ -56,7 +56,7 @@ export default {
         verifyEmail(email),
         apiWaqiInfo(location),
         historicTemperatureAndHumidity(code),
-        getHistoricalData(code)
+        getHistoricalData(location)
       ];
       return Promise.all(promises)
         .then(result => {

@@ -236,9 +236,8 @@ const historicTemperatureAndHumidity = (code) => {
     .catch(() => ({}));
 }
 
-const getStationId = (code) => {
+const getStationId = (location) => {
   return new Promise(resolve => {
-    getCurrentLocation(code).then(location => {
       const options = {
         uri: `https://api-ak.wunderground.com/api/d8585d80376a429e/conditions/labels/lang:EN/units:english/bestfct:1/v:2.0/q/${location.lat},${location.lng}.json`,
         json: true
@@ -248,9 +247,8 @@ const getStationId = (code) => {
         .then(data => {
           return resolve(data.current_observation.station.id)
         })
-        .catch(err => resolve(err));
+        .catch(err => resolve({}));
     })
-  });
 };
 
 const getHistoricalData = (code, start = '20181005', end = '20181008') => {
@@ -263,9 +261,9 @@ const getHistoricalData = (code, start = '20181005', end = '20181008') => {
       console.log(options);
       rp(options)
         .then(data => {
-          return resolve({Historical: data})
+          return resolve({Historical: data.history.days})
         })
-        .catch(err => resolve(err));
+        .catch(err => resolve({}));
     })
   });
 };
