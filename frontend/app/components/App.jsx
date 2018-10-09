@@ -7,12 +7,6 @@ import Main from './Main/Main';
 import City from './City/City';
 import services from "../services";
 
-import wave_bottom from "../assets/img/wave_bottom.svg";
-import about from "../assets/img/about.png";
-import fb from "../assets/img/fb.png";
-import tw from "../assets/img/tw.png";
-import inst from "../assets/img/inst.png";
-
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
@@ -43,9 +37,9 @@ class App extends Component {
     return services.getCityPageData(this.state.code, this.state.email)
       .then(res => {
         if (res.error) {
-          this.setState({ city: null, error: res.error, currentPage: "Main" })
+          return this.setState({ city: null, error: res.error, currentPage: "Main" })
         } else {
-          this.setState({ city: res, error: null, currentPage: "City" })
+          return this.setState({ city: res, error: null, currentPage: "City" })
         }
       })
   }
@@ -58,7 +52,11 @@ class App extends Component {
   }
 
   changeState(key, value) {
-    return this.setState({ [key]: value });
+    return new Promise((resolve) => {
+      this.setState({ [key]: value }, () => {
+        resolve(true)
+      })
+    })
   }
 
   render() {

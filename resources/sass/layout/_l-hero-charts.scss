@@ -1,0 +1,39 @@
+.l-hero-charts {
+    position: relative;
+    height: 50rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.l-hero-logo {
+    position: absolute;
+    z-index: 1;
+    left: 2.2rem;
+}
+
+.l-hero-charts__city {
+    padding: 3rem 3.7rem;
+    position: absolute;
+    top: 12rem;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+    border-radius: 1rem;
+    background-color: $color-background-white;
+}
+
+.l-hero-charts__city-subtitle {
+    text-transform: uppercase;
+    color: $color-text-light-charcoal;
+    font-size: $font-size-small;
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.3rem;
+}
+
+.l-hero-charts__city-title {
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}

@@ -1,11 +1,12 @@
 import rp from 'request-promise';
 import fetch from 'node-fetch';
 import config from 'config';
-import { getCurrentLocation } from './location';
+import moment from 'moment';
 
 const openweathermap = config.get('openweathermap');
 const google_api_key = config.get('google.api_key');
 const api_waqi_info = config.get('api_waqi_info');
+const wwo_api_key = config.get('worldweatheronline.api_key');
 
 const historicPollenIndex = (code, days = 360) => {
   return new Promise(resolve => {
@@ -27,17 +28,16 @@ const historicPollenIndex = (code, days = 360) => {
   });
 };
 
-const currentWeather = zipCode => {
+const currentWeather = code => {
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${openweathermap.api_key}&units=${openweathermap.units}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?zip=${code},us&appid=${openweathermap.api_key}&units=${openweathermap.units}`;
 
   return fetch(url, { method: 'GET' })
     .then(res => res.json()) //@TODO error handling 404
     .then(res => {
-
-      if (res.cod === '404') return Promise.reject(new Error(res.message));  //@TODO null ?
+      if (res.cod === '404') return ({});  //@TODO null ?
       const { humidity, pressure, temp, temp_max, temp_min } = res.main;
-      const currentWeather = {
+      return {
         humidity,
         pressure,
         temp,
@@ -47,23 +47,16 @@ const currentWeather = zipCode => {
         wind: res.wind,
         clouds: res.clouds.all,
       };
-
-      return Promise.resolve(currentWeather);
     })
-    .catch(err => {
-      return Promise.resolve({});
+    .catch(() => {
+      return {};
     });
 }
 
-const minMaxTemperatureAndRainfall = zipCode => {
-  let Name;
-  return getCurrentLocation(zipCode)
-    .then(location => {
-      Name = location.name;
-      const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lng}&appid=${openweathermap.api_key}&cnt=${openweathermap.cnt}&units=${openweathermap.units}`;
-
-      return fetch(url, { method: 'GET' });
-    })
+const minMaxTemperatureAndRainfall = location => {
+  const Name = location.name;
+  const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lng}&appid=${openweathermap.api_key}&cnt=${openweathermap.cnt}&units=${openweathermap.units}`;
+  return fetch(url, { method: 'GET' })
     .then(res => res.json())
     .then(res => {
 
@@ -97,38 +90,29 @@ const minMaxTemperatureAndRainfall = zipCode => {
         Name,
       };
     })
-    .catch(err => Promise.reject(err));
-}
+    .catch(err => ({}));
+};
 
-const ozoneData = zipCode => {
+const ozoneData = location => {
+  const url = `https://api.openweathermap.org/pollution/v1/o3/${location.lat},${location.lng}/current.json?appid=${openweathermap.api_key}`;
 
-  return getCurrentLocation(zipCode)
-    .then(location => {
-      const url = `https://api.openweathermap.org/pollution/v1/o3/${location.lat},${location.lng}/current.json?appid=${openweathermap.api_key}`;
-
-      return fetch(url, { method: 'GET' });
-    })
+  return fetch(url, { method: 'GET' })
     .then(res => res.json()) //@TODO error handling 404
     .then(res => {
-
       if (res.message === 'not found') return {};  //@TODO null ?
 
       return { ozoneData: res.data };
     })
-    .catch(err => {});
+    .catch(() => ({}));
 }
 
-const COData = zipCode => {
+const COData = location => {
+  const url = `https://api.openweathermap.org/pollution/v1/co/${location.lat},${location.lng}/current.json?appid=${openweathermap.api_key}`;
 
-  return getCurrentLocation(zipCode)
-    .then(location => {
-      const url = `https://api.openweathermap.org/pollution/v1/co/${location.lat},${location.lng}/current.json?appid=${openweathermap.api_key}`;
-
-      return fetch(url, { method: 'GET' });
-    })
+  return fetch(url, { method: 'GET' })
     .then(res => res.json())
-    .then(res => Promise.resolve({ COData: res.data }))
-    .catch(err => Promise.resolve({}));
+    .then(res => ({ COData: res.data }))
+    .catch(() => ({}));
 
 }
 
@@ -152,26 +136,22 @@ const pollenIndex = (code) => {
   });
 };
 
-const aqiIndex = (code) => {
+const aqiIndex = (location) => {
   return new Promise(resolve => {
-    getCurrentLocation(code).then(location =>{
       const options = {
         uri: `http://aqimap.hellowynd.com:8000/api/air/closestStation?lat=${location.lat}&lng=${location.lng}`,
         json: true
       };
-
       rp(options)
         .then(data => resolve({
           AQI_Today: data.aqi,
         }))
         .catch(err => resolve({}));
-    })
-  });
+    });
 };
 
-const getPhotoReference = (code) => {
+const getPhotoReference = (location) => {
   return new Promise(resolve => {
-    getCurrentLocation(code).then(location => {
       const options = {
         uri: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat},${location.lng}&radius=2000&key=${google_api_key}`,
         json: true
@@ -179,13 +159,13 @@ const getPhotoReference = (code) => {
       rp(options)
         .then(data => resolve(data.results[0].photos[0].photo_reference))
         .catch(err => resolve({}));
-    })
   });
 };
 
-const getPhoto = (code, maxWidth=1600) => {
+const getPhoto = (location, maxWidth = 1600) => {
   return new Promise(resolve => {
-    getPhotoReference(code).then(ref => {
+    getPhotoReference(location).then(ref => {
+      console.log(ref);
       const options = {
         uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=${maxWidth}&photoreference=${ref}&key=${google_api_key}`,
         json: true,
@@ -195,15 +175,14 @@ const getPhoto = (code, maxWidth=1600) => {
       };
 
       rp(options)
-        .then(body => resolve({Img: body}))
-        .catch(err => resolve({Img: err}));
+        .then(body => resolve({ Img: body }))
+        .catch(err => resolve({ Img: err }));
     })
   });
 };
 
-const apiWaqiInfo = (code) => {
+const apiWaqiInfo = (location) => {
   return new Promise(resolve => {
-    getCurrentLocation(code).then(location => {
       const options = {
         uri: `https://api.waqi.info/feed/geo:${location.lat};${location.lng}/?token=${api_waqi_info.api_key}`,
         json: true
@@ -211,20 +190,51 @@ const apiWaqiInfo = (code) => {
 
       rp(options)
         .then(data => {
-          const apiWaqi = data.data.iaqi
-          return resolve({
-            PM10: apiWaqi.pm10.v,
-            PM25: apiWaqi.pm25.v,
-            NO2: apiWaqi.no2.v,
-            O3: apiWaqi.o3.v,
-            SO2: apiWaqi.so2.v,
-            CO: apiWaqi.co.v
-          })
+          const apiWaqi = data.data.iaqi;
+          const result = {};
+          for (let key in apiWaqi) {
+            result[key] = apiWaqi[key].v;
+          }
+          return resolve(result);
         })
         .catch(err => resolve(err));
-    })
   });
 };
+
+const historicTemperatureAndHumidity = (code) => {
+
+  const currentMoment = moment();
+  const endDate = currentMoment.format("YYYY-MM-DD");
+  const startDate = currentMoment.subtract(30, 'days').format("YYYY-MM-DD");
+
+  const url = `http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=${wwo_api_key}&q=${code}&format=json&date=${startDate}&enddate=${endDate}&tp=24`;
+
+  return fetch(url, { method: 'GET' })
+    .then(res => res.json())
+    .then(res => {
+      const { weather } = res.data;
+
+      const result = weather.map(day => {
+
+        const { hourly } = day;
+        const item = {
+          date: day.date,
+          temp: 0,
+          humidity: 0,
+        };
+
+        if (hourly.length) {
+          item.temp = (hourly[0] || {}).tempC;
+          item.humidity= (hourly[0] || {}).humidity;
+        }
+
+        return item;
+      });
+
+      return { result }
+    })
+    .catch(() => ({}));
+}
 
 const getStationId = (code) => {
   return new Promise(resolve => {
@@ -270,5 +280,6 @@ module.exports = {
   aqiIndex,
   getPhoto,
   apiWaqiInfo,
+  historicTemperatureAndHumidity,
   getHistoricalData
 };

@@ -11,18 +11,20 @@ const getCurrentLocation = zipCode => {
     .then(res => res.json())
     .then(res => {
 
-      if (res.status !== 'OK') return Promise.reject(new Error('zip code not found'));  //@TODO null ?
-      if (!res.results.length) return Promise.reject(new Error('zip code not found'));  //@TODO null ?
+      if (res.status !== 'OK') return Promise.reject(new Error(`zip code ${zipCode} not found`));  //@TODO null ?
+      if (!res.results.length) return Promise.reject(new Error(`zip code ${zipCode} not found`));  //@TODO null ?
 
       const currentResult = res.results[0];
       const { location } = currentResult.geometry;
+      const name = currentResult.address_components.find(elem => {
+        return elem.types.indexOf('locality') > -1;
+      });
 
       const currentLocation = {
         lat: (location.lat).toFixed(4),
         lng: (location.lng).toFixed(4),
-        name: currentResult.address_components.find(elem => {
-          return elem.types.indexOf('locality') > -1;
-        }).long_name,
+        name: (name || {}).long_name,
+        currentResult
       };
 
       return Promise.resolve(currentLocation);

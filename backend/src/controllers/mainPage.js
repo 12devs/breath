@@ -4,39 +4,44 @@ import { pollenIndex, aqiIndex, apiWaqiInfo, getPhoto } from '../api/DataForCity
 
 export default {
 
-  mainPageData(req, res) {
+  async mainPageData (req, res) {
 
     const { codes } = req.query;
     const zipCodes = codes.split(',');
 
     const data = zipCodes.map(async code => {
-
       const location = await getCurrentLocation(code);
-      const ozone = await dailyOzone(location.lat, location.lng);
-      const pollen = await pollenIndex(code);
-      const aqi = await aqiIndex(code);
-      const waqiInfo = await apiWaqiInfo(code);
-      const photo = await getPhoto(code); //@TODO width
-
-      return {
-        code,
-        Name: (location || {}).name,
-        ...ozone,
-        ...pollen,
-        ...aqi,
-        PM25: (waqiInfo || {}).PM25,
-        photo: photo.Img,
-      };
+      const promises = [
+        dailyOzone(location),
+        pollenIndex(code),
+        aqiIndex(location),
+        apiWaqiInfo(location)
+          .then(pm => ({pm25:pm.pm25})),
+        getPhoto(location),
+      ];
+      return Promise.all(promises)
+        .then(result => {
+          const data = {
+            Code: code,
+            Name: location.name,
+          };
+          result.forEach(elem => {
+            Object.assign(data, elem);
+          });
+          return data;
+        })
+        .catch(err => {
+          console.log(err);
+          return res.status(500).json({ error: err.message })
+        })
     });
 
     return Promise.all(data)
       .then(result => {
-
         return res.status(200).json(result);
       })
       .catch(err => {
         console.log(err);
-
         return res.status(500).json({ error: err.message });
       });
   }

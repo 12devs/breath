@@ -22,18 +22,13 @@ export default class Test extends Component {
   }
 
   newChart(props) {
-    let { src, label, type } = props;
-    src = src.filter(elem => elem.Index);
-    src = src.map(elem => {
-      elem.Period = elem.Period.split('T')[0];
-      return elem;
-    });
-    const labels = src.map(elem => elem.Period);
-    const Data = src.map(elem => elem.Index);
+    let { src} = props;
+    const labels = src.map(elem => elem.date);
+    const Data = src.map(elem => elem.humidity);
     const data = {
       labels,
       datasets: [{
-        label,
+        label: "Humidity",
         data: Data,
         backgroundColor: [
           '#80bec1',
@@ -44,9 +39,9 @@ export default class Test extends Component {
         borderWidth: 1
       }]
     }
-    const ctx = document.getElementById("myChart").getContext('2d');
+    const ctx = document.getElementById("myChartHumidity").getContext('2d');
     const myChart = new Chart(ctx, {
-      type,
+      type: 'line',
       data: data,
       options: {
         scales: {
@@ -63,7 +58,7 @@ export default class Test extends Component {
   render() {
     return (
       <div>
-        <canvas id="myChart"></canvas>
+        <canvas id="myChartHumidity"></canvas>
       </div>
     );
   }
