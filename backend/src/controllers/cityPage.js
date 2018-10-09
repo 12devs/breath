@@ -7,7 +7,8 @@ import {
   pollenIndex,
   aqiIndex,
   getPhoto,
-  apiWaqiInfo
+  apiWaqiInfo,
+  getHistoricalData
 } from "./../api/DataForCity";
 import emailExistence from 'email-existence';
 import { Email } from './../models';
@@ -50,7 +51,8 @@ export default {
         aqiIndex(code),
         getPhoto(code),
         verifyEmail(email),
-        apiWaqiInfo(code)
+        apiWaqiInfo(code),
+        getHistoricalData(code)
       ];
       return Promise.all(promises)
         .then(result => {
