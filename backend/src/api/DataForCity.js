@@ -242,7 +242,6 @@ const getStationId = (location) => {
         uri: `https://api-ak.wunderground.com/api/d8585d80376a429e/conditions/labels/lang:EN/units:english/bestfct:1/v:2.0/q/${location.lat},${location.lng}.json`,
         json: true
       };
-      console.log(options);
       rp(options)
         .then(data => {
           return resolve(data.current_observation.station.id)
@@ -258,7 +257,6 @@ const getHistoricalData = (code, start = '20181005', end = '20181008') => {
         uri: `https://api-ak.wunderground.com/api/606f3f6977348613/history_${start}${end}/units:metric/v:2.0/q/pws:${id}.json?showObs=0`,
         json: true
       };
-      console.log(options);
       rp(options)
         .then(data => {
           return resolve({Historical: data.history.days})
