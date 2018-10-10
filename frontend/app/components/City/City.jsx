@@ -26,6 +26,7 @@ class City extends Component {
 
   render() {
     const src = this.props.src.city;
+    console.log(src);
     if (!src) {
       return (<h1>{JSON.stringify(this.state.error)}</h1>)
     }
@@ -39,8 +40,8 @@ class City extends Component {
             <button className="l-hero__hamburger hamburger hamburger--slider js-hamburger"><span
               className="hamburger-box"><span className="hamburger-inner"></span></span></button>
             <div className="l-hero__navigation">
-              <div className="l-hero__navigation-container"><a className="l-hero__navigation-url" href="">Home</a><a
-                className="l-hero__navigation-url" href="">Description</a></div>
+              <div className="l-hero__navigation-container"><a className="l-hero__navigation-url" href="#">Home</a><a
+                className="l-hero__navigation-url" href="#">Description</a></div>
             </div>
           </nav>
           <div className="l-hero-charts__city">
@@ -85,7 +86,7 @@ class City extends Component {
              style={{ backgroundImage: `url(${src.Img}` }}>
           <div className="l-quote__container">
             <div className="l-quote__text">If you don't like what you see and want to learn more visit us at</div>
-            <a className="l-quote__url" href="">hellowynd.com</a>
+            <a className="l-quote__url" href="#">hellowynd.com</a>
           </div>
         </div>
 

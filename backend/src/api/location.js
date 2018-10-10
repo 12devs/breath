@@ -16,21 +16,17 @@ const getCurrentLocation = zipCode => {
 
       const currentResult = res.results[0];
       const { location } = currentResult.geometry;
-      const name = currentResult.address_components.find(elem => {
-        return elem.types.indexOf('locality') > -1;
-      });
 
       const currentLocation = {
         lat: (location.lat).toFixed(4),
         lng: (location.lng).toFixed(4),
-        name: (name || {}).long_name,
-        currentResult
+        name: currentResult.formatted_address.replace(', USA', ''),
       };
 
       return Promise.resolve(currentLocation);
     })
     .catch(err => Promise.reject(err));
-}
+};
 
 export {
   getCurrentLocation,
