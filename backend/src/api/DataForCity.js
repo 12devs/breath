@@ -35,7 +35,7 @@ const currentWeather = code => {
   return fetch(url, { method: 'GET' })
     .then(res => res.json()) //@TODO error handling 404
     .then(res => {
-      if (res.cod === '404') return ({});  //@TODO null ?
+      if (res.cod === '404') return ({});
       const { humidity, pressure, temp, temp_max, temp_min } = res.main;
       return {
         humidity,
@@ -97,9 +97,9 @@ const ozoneData = location => {
   const url = `https://api.openweathermap.org/pollution/v1/o3/${location.lat},${location.lng}/current.json?appid=${openweathermap.api_key}`;
 
   return fetch(url, { method: 'GET' })
-    .then(res => res.json()) //@TODO error handling 404
+    .then(res => res.json())
     .then(res => {
-      if (res.message === 'not found') return {};  //@TODO null ?
+      if (res.message === 'not found') return {};
 
       return { ozoneData: res.data };
     })
@@ -251,8 +251,11 @@ const getStationId = (location) => {
 };
 
 const getHistoricalData = (code, days = 365) => {
-  const end = new Date().toISOString().split("T")[0].replace(/-/g, '');
-  const start = new Date(new Date() - days * 24 * 60 * 60 * 1000).toISOString().split("T")[0].replace(/-/g, '');
+
+  const currentMoment = moment();
+  const end = currentMoment.format("YYYYMMDD");
+  const start = currentMoment.subtract(days, 'days').format("YYYYMMDD");
+
   return new Promise(resolve => {
     getStationId(code).then(id => {
       const options = {
@@ -261,17 +264,58 @@ const getHistoricalData = (code, days = 365) => {
       };
       rp(options)
         .then(data => {
-          const result = data.history.days.map(elem => {
-            elem.summary.date = new Date(elem.summary.date.epoch * 1000).toISOString().split('T')[0];
-            return elem.summary
+
+          let index = 0;
+          const result = [];
+          let correctDays = 0;
+          let correctMonth = 0;
+
+          data.history.days.forEach((item, step) => {
+
+            const { summary } = item;
+            const { month, iso8601 } = summary.date;
+
+            if (month !== correctMonth) {
+
+              correctMonth = month;
+
+              if (step !== 0) {
+                result[index].humidity = roundValue(result[index].humidity / correctDays, 2);
+                result[index].temperature = roundValue(result[index].temperature / correctDays, 2);
+                index++;
+              }
+
+              result.push({
+                date: moment(iso8601).format("YYYY-MM"),
+                humidity: summary.humidity,
+                temperature: summary.temperature,
+              });
+
+              correctDays = 0;
+            } else {
+              result[index].humidity += summary.humidity;
+              result[index].temperature += summary.temperature;
+            }
+
+            correctDays++;
           });
 
-          return resolve({ Historical: result })
+          if (result.length) {
+            result[index].humidity = roundValue(result[index].humidity / correctDays, 2);
+            result[index].temperature = roundValue(result[index].temperature /correctDays, 2);
+          }
+
+          return resolve({ Historical: result });
         })
         .catch(err => resolve({}));
     })
   });
 };
+
+const roundValue = (value, digits) => {
+
+  return parseFloat(value.toFixed(digits));
+}
 
 module.exports = {
   historicPollenIndex,
