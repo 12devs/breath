@@ -4,7 +4,10 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    background: $color-background-white;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('../public_html/img/next-card.png');
+    background-color: $color-background-white;
     border: 1px solid $color-background-silver;
     border-top-left-radius: 0.5rem;
     border-bottom-right-radius: 1rem;
@@ -12,16 +15,7 @@
 
     &:hover {
         border: 1px solid transparent;
-        background: $color-background-black;
-    }
-}
-
-.c-button-card-ico{
-    height:3.8rem;
-    width: 100%;
-    stroke: $color-text-black;
-
-    &:hover {
-        stroke: $color-text-white;
+        background-color: $color-background-black;
+        background-image: url('../public_html/img/next-card-white.png');
     }
 }
