@@ -21,10 +21,46 @@ const historicPollenIndex = (code, days = 360) => {
     };
 
     rp(options)
-      .then(data => resolve({
-        Pollen_index_over_past_year: data.Location.periods,
-      }))
-      .catch(err => resolve({}))
+      .then(data => {
+
+        let index = 0;
+        const result = [];
+        let correctDays = 0;
+        let correctMonth = 0;
+
+        data.Location.periods.forEach((item, step) => {
+
+          const month = moment(item.Period).month();
+
+          if (month !== correctMonth) {
+
+            correctMonth = month;
+
+            if (step !== 0) {
+              result[index].Index = roundValue(result[index].Index / correctDays, 2);
+              index++;
+            }
+
+            result.push({
+              Period: (moment(item.Period).format("YYYY-MMM")).toUpperCase(),
+              Index: item.Index,
+            });
+
+            correctDays = 0;
+          } else {
+            result[index].Index += item.Index;
+          }
+
+          correctDays++;
+        });
+
+        if (result.length) {
+          result[index].Index = roundValue(result[index].Index / correctDays, 2);
+        }
+
+        return resolve({ Pollen_index_over_past_year: result });
+      })
+      .catch(err => resolve({}));
   });
 };
 
@@ -286,7 +322,7 @@ const getHistoricalData = (code, days = 365) => {
               }
 
               result.push({
-                date: moment(iso8601).format("YYYY-MM"),
+                date: (moment(iso8601).format("YYYY-MMM")).toUpperCase(),
                 humidity: summary.humidity,
                 temperature: summary.temperature,
               });
@@ -302,7 +338,7 @@ const getHistoricalData = (code, days = 365) => {
 
           if (result.length) {
             result[index].humidity = roundValue(result[index].humidity / correctDays, 2);
-            result[index].temperature = roundValue(result[index].temperature /correctDays, 2);
+            result[index].temperature = roundValue(result[index].temperature / correctDays, 2);
           }
 
           return resolve({ Historical: result });
