@@ -17,6 +17,11 @@ import climate08 from "./../../assets/img/climate-08.svg";
 import climate09 from "./../../assets/img/climate-09.svg";
 import climate10 from "./../../assets/img/climate-10.svg";
 import climate11 from "./../../assets/img/climate-11.svg";
+import climate12 from "./../../assets/img/climate-12.svg";
+import climate13 from "./../../assets/img/climate-13.svg";
+import climate14 from "./../../assets/img/climate-14.svg";
+import climate15 from "./../../assets/img/climate-15.svg";
+import climate16 from "./../../assets/img/climate-16.svg";
 
 class City extends Component {
   constructor(props) {
@@ -55,15 +60,15 @@ class City extends Component {
           <div className="l-container">
 
             <div className="l-charts__grid">
-              <Item title="CO volume mixing ratio" img={climate04} value={src.apiWaqiInfo.co} unit={""}/>
+              <Item title="CO volume mixing ratio" img={climate13} value={src.apiWaqiInfo.co} unit={""}/>
               <Item title="Ozone layer thickness" img={climate06} value={src.apiWaqiInfo.o3} unit={""}/>
               <Item title="PM2.5 particles in air" img={climate07} value={src.apiWaqiInfo.pm25} unit={""}/>
               <Item title="PM10 particles in air" img={climate07} value={src.apiWaqiInfo.pm10} unit={""}/>
-              <Item title="NO2 volume mixing ratio" img={climate04} value={src.apiWaqiInfo.no2} unit={""}/>
-              <Item title="SO2 volume mixing ratio" img={climate04} value={src.apiWaqiInfo.so2} unit={""}/>
+              <Item title="NO2 volume mixing ratio" img={climate12} value={src.apiWaqiInfo.no2} unit={""}/>
+              <Item title="SO2 volume mixing ratio" img={climate14} value={src.apiWaqiInfo.so2} unit={""}/>
               <Item title="Cloudiness" img={climate08} value={src.clouds} unit={"%"}/>
-              <Item title="Humidity" img={climate04} value={src.humidity} unit={"%"}/>
-              <Item title="Pressure" img={climate04} value={src.pressure} unit={"hPa"}/>
+              <Item title="Humidity" img={climate16} value={src.humidity} unit={"%"}/>
+              <Item title="Pressure" img={climate15} value={src.pressure} unit={"hPa"}/>
               <Item title="Visibility" img={climate10} value={src.visibility} unit={"m"}/>
             </div>
 

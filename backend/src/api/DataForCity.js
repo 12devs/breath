@@ -188,7 +188,7 @@ const aqiIndex = (location) => {
 const getPhotoReference = (location) => {
   return new Promise(resolve => {
     const options = {
-      uri: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat},${location.lng}&radius=2000&key=${google_api_key}`,
+      uri: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat},${location.lng}&radius=4000&key=${google_api_key}`,
       json: true
     };
     rp(options)
@@ -197,7 +197,7 @@ const getPhotoReference = (location) => {
   });
 };
 
-const getPhoto = (location, maxWidth = 1600) => {
+const getPhoto = (location, maxWidth = 1550) => {
   return new Promise(resolve => {
     getPhotoReference(location).then(ref => {
       console.log(ref);
