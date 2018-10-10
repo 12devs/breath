@@ -171,6 +171,8 @@
 
     @media screen and (max-width: $screen-lg - 1) {
         padding-bottom: 4rem;
+        font-size: $font-size-medium-plus;
+        border: 1px solid red;
     }
 
 }
