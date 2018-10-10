@@ -81,6 +81,12 @@
     color: $color-text-black;
     text-transform: uppercase;
     font-size: $font-size-medium;
+    text-align: left;
+
+    @media screen and (max-width: $screen-lg - 1) {
+        font-size: $font-size-large;
+        border: 1px solid red;
+    }
 }
 
 .l-air__country-title-img {
@@ -105,6 +111,11 @@
     font-size: $font-size-small;
     text-transform: uppercase;
     font-weight: $font-weight-light;
+
+    @media screen and (max-width: $screen-lg - 1) {
+        font-size: $font-size-medium;
+        border: 1px solid red;
+    }
 }
 
 .l-air__card-meta-description {
@@ -112,6 +123,11 @@
     color: $color-text-silver;
     font-size: $font-size-regular;
     font-weight: $font-weight-light;
+
+    @media screen and (max-width: $screen-lg - 1) {
+        font-size: $font-size-medium;
+        border: 1px solid red;
+    }
 }
 
 .l-air__card-number {
