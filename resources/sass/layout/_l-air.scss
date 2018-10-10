@@ -48,7 +48,6 @@
 
 .l-air__card-item {
     width: calc(100% - 16rem);
-    height: 100%;
 
     &--last {
         border-left: 1px solid $color-background-silver;
@@ -153,6 +152,11 @@
     &--purple {
         background: $color-label-purple;
     }
+
+    @media screen and (max-width: $screen-md - 1) {
+        padding-bottom: 4rem;
+    }
+
 }
 
 .l-air__card-number-index {
