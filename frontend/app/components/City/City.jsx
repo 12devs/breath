@@ -66,39 +66,15 @@ class City extends Component {
               <Item title="Visibility" img={climate10} value={src.visibility} unit={"m"}/>
             </div>
 
-            {/*<div className="l-charts__container">*/}
-            {/*<div className="l-charts__title">Your PM<span className="l-charts__title l-charts__title--mini">2.5</span>*/}
-            {/*</div>*/}
-            {/*<img src={figure} alt=""/>*/}
-            {/*</div>*/}
+            <GraphicTemperature src={src.Historical}/>
 
-            {/*<div className="l-charts__container">*/}
-            {/*<div className="l-charts__title">You AQI Overtime</div>*/}
-            {/*<img src={figure} alt=""/>*/}
-            {/*</div> */}
-
-            <div className="l-charts__container">
-              <div className="l-charts__title">Your Temperature</div>
-              <img src={figure} alt=""/>
-              <GraphicTemperature src={src.Historical}/>
-            </div>
-
-            {/*<div className="l-charts__container">*/}
-            {/*<div className="l-charts__title">Ozone</div>*/}
-            {/*<img src={figure} alt=""/>*/}
-            {/*</div>*/}
-
-            <div className="l-charts__container">
-              <div className="l-charts__title">Relative Humididy</div>
-              <img src={figure} alt=""/>
-              <GraphicHumidity src={src.Historical}/>
-            </div>
+            <GraphicHumidity src={src.Historical}/>
 
             <div className="l-charts__grid">
               <Item title="Most amount of rain in a day" img={climate04} value={src.Most_Amount_of_Rain} unit={"%"}/>
               <Item title="Most amount of snow in a day" img={climate03} value={src.Most_Amount_of_Snow} unit={"%"}/>
-              <Item title="Highest Temperature" img={climate01} value={src.Highest_Temperature} unit={"°C''"}/>
-              <Item title="Lowest Temperature" img={climate02} value={src.Lowest_Temperature} unit={"°C''"}/>
+              <Item title="Highest Temperature" img={climate01} value={src.Highest_Temperature} unit={"°C"}/>
+              <Item title="Lowest Temperature" img={climate02} value={src.Lowest_Temperature} unit={"°C"}/>
             </div>
 
             <Graphic src={src.Pollen_index_over_past_year} label={"Pollen Index"} type={'line'}/>
