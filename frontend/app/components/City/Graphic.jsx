@@ -25,10 +25,6 @@ export default class Test extends Component {
   newChart(props) {
     let { src, label, type } = props;
     src = src.filter(elem => elem.Index);
-    src = src.map(elem => {
-      elem.Period = elem.Period.split('T')[0];
-      return elem;
-    });
     const labels = src.map(elem => elem.Period);
     const Data = src.map(elem => elem.Index);
     const data = {
