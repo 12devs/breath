@@ -65,7 +65,6 @@ export default {
             Name: location.name,
             location
           };
-          console.log(JSON.stringify(data, null, 4));
           result.forEach(elem => {
             Object.assign(data, elem);
           });
