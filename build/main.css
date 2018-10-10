@@ -323,7 +323,12 @@ body {
   font-weight: 600;
   color: #1E1E1E;
   text-transform: uppercase;
-  font-size: 2rem; }
+  font-size: 2rem;
+  text-align: left; }
+  @media screen and (max-width: 991px) {
+    .l-air__country-title {
+      font-size: 4rem;
+      border: 1px solid red; } }
 
 .l-air__country-title-img {
   width: 1.7rem;
@@ -346,12 +351,20 @@ body {
   font-size: 1.3rem;
   text-transform: uppercase;
   font-weight: 300; }
+  @media screen and (max-width: 991px) {
+    .l-air__card-meta-title {
+      font-size: 2rem;
+      border: 1px solid red; } }
 
 .l-air__card-meta-description {
   margin-top: 1rem;
   color: #989A99;
   font-size: 1.6rem;
   font-weight: 300; }
+  @media screen and (max-width: 991px) {
+    .l-air__card-meta-description {
+      font-size: 2rem;
+      border: 1px solid red; } }
 
 .l-air__card-number {
   padding-top: 3rem;
