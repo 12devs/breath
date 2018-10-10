@@ -5,7 +5,7 @@ const google_api_key = config.get('google.api_key');
 
 const getCurrentLocation = zipCode => {
 
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=${google_api_key}`;
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=us&components=postal_code:${zipCode}&key=${google_api_key}`;
 
   return fetch(url, { method: 'GET' })
     .then(res => res.json())
