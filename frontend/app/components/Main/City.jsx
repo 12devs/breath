@@ -49,7 +49,7 @@ class Cities extends Component {
             </div>
             <div className="l-air__card-meta-item">
               <div className="l-air__card-meta-title">Ozone</div>
-              <div className="l-air__card-meta-description">{src.Ozone}</div>
+              <div className="l-air__card-meta-description">{src.o3}</div>
             </div>
             <div className="l-air__card-meta-item">
               <div className="l-air__card-meta-title">Pollen</div>
