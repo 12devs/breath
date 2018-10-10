@@ -113,7 +113,7 @@
     font-weight: $font-weight-light;
 
     @media screen and (max-width: $screen-lg - 1) {
-        font-size: $font-size-medium;
+        font-size: $font-size-medium-plus;
         border: 1px solid red;
     }
 }
@@ -125,7 +125,7 @@
     font-weight: $font-weight-light;
 
     @media screen and (max-width: $screen-lg - 1) {
-        font-size: $font-size-medium;
+        font-size: $font-size-medium-plus;
         border: 1px solid red;
     }
 }

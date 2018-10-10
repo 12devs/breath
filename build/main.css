@@ -41,7 +41,7 @@ body {
     background-repeat: no-repeat; }
   @media screen and (max-width: 991px) {
     .c-input {
-      font-size: 4rem;
+      font-size: 2.5rem;
       border: 1px solid red;
       line-height: 9rem; } }
 
@@ -97,6 +97,7 @@ body {
   background: #67CECD; }
   @media screen and (max-width: 1199px) {
     .l-hero {
+      height: 60rem;
       margin-bottom: 5rem; } }
 
 .l-hero__scroll {
@@ -363,7 +364,7 @@ body {
   font-weight: 300; }
   @media screen and (max-width: 991px) {
     .l-air__card-meta-title {
-      font-size: 2rem;
+      font-size: 2.5rem;
       border: 1px solid red; } }
 
 .l-air__card-meta-description {
@@ -373,7 +374,7 @@ body {
   font-weight: 300; }
   @media screen and (max-width: 991px) {
     .l-air__card-meta-description {
-      font-size: 2rem;
+      font-size: 2.5rem;
       border: 1px solid red; } }
 
 .l-air__card-number {

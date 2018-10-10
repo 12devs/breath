@@ -4,6 +4,7 @@
     background: $color-background-turquoise;
 
     @media screen and (max-width: $screen-xl - 1) {
+        height: 60rem;
         margin-bottom: 5rem;
     }
 }
