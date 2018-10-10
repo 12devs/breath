@@ -54,6 +54,10 @@
         color: $color-text-black;
         font-size: $font-size-small;
     }
+
+    @media screen and (max-width: $screen-xl - 1) {
+        font-size: $font-size-large;
+    }
 }
 
 .l-charts__data {
@@ -72,4 +76,8 @@
     font-size: $font-size-x-large;
     font-weight: $font-weight-bold;
     line-height: 13rem;
+
+    @media screen and (max-width: $screen-xl - 1) {
+        font-size: $font-size-xxx-large;
+    }
 }

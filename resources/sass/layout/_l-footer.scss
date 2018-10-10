@@ -12,7 +12,7 @@
 .l-footer__nav-grid {
     display: flex;
 
-    @media screen and (max-width: $screen-md - 1) {
+    @media screen and (max-width: $screen-lg - 1) {
         flex-wrap: wrap;
         margin-left: 2rem;
         margin-right: 2rem;
@@ -22,7 +22,7 @@
 .l-footer__nav-item {
     width: 25%;
 
-    @media screen and (max-width: $screen-md - 1) {
+    @media screen and (max-width: $screen-lg - 1) {
         width: 50%;
         margin-bottom: 3rem;
     }
