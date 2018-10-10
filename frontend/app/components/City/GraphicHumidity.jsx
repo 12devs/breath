@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Chart from 'chart.js';
+import figure from "./../../assets/img/figure.svg";
 
 export default class Test extends Component {
   constructor(props) {
@@ -56,8 +57,13 @@ export default class Test extends Component {
   }
 
   render() {
+    if (!this.props.src){
+      return null
+    }
     return (
-      <div>
+      <div className="l-charts__container">
+        <div className="l-charts__title">Relative Humididy</div>
+        <img src={figure} alt=""/>
         <canvas id="myChartHumidity"></canvas>
       </div>
     );

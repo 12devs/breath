@@ -41,7 +41,10 @@ class App extends Component {
   }
 
   getCity() {
-    return services.getCityPageData(this.state.code, this.state.email)
+    this.changeState('currentPage', "Preloader")
+      .then(() => {
+        return services.getCityPageData(this.state.code, this.state.email);
+      })
       .then(res => {
         if (res.error) {
           return this.setState({ city: null, error: res.error, currentPage: "Main" })

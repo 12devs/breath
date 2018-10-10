@@ -1,12 +1,17 @@
-import React, { Component } from 'react';
-import fb from "./../assets/img/fb.png";
-import tw from "./../assets/img/tw.png";
-import inst from "./../assets/img/inst.png";
-import figure from "./../assets/img/figure.svg";
+import React from 'react';
 
-export default () => {
+export const LoaderComponent = (props) => {
+
   return (
-    <div>Preloader</div>
-  );
-};
+    <div className="loader loader_active">
+      <div className="loader__spinner">
+        <div/>
+        <div/>
+        <div/>
+        <div/>
+      </div>
+    </div>
+  )
+}
 
+export default LoaderComponent;

@@ -27,7 +27,6 @@ const historicPollenIndex = (code, days = 360) => {
         const result = [];
         let correctDays = 0;
         let correctMonth = 0;
-
         data.Location.periods.forEach((item, step) => {
 
           const month = moment(item.Period).month();

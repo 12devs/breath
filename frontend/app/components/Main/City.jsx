@@ -38,7 +38,7 @@ class Cities extends Component {
           <div className="l-air__card-country">
             <div className="l-air__country-img"
                  style={{ backgroundImage: `url(${src.Img}` }}/>
-            <div className="l-air__country-title">{src.Name} ({src.Code})
+            <div className="l-air__country-title">{src.Name}
               <div className="l-air__country-title-img"/>
             </div>
           </div>
@@ -63,10 +63,7 @@ class Cities extends Component {
             <div className="l-air__card-number-index">Air Quality Index</div>
             <div className="c-button-card c-button-card-ico"
                  onClick={() => {
-                   return this.props.changeState('currentPage', 'Preloader')
-                     .then(() => {
-                       this.props.changeState('code', src.Code)
-                     })
+                   this.props.changeState('code', src.Code)
                      .then(() => {
                        this.props.getCity();
                      })

@@ -34,8 +34,8 @@ class Main extends Component {
               <span className="hamburger-box"><span className="hamburger-inner"></span></span>
             </button>
             <div className="l-hero__navigation">
-              <div className="l-hero__navigation-container"><a className="l-hero__navigation-url" href="">Home</a>
-                <a className="l-hero__navigation-url" href="">Description</a>
+              <div className="l-hero__navigation-container"><a className="l-hero__navigation-url" href="#">Home</a>
+                <a className="l-hero__navigation-url" href="#">Description</a>
               </div>
             </div>
           </nav>
@@ -49,7 +49,7 @@ class Main extends Component {
             <div className="l-learn__quote"><img className="l-learn__description-img" src={about} alt="" srcSet=""/>
               <div className="l-learn__quote-text">If you don't like what you see and want to learn more visit us at
               </div>
-              <a className="l-learn__quote-site" href="">hellowynd.com</a>
+              <a className="l-learn__quote-site" href="#">hellowynd.com</a>
             </div>
           </div>
         </div>
