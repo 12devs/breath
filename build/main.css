@@ -39,6 +39,11 @@ body {
     background-color: #F3F3F3;
     background-position: 1.5rem center;
     background-repeat: no-repeat; }
+  @media screen and (max-width: 991px) {
+    .c-input {
+      font-size: 4rem;
+      border: 1px solid red;
+      line-height: 9rem; } }
 
 .c-button-card {
   width: 5rem;
@@ -73,6 +78,11 @@ body {
   background-color: #67CECD;
   background-position: 90% center;
   background-repeat: no-repeat; }
+  @media screen and (max-width: 991px) {
+    .c-button {
+      font-size: 4rem;
+      border: 1px solid red;
+      line-height: 9rem; } }
 
 .l-section {
   max-width: 126rem;
