@@ -10,7 +10,7 @@ class Mail extends Component {
   }
 
   render() {
-    const { email, code, getCity, changeState } = this.props;
+    const { email, code, getCity, changeState, error } = this.props;
     return (
         <div className="l-hero__form"><img className="l-hero__form-img" src={about} alt="" srcSet=""/>
           <div className="l-hero__form-title">What is in the air you breathe?
@@ -27,6 +27,7 @@ class Mail extends Component {
                 <button className="c-button" onClick={() => getCity()}>Submit</button>
               </div>
             </div>
+            {error}
           </div>
         </div>
     )

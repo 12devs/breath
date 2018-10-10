@@ -14,7 +14,6 @@ class Cities extends Component {
 
   render() {
     let { src } = this.props;
-    console.log(src);
     let color;
     const colors = [
       "l-air__card-number-title--turquoise",
@@ -64,8 +63,11 @@ class Cities extends Component {
             <div className="l-air__card-number-index">Air Quality Index</div>
             <div className="c-button-card c-button-card-ico"
                  onClick={() => {
-                   this.props.changeState('code', src.Code)
-                     .then(()=>{
+                   return this.props.changeState('currentPage', 'Preloader')
+                     .then(() => {
+                       this.props.changeState('code', src.Code)
+                     })
+                     .then(() => {
                        this.props.getCity();
                      })
                  }}

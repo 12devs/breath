@@ -25,8 +25,7 @@ class City extends Component {
   }
 
   render() {
-    const { src } = this.props;
-    console.log(src);
+    const src = this.props.src.city;
     if (!src) {
       return (<h1>{JSON.stringify(this.state.error)}</h1>)
     }
@@ -58,13 +57,13 @@ class City extends Component {
               <Item title="CO volume mixing ratio" img={climate04} value={src.apiWaqiInfo.co} unit={"''"}/>
               <Item title="Ozone layer thickness" img={climate06} value={src.apiWaqiInfo.o3} unit={"''"}/>
               <Item title="PM2.5 particles in air" img={climate07} value={src.apiWaqiInfo.pm25} unit={"''"}/>
-              <Item title="PM1.0 particles in air" img={climate07} value={src.apiWaqiInfo.pm10} unit={"''"}/>
+              <Item title="PM10 particles in air" img={climate07} value={src.apiWaqiInfo.pm10} unit={"''"}/>
               <Item title="NO2 volume mixing ratio" img={climate04} value={src.apiWaqiInfo.no2} unit={"''"}/>
               <Item title="SO2 volume mixing ratio" img={climate04} value={src.apiWaqiInfo.so2} unit={"''"}/>
               <Item title="Cloudiness" img={climate08} value={src.clouds} unit={"%"}/>
               <Item title="Humidity" img={climate04} value={src.humidity} unit={"%"}/>
               <Item title="Pressure" img={climate04} value={src.pressure} unit={"bar"}/>
-              <Item title="visibility" img={climate10} value={src.visibility} unit={"m"}/>
+              <Item title="Visibility" img={climate10} value={src.visibility} unit={"m"}/>
             </div>
 
             {/*<div className="l-charts__container">*/}
@@ -101,11 +100,9 @@ class City extends Component {
               <Item title="Highest Temperature" img={climate01} value={src.Highest_Temperature} unit={"°C''"}/>
               <Item title="Lowest Temperature" img={climate02} value={src.Lowest_Temperature} unit={"°C''"}/>
             </div>
-            <div className="l-charts__container">
-              <div className="l-charts__title">Pollen Index</div>
-              <img src={figure} alt=""/>
-              <Graphic src={src.Pollen_index_over_past_year} label={"Pollen Index"} type={'line'}/>
-            </div>
+
+            <Graphic src={src.Pollen_index_over_past_year} label={"Pollen Index"} type={'line'}/>
+
           </div>
         </div>
         <div className="l-quote"

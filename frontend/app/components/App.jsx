@@ -5,7 +5,14 @@ import { connect } from 'react-redux';
 import { Switch, Route, Redirect, BrowserRouter as Router, Link } from 'react-router-dom';
 import Main from './Main/Main';
 import City from './City/City';
+import Preloader from './Preloader';
 import services from "../services";
+
+const COMPONENT = {
+  'City': City,
+  'Main': Main,
+  'Preloader': Preloader,
+};
 
 const mapStateToProps = state => ({});
 
@@ -21,7 +28,7 @@ class App extends Component {
       code: "36310",
       cities: [],
       city: [],
-      currentPage: 'Main',
+      currentPage: 'Preloader',
       error: ""
     };
     this.getCities = this.getCities.bind(this);
@@ -60,21 +67,11 @@ class App extends Component {
   }
 
   render() {
-
-    const { currentPage } = this.state;
+    const MyComponent = COMPONENT[this.state.currentPage];
 
     return (
       <div>
-        {(() => {
-          switch (currentPage) {
-            case "Main":
-              return (<Main src={this.state} getCity={this.getCity} changeState={this.changeState}/>);
-            case "City":
-              return (<City src={this.state.city} changeState={this.changeState}/>);
-            default:
-              return (<h1>Unknown Page</h1>);
-          }
-        })()}
+        <MyComponent src={this.state} getCity={this.getCity} changeState={this.changeState}/>
       </div>
     );
   }

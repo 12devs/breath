@@ -25,7 +25,6 @@ class Main extends Component {
 
   render() {
     const { src } = this.props;
-    console.log('main', this.props);
     return (
       <div className={"l-hero__scroll"}>
         <div className="l-hero">
@@ -40,13 +39,7 @@ class Main extends Component {
               </div>
             </div>
           </nav>
-          <Mail email={src.email} code={src.code} getCity={this.props.getCity} changeState={this.props.changeState}/>
-          {(() => {
-            if (src.error) {
-              return (<h3>{src.error}</h3>)
-            }
-          })()}
-
+          <Mail error={src.error} email={src.email} code={src.code} getCity={this.props.getCity} changeState={this.props.changeState}/>
         </div>
         <img className="l-hero__wave" src={wave_top} alt=""/>
         <Cities cities={src.cities} getCity={this.props.getCity} changeState={this.props.changeState}/>

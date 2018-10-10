@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Chart from 'chart.js';
+import figure from "./../../assets/img/figure.svg";
 
 export default class Test extends Component {
   constructor(props) {
@@ -61,8 +62,13 @@ export default class Test extends Component {
   }
 
   render() {
+    if (!this.props.src){
+      return null
+    }
     return (
-      <div>
+      <div className="l-charts__container">
+        <div className="l-charts__title">Pollen Index</div>
+        <img src={figure} alt=""/>
         <canvas id="myChart"></canvas>
       </div>
     );
