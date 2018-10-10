@@ -8,6 +8,12 @@
     font-weight: $font-weight-bold;
     letter-spacing: 0.5rem;
     color: $color-text-silver;
+
+    @media screen and (max-width: $screen-xl - 1) {
+        font-size: $font-size-medium;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
 }
 
 .l-air__title {
@@ -16,6 +22,12 @@
     font-weight: $font-weight-bold;
     color: $color-text-black;
     letter-spacing: 0.1rem;
+
+    @media screen and (max-width: $screen-xl - 1) {
+        font-size: $font-size-x-large;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
 }
 
 .l-air__card {
@@ -70,8 +82,9 @@
     background-position: center center;
 
     @media screen and (max-width: $screen-lg - 1) {
-        width: 6rem;
-        height: 6rem;
+        width: 8rem;
+        height: 8rem;
+        border: 1px solid red;
     }
 
 }
@@ -126,6 +139,7 @@
 
     @media screen and (max-width: $screen-lg - 1) {
         font-size: $font-size-medium-plus;
+        color: $color-text-black;
         border: 1px solid red;
     }
 }

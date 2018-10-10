@@ -41,7 +41,7 @@ body {
     background-repeat: no-repeat; }
   @media screen and (max-width: 991px) {
     .c-input {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       border: 1px solid red;
       line-height: 9rem; } }
 
@@ -65,7 +65,7 @@ body {
     background-image: url("../public_html/img/next-card-white.png"); }
   @media screen and (max-width: 991px) {
     .c-button-card {
-      height: 5rem;
+      height: 6rem;
       width: 8rem;
       border: 1px solid red; } }
 
@@ -87,7 +87,8 @@ body {
     .c-button {
       font-size: 4rem;
       border: 1px solid red;
-      line-height: 9rem; } }
+      line-height: 9rem;
+      text-transform: inherit; } }
 
 .l-section {
   max-width: 126rem;
@@ -264,6 +265,15 @@ body {
   font-weight: 600;
   letter-spacing: 0.5rem;
   color: #989A99; }
+  @media screen and (max-width: 1199px) {
+    .l-air__subtitle {
+      font-size: 2rem;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap; } }
 
 .l-air__title {
   margin-bottom: 6.3rem;
@@ -271,6 +281,15 @@ body {
   font-weight: 600;
   color: #1E1E1E;
   letter-spacing: 0.1rem; }
+  @media screen and (max-width: 1199px) {
+    .l-air__title {
+      font-size: 5rem;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap; } }
 
 .l-air__card {
   border-radius: 0.5rem;
@@ -332,8 +351,9 @@ body {
   background-position: center center; }
   @media screen and (max-width: 991px) {
     .l-air__country-img {
-      width: 6rem;
-      height: 6rem; } }
+      width: 8rem;
+      height: 8rem;
+      border: 1px solid red; } }
 
 .l-air__country-title {
   font-weight: 600;
@@ -369,7 +389,7 @@ body {
   font-weight: 300; }
   @media screen and (max-width: 991px) {
     .l-air__card-meta-title {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       border: 1px solid red; } }
 
 .l-air__card-meta-description {
@@ -379,7 +399,8 @@ body {
   font-weight: 300; }
   @media screen and (max-width: 991px) {
     .l-air__card-meta-description {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
+      color: #1E1E1E;
       border: 1px solid red; } }
 
 .l-air__card-number {
@@ -412,7 +433,7 @@ body {
   @media screen and (max-width: 991px) {
     .l-air__card-number-title {
       padding-bottom: 4rem;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       border: 1px solid red; } }
 
 .l-air__card-number-index {
@@ -656,7 +677,7 @@ body {
   @media screen and (max-width: 991px) {
     .l-footer__copyright {
       width: 100%;
-      font-size: 2rem;
+      font-size: 2.8rem;
       border: 1px solid red;
       line-height: 9rem; } }
 
