@@ -28,6 +28,52 @@ const getCurrentLocation = zipCode => {
     .catch(err => Promise.reject(err));
 };
 
+const getNearbyZipCodes = (ip) => {
+  const url = `http://getnearbycities.geobytes.com/GetNearbyCities?radius=50&locationcode=${ip}&limit=5`;
+
+  return fetch(url, { method: 'GET' })
+    .then(res => res.json())
+    .then(res => {
+
+      const result = [];
+
+      res.forEach(city => {
+        if (city.length) {
+          result.push({
+            name: city[1],
+            lat: city[8],
+            lng: city[10],
+          });
+        }
+      });
+
+      return result;
+    });
+}
+
+const getCurrentZipCode = (location) => {
+
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${google_api_key}&result_type=postal_code`;
+
+  return fetch(url, { method: 'GET' })
+    .then(res => res.json())
+    .then(res => {
+      if (!res.results) return null;
+
+      const address_components = res.results[0].address_components;
+
+      const index = address_components.findIndex(item => {
+        if (!item.types.length) return false;
+
+        return item.types[0] === "postal_code";
+      });
+
+      return index === -1 ? null : address_components[index].long_name;
+    });
+}
+
 export {
   getCurrentLocation,
+  getNearbyZipCodes,
+  getCurrentZipCode,
 }
