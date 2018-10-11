@@ -69,6 +69,11 @@
     @media screen and (max-width: $screen-xl - 1) {
         font-size: $font-size-medium-plus;
     }
+
+    @media screen and (max-width: $screen-md - 1) {
+        font-size: $font-size-regular;
+        text-transform: uppercase;
+    }
 }
 
 .l-charts__title-figure {

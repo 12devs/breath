@@ -600,6 +600,10 @@ body {
   @media screen and (max-width: 1199px) {
     .l-charts__title {
       font-size: 2rem; } }
+  @media screen and (max-width: 767px) {
+    .l-charts__title {
+      font-size: 1.6rem;
+      text-transform: uppercase; } }
 
 @media screen and (max-width: 1199px) {
   .l-charts__title-figure {
