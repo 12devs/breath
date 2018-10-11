@@ -14,7 +14,6 @@ class Cities extends Component {
 
   render() {
     let { src } = this.props;
-    let color;
     const colors = [
       "l-air__card-number-title--turquoise",
       "l-air__card-number-title--scarlet",
@@ -22,7 +21,7 @@ class Cities extends Component {
       "l-air__card-number-title--orange",
       "l-air__card-number-title--purple",
     ];
-
+    let color = colors[0];
     const values = [50, 100, 150, 200, 1000];
 
     for (let i = 0; i < values.length; i++) {

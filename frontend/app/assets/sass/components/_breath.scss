@@ -228,7 +228,10 @@ body {
   margin-top: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline; }
 @media screen and (max-width: 991px) {
   .l-hero__form-grid {
     -webkit-box-orient: vertical;
@@ -275,6 +278,9 @@ body {
 @media screen and (max-width: 1199px) {
   .l-hero-charts__city-subtitle {
     font-size: 2rem; } }
+@media screen and (max-width: 767px) {
+  .l-hero-charts__city-subtitle {
+    font-size: 1.6rem; } }
 
 .l-hero-charts__city-title {
   font-size: 4rem;
@@ -378,7 +384,8 @@ body {
 @media screen and (max-width: 991px) {
   .l-air__card-item--last {
     width: 100%;
-    text-align: left; } }
+    text-align: left;
+    border: none; } }
 @media screen and (max-width: 991px) {
   .l-air__card-item {
     width: 100%; } }
@@ -456,7 +463,7 @@ body {
   font-weight: 300; }
 @media screen and (max-width: 991px) {
   .l-air__card-meta-description {
-    font-size: 1.6rem;
+    font-size: 2rem;
     color: #1E1E1E; } }
 
 .l-air__card-number {
@@ -502,11 +509,17 @@ body {
 @media screen and (max-width: 991px) {
   .l-air__card-number-title {
     width: 8rem;
-    margin: 0;
-    padding: 2rem 0;
-    border-radius: 1rem;
     height: 8rem;
-    font-size: 2rem; } }
+    margin: 0;
+    padding: 0;
+    border-radius: 1rem;
+    font-size: 2rem;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    line-height: 3.9; } }
 
 .l-air__card-number-index {
   margin: 0 auto;
@@ -534,9 +547,11 @@ body {
   background: #ffffff;
   padding: 4.6rem;
   margin-bottom: 3.2rem;
-  min-height: 32rem;
   -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.05);
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.05); }
+@media screen and (max-width: 767px) {
+  .l-charts__container {
+    padding: 2rem; } }
 
 .l-charts__grid {
   display: -webkit-box;
@@ -593,6 +608,9 @@ body {
 .l-charts__data {
   position: relative;
   margin-top: 2rem; }
+@media screen and (max-width: 767px) {
+  .l-charts__data {
+    margin: 0; } }
 
 .l-charts__data-ico {
   width: 13rem;
@@ -609,7 +627,7 @@ body {
   line-height: 13rem; }
 @media screen and (max-width: 1199px) {
   .l-charts__data-number {
-    font-size: 5rem; } }
+    font-size: 4rem; } }
 @media screen and (max-width: 767px) {
   .l-charts__data-number {
     width: 6rem;
@@ -653,6 +671,9 @@ body {
 
 .l-learn {
   margin-top: 11.5rem; }
+@media screen and (max-width: 767px) {
+  .l-learn {
+    margin-top: 5rem; } }
 
 .l-learn__wave {
   width: 100%;

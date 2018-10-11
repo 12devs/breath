@@ -1,5 +1,6 @@
 import { getCityInfoByCodeAndLocation } from '../api/MainData';
 import { getCurrentLocation, getNearbyCities, getCurrentZipCode } from '../api/location';
+import config from 'config';
 
 export default {
 
@@ -11,16 +12,18 @@ export default {
 
     try {
       if (!codes) {
-        const ip = (req.headers['x-forwarded-for'] || req.connection.remoteAddress).slice(7);
-        // const ip = '72.229.28.185';
+        let ip = (req.headers['x-forwarded-for'] || req.connection.remoteAddress).slice(7);
+        if (config.demoIP){
+          ip = config.demoIP;
+        }
         const cityLocations = await getNearbyCities(ip);
         if (!cityLocations.length) {
           throw Error('not city')
         }
 
         data = cityLocations.map(async location => {
-          const code = await getCurrentZipCode(location);
-          return getCityInfoByCodeAndLocation(code, location)
+          const {code, name} = await getCurrentZipCode(location);
+          return getCityInfoByCodeAndLocation(code, location, name)
         });
       }
       else {

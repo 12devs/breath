@@ -8,9 +8,8 @@ export default props => {
   return (
     <div className="l-charts__item">
       <div className="l-charts__title">{props.title}</div>
-      <img src={figure} alt=""/>
-      <div className="l-charts__data">
-        <div className="l-charts__data-ico"><img src={props.img} alt=""/></div>
+      <img className="l-charts__title-figure" src={figure} alt=""/>
+      <div className="l-charts__data"><img className="l-charts__data-ico" src={props.img} alt=""/>
         <div className="l-charts__data-number">{Math.round(props.value * 100) / 100}{props.unit}</div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import { apiWaqiInfo, aqiIndex, getPhoto, pollenIndex } from "./DataForCity";
 
 const darksky_api_key = config.get('darksky.api_key');
 
-const getCityInfoByCodeAndLocation = (code, location) => {
+const getCityInfoByCodeAndLocation = (code, location, name) => {
   const promises = [
     dailyOzone(location),
     pollenIndex(code),
@@ -21,7 +21,7 @@ const getCityInfoByCodeAndLocation = (code, location) => {
     .then(result => {
       const data = {
         Code: code,
-        Name: location.name,
+        Name: name || location.name,
       };
       result.forEach(elem => {
         Object.assign(data, elem);

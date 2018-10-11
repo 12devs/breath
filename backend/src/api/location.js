@@ -18,9 +18,10 @@ const getCurrentLocation = zipCode => {
       const { location } = currentResult.geometry;
 
       const currentLocation = {
-        lat: (location.lat).toFixed(4),
-        lng: (location.lng).toFixed(4),
+        lat: (location.lat).toFixed(8),
+        lng: (location.lng).toFixed(8),
         name: currentResult.formatted_address.replace(', USA', ''),
+        // name: currentResult.formatted_address.replace(', USA', '') + ' ' + ((currentResult.postcode_localities || [])[0] || "") ,
         xxxx: res,
       };
 
@@ -60,16 +61,15 @@ const getCurrentZipCode = (location) => {
     .then(res => res.json())
     .then(res => {
       if (!res.results) return null;
-
+      const currentResult = res.results[0];
       const address_components = res.results[0].address_components;
-
       const index = address_components.findIndex(item => {
         if (!item.types.length) return false;
 
         return item.types[0] === "postal_code";
       });
 
-      return index === -1 ? null : address_components[index].long_name;
+      return index === -1 ? null : { code: address_components[index].long_name, name: currentResult.formatted_address.replace(', USA', '')}
     });
 }
 
