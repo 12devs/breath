@@ -391,6 +391,9 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center; }
+  @media screen and (max-width: 767px) {
+    .l-air__card-country {
+      margin-top: 0; } }
 
 .l-air__country-img {
   width: 9.4rem;
