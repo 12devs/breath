@@ -74,8 +74,11 @@ body {
   .c-button-card {
     height: 100%;
     width: calc(33.333% + 3rem);
-    border-radius: 0;
-    background-color: #67CECD; } }
+    width: 8rem;
+    border-radius: 50%;
+    max-height: 8rem;
+    min-height: 8rem;
+    border: 1px solid #ECEBEB; } }
 
 .c-button {
   display: block;
@@ -364,7 +367,8 @@ body {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
-    flex-direction: column; } }
+    flex-direction: column;
+    padding: 2rem; } }
 
 .l-air__card-item {
   width: calc(100% - 16rem); }
@@ -387,6 +391,9 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center; }
+@media screen and (max-width: 767px) {
+  .l-air__card-country {
+    margin-top: 0; } }
 
 .l-air__country-img {
   width: 9.4rem;
@@ -449,7 +456,7 @@ body {
   font-weight: 300; }
 @media screen and (max-width: 991px) {
   .l-air__card-meta-description {
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: #1E1E1E; } }
 
 .l-air__card-number {
@@ -497,8 +504,8 @@ body {
     width: 8rem;
     margin: 0;
     padding: 2rem 0;
-    border-radius: 0;
-    height: 100%;
+    border-radius: 1rem;
+    height: 8rem;
     font-size: 2rem; } }
 
 .l-air__card-number-index {
@@ -651,6 +658,9 @@ body {
   width: 100%;
   margin-bottom: -0.5rem;
   background-color: #F3F3F3; }
+@media screen and (max-width: 767px) {
+  .l-learn__wave {
+    display: none; } }
 
 .l-learn__description-img {
   margin: 0 auto;
@@ -796,8 +806,7 @@ body {
   .l-footer__copyright {
     width: 100%;
     font-size: 1.6rem;
-    line-height: 9rem;
-    margin-top: 7rem; } }
+    margin-top: 4rem; } }
 
 .l-footer__social-url {
   width: 2rem;
