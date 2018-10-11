@@ -22,7 +22,10 @@
     @media screen and (max-width: $screen-lg - 1) {
         height: 100%;
         width: calc(33.333% + 3rem);
-        border-radius: 0;
-        background-color: $color-background-turquoise
+        width: 8rem;
+        border-radius: 50%;
+        max-height: 8rem;
+        min-height: 8rem;
+        border: 1px solid $color-background-silver;
     }
 }

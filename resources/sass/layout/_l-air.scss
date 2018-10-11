@@ -68,6 +68,7 @@
     @media screen and (max-width: $screen-lg - 1) {
         width: calc(100% - 3rem);
         flex-direction: column;
+        padding: 2rem;
     }
 }
 
@@ -169,7 +170,7 @@
     font-weight: $font-weight-light;
 
     @media screen and (max-width: $screen-lg - 1) {
-        font-size: $font-size-medium-plus;
+        font-size: $font-size-regular;
         color: $color-text-black;
     }
 }
@@ -226,8 +227,8 @@
         width: 8rem;
         margin: 0;
         padding: 2rem 0;
-        border-radius: 0;
-        height: 100%;
+        border-radius: 1rem;
+        height: 8rem;
         font-size: $font-size-medium-plus;
     }
 
