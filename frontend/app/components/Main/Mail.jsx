@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import about from "./../../assets/img/about.png";
 import services from "../../services";
+import Preloader from "./../Preloader.jsx";
 
 class Mail extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class Mail extends Component {
   }
 
   render() {
-    const { email, code, error } = this.state;
+    const { email, code, error, preloader } = this.state;
     return (
       <div className="l-hero__form"><img className="l-hero__form-img" src={about} alt="" srcSet=""/>
         <div className="l-hero__form-title">What is in the air you breathe?
@@ -55,7 +56,13 @@ class Mail extends Component {
                      onChange={(event) => this.setState({ code: event.target.value })} value={code}/>
             </div>
             <div className="l-hero__form-item l-hero__form-item--20">
-              <button className="c-button" onClick={this.saveEmail}>Submit</button>
+              {(()=>{
+                if (preloader){
+                  return (<button className="c-button" ><Preloader/> </button>)
+                } else{
+                  return (<button className="c-button" onClick={this.saveEmail}>Submit</button>)
+                }
+              })()}
             </div>
           </div>
           {error}

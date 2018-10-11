@@ -3,7 +3,6 @@
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 10px;
   font-family: "Roboto", sans-serif;
   vertical-align: baseline;
   -webkit-box-sizing: border-box;
@@ -11,6 +10,7 @@
   font-family: 'Noto Sans KR', sans-serif; }
 
 html {
+  font-size: 62.5%;
   width: 100%;
   height: 100%; }
 
@@ -41,7 +41,7 @@ body {
   background-repeat: no-repeat; }
 @media screen and (max-width: 991px) {
   .c-input {
-    font-size: 2.8rem;
+    font-size: 3rem;
     line-height: 9rem;
     background-image: none !important; } }
 
@@ -65,8 +65,9 @@ body {
   background-image: url("./../img/next-card-white.png"); }
 @media screen and (max-width: 991px) {
   .c-button-card {
-    height: 6rem;
-    width: 8rem; } }
+    height: 100%;
+    width: calc(50% + 3rem);
+    border-radius: 0; } }
 
 .c-button {
   display: block;
@@ -336,12 +337,26 @@ body {
 @media screen and (max-width: 1199px) {
   .l-air__card-grid {
     width: calc(100% - 3rem); } }
+@media screen and (max-width: 991px) {
+  .l-air__card-grid {
+    width: calc(100% - 3rem);
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column; } }
 
 .l-air__card-item {
   width: calc(100% - 16rem); }
 .l-air__card-item--last {
   border-left: 1px solid #ECEBEB;
   width: 16rem; }
+@media screen and (max-width: 991px) {
+  .l-air__card-item--last {
+    width: 100%;
+    text-align: left; } }
+@media screen and (max-width: 991px) {
+  .l-air__card-item {
+    width: 100%; } }
 
 .l-air__card-country {
   display: -webkit-box;
@@ -390,6 +405,7 @@ body {
 
 .l-air__card-meta-item {
   width: 33.333%;
+  margin-bottom: 3rem;
   padding-left: 0.7rem;
   text-align: left; }
 
@@ -400,7 +416,7 @@ body {
   font-weight: 300; }
 @media screen and (max-width: 991px) {
   .l-air__card-meta-title {
-    font-size: 2.8rem; } }
+    font-size: 3rem; } }
 
 .l-air__card-meta-description {
   margin-top: 1rem;
@@ -409,14 +425,26 @@ body {
   font-weight: 300; }
 @media screen and (max-width: 991px) {
   .l-air__card-meta-description {
-    font-size: 2.8rem;
+    font-size: 3rem;
     color: #1E1E1E; } }
 
 .l-air__card-number {
   padding-top: 3rem;
   height: 100%;
-  position: relative;
-  text-align: center; }
+  position: relative; }
+@media screen and (max-width: 991px) {
+  .l-air__card-number {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding-top: 0;
+    justify-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; } }
 
 .l-air__card-number-title {
   width: 7rem;
@@ -441,8 +469,12 @@ body {
   background: #903FFF; }
 @media screen and (max-width: 991px) {
   .l-air__card-number-title {
-    padding-bottom: 4rem;
-    font-size: 2.8rem; } }
+    width: 8rem;
+    margin: 0;
+    padding: 2rem 0;
+    border-radius: 0;
+    height: 100%;
+    font-size: 3rem; } }
 
 .l-air__card-number-index {
   margin: 0 auto;
@@ -451,7 +483,10 @@ body {
   color: #1E1E1E; }
 @media screen and (max-width: 991px) {
   .l-air__card-number-index {
-    font-size: 2.8rem; } }
+    margin-bottom: 0;
+    width: calc(100% - 12rem);
+    vertical-align: middle;
+    font-size: 3rem; } }
 
 .l-charts {
   position: relative;
@@ -514,7 +549,7 @@ body {
   font-size: 1.3rem; }
 @media screen and (max-width: 1199px) {
   .l-charts__title {
-    font-size: 2.8rem; } }
+    font-size: 3rem; } }
 
 @media screen and (max-width: 1199px) {
   .l-charts__title-figure {
@@ -661,7 +696,7 @@ body {
     content: ""; } }
 @media screen and (max-width: 991px) {
   .l-footer__nav-title {
-    font-size: 2.8rem;
+    font-size: 3rem;
     line-height: 9rem; } }
 
 .l-footer__nav-url {
@@ -672,8 +707,8 @@ body {
   color: #545454; }
 @media screen and (max-width: 991px) {
   .l-footer__nav-url {
-    font-size: 2.8rem;
-    line-height: 9rem;
+    font-size: 3rem;
+    line-height: 7rem;
     color: #989A99; } }
 
 .l-footer__social {
@@ -706,14 +741,14 @@ body {
 @media screen and (max-width: 991px) {
   .l-footer__copyright {
     width: 100%;
-    font-size: 2.8rem;
+    font-size: 3rem;
     line-height: 9rem;
     margin-top: 7rem; } }
 
 .l-footer__social-url {
   width: 2rem;
   height: 2rem;
-  margin: 0 1rem;
+  margin: 0 3rem;
   opacity: 0.5; }
 
 .l-footer__social-url-img {
