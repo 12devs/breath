@@ -6,6 +6,10 @@
     width: 100%;
     margin-bottom: -0.5rem;
     background-color: $color-background-light-gray;
+
+    @media screen and (max-width: $screen-md - 1) {
+        display: none;
+    }
 }
 
 .l-learn__description-img {
