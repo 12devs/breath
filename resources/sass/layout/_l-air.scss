@@ -103,6 +103,10 @@
 .l-air__country-title-img {
     width: 1.7rem;
     height: 0.7rem;
+
+    @media screen and (max-width: $screen-lg - 1) {
+        display: none;
+    }
 }
 
 .l-air__card-meta-grid {

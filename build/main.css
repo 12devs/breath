@@ -42,7 +42,8 @@ body {
   @media screen and (max-width: 991px) {
     .c-input {
       font-size: 2.8rem;
-      line-height: 9rem; } }
+      line-height: 9rem;
+      background-image: none !important; } }
 
 .c-button-card {
   width: 5rem;
@@ -85,7 +86,8 @@ body {
     .c-button {
       font-size: 4rem;
       line-height: 9rem;
-      text-transform: inherit; } }
+      text-transform: inherit;
+      background-image: none !important; } }
 
 .l-section {
   max-width: 126rem;
@@ -239,6 +241,14 @@ body {
   text-align: center;
   border-radius: 1rem;
   background-color: #ffffff; }
+  @media screen and (max-width: 1199px) {
+    .l-hero-charts__city {
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 100%;
+      max-width: 80%; } }
 
 .l-hero-charts__city-subtitle {
   text-transform: uppercase;
@@ -246,6 +256,9 @@ body {
   font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: 0.3rem; }
+  @media screen and (max-width: 1199px) {
+    .l-hero-charts__city-subtitle {
+      font-size: 2rem; } }
 
 .l-hero-charts__city-title {
   font-size: 4rem;
@@ -364,6 +377,9 @@ body {
 .l-air__country-title-img {
   width: 1.7rem;
   height: 0.7rem; }
+  @media screen and (max-width: 991px) {
+    .l-air__country-title-img {
+      display: none; } }
 
 .l-air__card-meta-grid {
   display: -webkit-box;
@@ -442,6 +458,9 @@ body {
   z-index: 1;
   margin-top: -17.5rem;
   background: transparent; }
+  @media screen and (max-width: 1199px) {
+    .l-charts {
+      margin-top: 3rem; } }
 
 .l-charts__container {
   border-radius: 1rem;
@@ -495,7 +514,11 @@ body {
     font-size: 1.3rem; }
   @media screen and (max-width: 1199px) {
     .l-charts__title {
-      font-size: 4rem; } }
+      font-size: 2.8rem; } }
+
+@media screen and (max-width: 1199px) {
+  .l-charts__title-figure {
+    display: none; } }
 
 .l-charts__data {
   position: relative;
@@ -508,12 +531,12 @@ body {
 
 .l-charts__data-number {
   margin-left: 17rem;
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 600;
   line-height: 13rem; }
   @media screen and (max-width: 1199px) {
     .l-charts__data-number {
-      font-size: 7rem; } }
+      font-size: 9rem; } }
 
 .l-quote {
   margin-top: 11rem;
@@ -633,6 +656,9 @@ body {
     bottom: -1rem;
     display: block;
     content: url("data:image/svg+xml,%3Csvg width='17px' height='7px' viewBox='0 0 17 7' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='square'%3E%3Cg id='Group' transform='translate(1.000000, 1.000000)' fill-rule='nonzero' stroke='%2350E3C2' stroke-width='2'%3E%3Cpath d='M0.5,4.5 L6.5,0.5' id='Line'%3E%3C/path%3E%3Cpath d='M10.5,3.5 L14,1' id='Line' transform='translate(12.000000, 2.500000) rotate(-3.000000) translate(-12.000000, -2.500000) '%3E%3C/path%3E%3Cpath d='M6.75007557,3.83903854 L10.3018997,0.900578881' id='Line' transform='translate(8.454126, 2.322673) rotate(-91.000000) translate(-8.454126, -2.322673) '%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    @media screen and (max-width: 991px) {
+      .l-footer__nav-title:before {
+        content: ""; } }
   @media screen and (max-width: 991px) {
     .l-footer__nav-title {
       font-size: 2.8rem;
@@ -670,6 +696,9 @@ body {
     left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%); }
+    @media screen and (max-width: 991px) {
+      .l-footer__copyright:after {
+        display: none; } }
   .l-footer__copyright--turquoise {
     color: #4BC7C9; }
     .l-footer__copyright--turquoise:after {
@@ -678,10 +707,18 @@ body {
     .l-footer__copyright {
       width: 100%;
       font-size: 2.8rem;
-      line-height: 9rem; } }
+      line-height: 9rem;
+      margin-top: 7rem; } }
 
 .l-footer__social-url {
   width: 2rem;
   height: 2rem;
   margin: 0 1rem;
   opacity: 0.5; }
+
+.l-footer__social-url-img {
+  width: 2rem; }
+  @media screen and (max-width: 991px) {
+    .l-footer__social-url-img {
+      width: 4rem;
+      margin: 0 3rem; } }
