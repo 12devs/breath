@@ -1,16 +1,25 @@
 import { dailyOzone } from '../api/MainData';
-import { getCurrentLocation } from '../api/location';
+import { getCurrentLocation, getNearbyZipCodes, getCurrentZipCode } from '../api/location';
 import { pollenIndex, aqiIndex, apiWaqiInfo, getPhoto } from '../api/DataForCity';
 
 export default {
 
   async mainPageData (req, res) {
 
-    const { codes } = req.query;
-    const zipCodes = codes.split(',');
+    let { codes } = req.query;
+    const ip = (req.headers['x-forwarded-for'] || req.connection.remoteAddress).slice(7);
+    const zipCodes = !codes ? await getNearbyZipCodes(ip) : codes.split(',');
+    const stubCodes = ['77001','94177','90024','98093','33101','02101'];
 
-    const data = zipCodes.map(async code => {
-      const location = await getCurrentLocation(code);
+    if (!zipCodes.length) {
+      codes = true;
+      zipCodes.push(...stubCodes);
+    }
+
+    const data = zipCodes.map(async item => {
+      const code = !codes ? await getCurrentZipCode(item): item;
+      const location = !codes ? item : await getCurrentLocation(code);
+
       const promises = [
         dailyOzone(location),
         pollenIndex(code),
@@ -22,6 +31,7 @@ export default {
           })),
         getPhoto(location),
       ];
+
       return Promise.all(promises)
         .then(result => {
           const data = {
