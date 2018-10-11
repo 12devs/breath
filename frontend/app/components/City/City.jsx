@@ -5,6 +5,7 @@ import GraphicHumidity from './GraphicHumidity';
 import Footer from "../footer";
 import Preloader from "../Preloader";
 import Item from "./Items";
+import Error from "./Error";
 import logoInside from "./../../assets/img/logo-inside.png";
 import figure from "./../../assets/img/figure.svg";
 import climate01 from "./../../assets/img/climate-01.svg";
@@ -71,13 +72,17 @@ class City extends Component {
   render() {
     console.log('render city');
     const src = this.state.city;
-    console.log(src);
+    console.log('src', src);
     if (this.state.preloader){
       return (<Preloader/>)
     }
-    if (!src) {
-      return (<h1>{JSON.stringify(this.state.error)}</h1>)
+    if (this.state.error) {
+      return (<Error text={this.state.error}/>)
     }
+    if (!src) {
+      return (<Error text={"No data"}/>)
+    }
+
     return (
 
       <div className={"l-hero__scroll"}>
