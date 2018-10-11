@@ -11,7 +11,7 @@ export default props => {
       <img src={figure} alt=""/>
       <div className="l-charts__data">
         <div className="l-charts__data-ico"><img src={props.img} alt=""/></div>
-        <div className="l-charts__data-number">{props.value}{props.unit}</div>
+        <div className="l-charts__data-number">{Math.round(props.value * 100) / 100}{props.unit}</div>
       </div>
     </div>
   );
