@@ -11,6 +11,11 @@
         background-color: $color-background-graphite;
         background-position: 1.5rem center;
         background-repeat: no-repeat;
+
+        @media screen and (max-width: $screen-md - 1) {
+            padding: 0 2rem;
+            background-image: none !important;
+        }
     }
 
     &--zip {
@@ -20,12 +25,16 @@
         background-color: $color-background-light-gray;
         background-position: 1.5rem center;
         background-repeat: no-repeat;
+
+        @media screen and (max-width: $screen-md - 1) {
+            padding: 0 2rem;
+            background-image: none !important;
+        }
     }
 
 
-    @media screen and (max-width: $screen-lg - 1) {
-        font-size: $font-size-medium-plus;
-        border: 1px solid red;
-        line-height: 9rem;
+    @media screen and (max-width: $screen-md - 1) {
+        font-size: $font-size-regular;
+        background-image: none !important;
     }
 }

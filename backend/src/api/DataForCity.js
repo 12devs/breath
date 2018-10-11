@@ -179,7 +179,7 @@ const aqiIndex = (location) => {
     };
     rp(options)
       .then(data => resolve({
-        AQI_Today: data.aqi,
+        AQI_Today: data.aqi || "-",
       }))
       .catch(err => resolve({}));
   });

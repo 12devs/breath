@@ -1,43 +1,44 @@
-import { dailyOzone } from '../api/MainData';
-import { getCurrentLocation } from '../api/location';
-import { pollenIndex, aqiIndex, apiWaqiInfo, getPhoto } from '../api/DataForCity';
+import { getCityInfoByCodeAndLocation } from '../api/MainData';
+import { getCurrentLocation, getNearbyCities, getCurrentZipCode } from '../api/location';
+import config from 'config';
 
 export default {
 
-  async mainPageData (req, res) {
+  async mainPageData(req, res) {
 
-    const { codes } = req.query;
-    const zipCodes = codes.split(',');
+    let { codes } = req.query;
+    const stubCodes = ['77001', '94177', '90024', '98093', '33101', '02101'];
+    let data;
 
-    const data = zipCodes.map(async code => {
-      const location = await getCurrentLocation(code);
-      const promises = [
-        dailyOzone(location),
-        pollenIndex(code),
-        aqiIndex(location),
-        apiWaqiInfo(location)
-          .then(apiWaqiInfo => ({
-            pm25:apiWaqiInfo.apiWaqiInfo.pm25,
-            o3:apiWaqiInfo.apiWaqiInfo.o3,
-          })),
-        getPhoto(location),
-      ];
-      return Promise.all(promises)
-        .then(result => {
-          const data = {
-            Code: code,
-            Name: location.name,
-          };
-          result.forEach(elem => {
-            Object.assign(data, elem);
-          });
-          return data;
-        })
-        .catch(err => {
-          console.log(err);
-          return res.status(500).json({ error: err.message })
-        })
-    });
+    try {
+      if (!codes) {
+        let ip = (req.headers['x-forwarded-for'] || req.connection.remoteAddress).slice(7);
+        if (config.demoIP){
+          ip = config.demoIP;
+        }
+        const cityLocations = await getNearbyCities(ip);
+        if (!cityLocations.length) {
+          throw Error('not city')
+        }
+
+        data = cityLocations.map(async location => {
+          const {code, name} = await getCurrentZipCode(location);
+          return getCityInfoByCodeAndLocation(code, location, name)
+        });
+      }
+      else {
+        const zipCodes = codes.split(',');
+        data = zipCodes.map(async code => {
+          const location = await getCurrentLocation(code);
+          return getCityInfoByCodeAndLocation(code, location)
+        });
+      }
+    } catch (err) {
+      data = stubCodes.map(async code => {
+        const location = await getCurrentLocation(code);
+        return getCityInfoByCodeAndLocation(code, location)
+      });
+    }
 
     return Promise.all(data)
       .then(result => {

@@ -42,7 +42,7 @@ export default {
 
   async cityPageData(req, res) {
     try {
-      const { code, email } = req.params;
+      const { code } = req.params;
       const location = await getCurrentLocation(code);
       const promises = [
         historicPollenIndex(code),
@@ -53,7 +53,6 @@ export default {
         pollenIndex(code),
         aqiIndex(location),
         getPhoto(location),
-        verifyEmail(email),
         apiWaqiInfo(location),
         // historicTemperatureAndHumidity(code),
         getHistoricalData(location),

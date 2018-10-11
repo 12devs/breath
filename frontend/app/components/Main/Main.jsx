@@ -6,25 +6,49 @@ import wynd from "./../../assets/img/wynd.png";
 import wave_top from "./../../assets/img/wave_top.svg";
 import wave_bottom from "./../../assets/img/wave_bottom.svg";
 import about from "./../../assets/img/about.svg";
+import Preloader from "../Preloader";
 
 import Footer from "../footer";
 
 class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      cities: [],
+      preloader: true,
+    };
+    this.getCities = this.getCities.bind(this);
+    this.changeState = this.changeState.bind(this);
   }
 
-  getMainPageData() {
-    return services.getMainPageData()
+  componentDidMount() {
+    return this.getCities()
+  }
+
+  getCities() {
+    return this.changeState('preloader', true)
+      .then(() => {
+        return services.getMainPageData()
+      })
       .then(data => {
-        console.log(data);
-        this.setState({ cities: data })
+        this.setState({ cities: data, preloader: false })
       })
   }
 
+  changeState(key, value) {
+    return new Promise((resolve) => {
+      this.setState({ [key]: value }, () => {
+        resolve(true)
+      })
+    })
+  }
+
   render() {
-    const { src } = this.props;
+    const src = this.state;
+    console.log(src);
+    if (this.state.preloader) {
+      return (<Preloader/>)
+    }
     return (
       <div className={"l-hero__scroll"}>
         <div className="l-hero">
@@ -39,7 +63,8 @@ class Main extends Component {
               </div>
             </div>
           </nav>
-          <Mail error={src.error} email={src.email} code={src.code} getCity={this.props.getCity} changeState={this.props.changeState}/>
+          <Mail error={src.error} email={src.email} code={src.code} getCity={this.props.getCity}
+                changeState={this.props.changeState}/>
         </div>
         <img className="l-hero__wave" src={wave_top} alt=""/>
         <Cities cities={src.cities} getCity={this.props.getCity} changeState={this.props.changeState}/>

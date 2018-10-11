@@ -4,7 +4,12 @@
     background: $color-background-turquoise;
 
     @media screen and (max-width: $screen-xl - 1) {
-        height: 60rem;
+        height: 40rem;
+        margin-bottom: 5rem;
+    }
+
+    @media screen and (max-width: $screen-lg - 1) {
+        height: 45rem;
         margin-bottom: 5rem;
     }
 }
@@ -85,6 +90,7 @@
         bottom: 0;
         box-shadow: none;
         border-radius: 0;
+        padding: 2rem;
     }
 }
 
@@ -137,6 +143,7 @@
 .l-hero__form-grid {
     margin-top: 2rem;
     display: flex;
+    align-items: baseline;
 
     @media screen and (max-width: $screen-lg - 1) {
         flex-direction: column;

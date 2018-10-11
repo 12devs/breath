@@ -8,6 +8,16 @@
     font-weight: $font-weight-bold;
     letter-spacing: 0.5rem;
     color: $color-text-silver;
+
+    @media screen and (max-width: $screen-xl - 1) {
+        font-size: $font-size-medium;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    @media screen and (max-width: $screen-md - 1) {
+        font-size: $font-size-small;
+    }
 }
 
 .l-air__title {
@@ -16,6 +26,16 @@
     font-weight: $font-weight-bold;
     color: $color-text-black;
     letter-spacing: 0.1rem;
+
+    @media screen and (max-width: $screen-xl - 1) {
+        font-size: $font-size-large;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    @media screen and (max-width: $screen-md - 1) {
+        font-size: $font-size-medium-plus;
+    }
 }
 
 .l-air__card {
@@ -44,6 +64,12 @@
     @media screen and (max-width: $screen-xl - 1) {
         width: calc(100% - 3rem);
     }
+
+    @media screen and (max-width: $screen-lg - 1) {
+        width: calc(100% - 3rem);
+        flex-direction: column;
+        padding: 2rem;
+    }
 }
 
 .l-air__card-item {
@@ -52,6 +78,16 @@
     &--last {
         border-left: 1px solid $color-background-silver;
         width: 16rem;
+
+        @media screen and (max-width: $screen-lg - 1) {
+            width: 100%;
+            text-align: left;
+            border: none;
+        }
+    }
+
+    @media screen and (max-width: $screen-lg - 1) {
+        width: 100%;
     }
 }
 
@@ -59,19 +95,26 @@
     display: flex;
     margin-top: 3rem;
     align-items: center;
+
+    @media screen and (max-width: $screen-md - 1) {
+        margin-top: 0;
+    }
 }
 
 .l-air__country-img {
     width: 9.4rem;
     height: 9.4rem;
+    min-width: 8rem;
+    min-height: 8rem;
+    max-height: 9.4rem;
     margin-right: 1.8rem;
     border-radius: 50%;
     background-size: cover;
     background-position: center center;
 
     @media screen and (max-width: $screen-lg - 1) {
-        width: 6rem;
-        height: 6rem;
+        width: 8rem;
+        height: 8rem;
     }
 
 }
@@ -84,24 +127,32 @@
     text-align: left;
 
     @media screen and (max-width: $screen-lg - 1) {
-        font-size: $font-size-large;
-        border: 1px solid red;
+        font-size: $font-size-medium-plus;
     }
 }
 
 .l-air__country-title-img {
     width: 1.7rem;
     height: 0.7rem;
+
+    @media screen and (max-width: $screen-lg - 1) {
+        display: none;
+    }
 }
 
 .l-air__card-meta-grid {
     display: flex;
     margin-top: 3.8rem;
     margin-bottom: 3rem;
+
+    @media screen and (max-width: $screen-lg - 1) {
+
+    }
 }
 
 .l-air__card-meta-item {
     width: 33.333%;
+    margin-bottom: 3rem;
     padding-left: 0.7rem;
     text-align: left;
 }
@@ -113,8 +164,7 @@
     font-weight: $font-weight-light;
 
     @media screen and (max-width: $screen-lg - 1) {
-        font-size: $font-size-medium-plus;
-        border: 1px solid red;
+        font-size: $font-size-regular;
     }
 }
 
@@ -125,8 +175,8 @@
     font-weight: $font-weight-light;
 
     @media screen and (max-width: $screen-lg - 1) {
-        font-size: $font-size-medium-plus;
-        border: 1px solid red;
+        font-size: $font-size-medium;
+        color: $color-text-black;
     }
 }
 
@@ -134,7 +184,16 @@
     padding-top: 3rem;
     height: 100%;
     position: relative;
-    text-align: center;
+
+    @media screen and (max-width: $screen-lg - 1) {
+        display: flex;
+        min-height: 8rem;
+        padding-top: 0;
+        justify-items: center;
+        justify-content: center;
+        align-items: center;
+
+    }
 }
 
 .l-air__card-number-title {
@@ -170,7 +229,15 @@
     }
 
     @media screen and (max-width: $screen-lg - 1) {
-        padding-bottom: 4rem;
+        width: 8rem;
+        height: 8rem;
+        margin: 0;
+        padding: 0;
+        border-radius: 1rem;
+        font-size: $font-size-medium-plus;
+        align-items: center;
+        align-content: center;
+        line-height: 3.9;
     }
 
 }
@@ -180,4 +247,11 @@
     margin-bottom: 3rem;
     font-size: $font-size-regular;
     color: $color-text-black;
+
+    @media screen and (max-width: $screen-lg - 1) {
+        margin-bottom: 0;
+        width: calc(100% - 12rem);
+        vertical-align: middle;
+        font-size: $font-size-medium-plus;
+    }
 }

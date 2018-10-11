@@ -3,7 +3,6 @@
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 10px;
 	font-family: $font-family;
     vertical-align: baseline;
     -webkit-box-sizing: border-box;
@@ -15,6 +14,7 @@
 html {
     width: 100%;
     height: 100%;
+    font-size: 62.5%;
 }
 
 body {

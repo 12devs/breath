@@ -1,11 +1,19 @@
 .l-learn {
     margin-top: 11.5rem;
+
+    @media screen and (max-width: $screen-md - 1) {
+        margin-top: 5rem;
+    }
 }
 
 .l-learn__wave {
     width: 100%;
     margin-bottom: -0.5rem;
     background-color: $color-background-light-gray;
+
+    @media screen and (max-width: $screen-md - 1) {
+        display: none;
+    }
 }
 
 .l-learn__description-img {
@@ -51,9 +59,17 @@
     font-size: $font-size-large;
     color: $color-text-black;
     font-weight: $font-weight-bold;
+
+    @media screen and (max-width: $screen-md - 1) {
+        font-size: $font-size-medium;
+    }
 }
 
 .l-learn__quote-text {
     font-size: $font-size-medium;
     color: $color-text-black;
+
+    @media screen and (max-width: $screen-md - 1) {
+        font-size: $font-size-regular;
+    }
 }
