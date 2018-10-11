@@ -16,12 +16,11 @@
     &:hover {
         border: 1px solid transparent;
         background-color: $color-background-black;
-        background-image: url('../public_html/img/next-card-white.png');
     }
 
     @media screen and (max-width: $screen-lg - 1) {
-        height: 100%;
         width: calc(50% + 3rem);
         border-radius: 0;
+        background-color: $color-background-turquoise
     }
 }

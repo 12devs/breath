@@ -90,6 +90,9 @@
 .l-air__country-img {
     width: 9.4rem;
     height: 9.4rem;
+    min-width: 8rem;
+    min-height: 8rem;
+    max-height: 9.4rem;
     margin-right: 1.8rem;
     border-radius: 50%;
     background-size: cover;
@@ -110,7 +113,7 @@
     text-align: left;
 
     @media screen and (max-width: $screen-lg - 1) {
-        font-size: $font-size-large;
+        font-size: $font-size-medium-plus;
     }
 }
 
@@ -170,6 +173,7 @@
 
     @media screen and (max-width: $screen-lg - 1) {
         display: flex;
+        min-height: 8rem;
         padding-top: 0;
         justify-items: center;
         justify-content: center;

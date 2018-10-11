@@ -3,7 +3,6 @@
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 10px;
   font-family: "Roboto", sans-serif;
   vertical-align: baseline;
   -webkit-box-sizing: border-box;
@@ -12,7 +11,8 @@
 
 html {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  font-size: 62.5%; }
 
 body {
   width: 100%;
@@ -41,8 +41,7 @@ body {
     background-repeat: no-repeat; }
   @media screen and (max-width: 991px) {
     .c-input {
-      font-size: 3rem;
-      line-height: 9rem;
+      font-size: 2.3rem;
       background-image: none !important; } }
 
 .c-button-card {
@@ -61,13 +60,12 @@ body {
   text-align: center; }
   .c-button-card:hover {
     border: 1px solid transparent;
-    background-color: #1D1D1D;
-    background-image: url("../public_html/img/next-card-white.png"); }
+    background-color: #1D1D1D; }
   @media screen and (max-width: 991px) {
     .c-button-card {
-      height: 100%;
       width: calc(50% + 3rem);
-      border-radius: 0; } }
+      border-radius: 0;
+      background-color: #67CECD; } }
 
 .c-button {
   display: block;
@@ -85,8 +83,7 @@ body {
   background-repeat: no-repeat; }
   @media screen and (max-width: 991px) {
     .c-button {
-      font-size: 4rem;
-      line-height: 9rem;
+      font-size: 2.3rem;
       text-transform: inherit;
       background-image: none !important; } }
 
@@ -205,9 +202,6 @@ body {
   @media screen and (max-width: 991px) {
     .l-hero__form-title {
       font-size: 4rem; } }
-  @media screen and (max-width: 767px) {
-    .l-hero__form-title {
-      font-size: 2rem; } }
 
 .l-hero__form-grid {
   margin-top: 2rem;
@@ -370,6 +364,9 @@ body {
 .l-air__country-img {
   width: 9.4rem;
   height: 9.4rem;
+  min-width: 8rem;
+  min-height: 8rem;
+  max-height: 9.4rem;
   margin-right: 1.8rem;
   border-radius: 50%;
   background-size: cover;
@@ -387,7 +384,7 @@ body {
   text-align: left; }
   @media screen and (max-width: 991px) {
     .l-air__country-title {
-      font-size: 4rem; } }
+      font-size: 2.3rem; } }
 
 .l-air__country-title-img {
   width: 1.7rem;
@@ -416,7 +413,7 @@ body {
   font-weight: 300; }
   @media screen and (max-width: 991px) {
     .l-air__card-meta-title {
-      font-size: 3rem; } }
+      font-size: 2.3rem; } }
 
 .l-air__card-meta-description {
   margin-top: 1rem;
@@ -425,7 +422,7 @@ body {
   font-weight: 300; }
   @media screen and (max-width: 991px) {
     .l-air__card-meta-description {
-      font-size: 3rem;
+      font-size: 2.3rem;
       color: #1E1E1E; } }
 
 .l-air__card-number {
@@ -437,6 +434,7 @@ body {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
+      min-height: 8rem;
       padding-top: 0;
       justify-items: center;
       -webkit-box-pack: center;
@@ -474,7 +472,7 @@ body {
       padding: 2rem 0;
       border-radius: 0;
       height: 100%;
-      font-size: 3rem; } }
+      font-size: 2.3rem; } }
 
 .l-air__card-number-index {
   margin: 0 auto;
@@ -486,7 +484,7 @@ body {
       margin-bottom: 0;
       width: calc(100% - 12rem);
       vertical-align: middle;
-      font-size: 3rem; } }
+      font-size: 2.3rem; } }
 
 .l-charts {
   position: relative;
@@ -549,7 +547,7 @@ body {
     font-size: 1.3rem; }
   @media screen and (max-width: 1199px) {
     .l-charts__title {
-      font-size: 3rem; } }
+      font-size: 2.3rem; } }
 
 @media screen and (max-width: 1199px) {
   .l-charts__title-figure {
@@ -696,7 +694,7 @@ body {
         content: ""; } }
   @media screen and (max-width: 991px) {
     .l-footer__nav-title {
-      font-size: 3rem;
+      font-size: 2.3rem;
       line-height: 9rem; } }
 
 .l-footer__nav-url {
@@ -707,7 +705,7 @@ body {
   color: #545454; }
   @media screen and (max-width: 991px) {
     .l-footer__nav-url {
-      font-size: 3rem;
+      font-size: 2.3rem;
       line-height: 7rem;
       color: #989A99; } }
 
@@ -741,7 +739,7 @@ body {
   @media screen and (max-width: 991px) {
     .l-footer__copyright {
       width: 100%;
-      font-size: 3rem;
+      font-size: 2.3rem;
       line-height: 9rem;
       margin-top: 7rem; } }
 
