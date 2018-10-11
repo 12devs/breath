@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Graphic from './Graphic';
+import Radar from './Radar'
 import GraphicTemperature from './GraphicTemperature';
 import GraphicHumidity from './GraphicHumidity';
 import Footer from "../footer";
@@ -84,6 +85,8 @@ class City extends Component {
             </div>
 
             <Graphic src={src.Pollen_index_over_past_year} label={"Pollen Index"} type={'line'}/>
+
+            <Radar src={src.windRose} label={"Wind rose"} type={'line'}/>
 
           </div>
         </div>
