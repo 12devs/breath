@@ -1,17 +1,14 @@
 import axios from 'axios';
 
 const getMainPageData = () => {
-  localStorage.setItem('myCat', 'Tom');
-  console.log(localStorage.myCat);
   return axios.get('/mainPage/?codes=77001,94177,90024,98093,33101,02101')
     .then(result => {
-      console.log(result.data);
       return result.data
     })
 };
 
-const getCityPageData = (code, email) => {
-  return axios.get(`/cityPage/${code}/${email}`)
+const getCityPageData = (code) => {
+  return axios.get(`/cityPage/${code}`)
     .then(result => {
       return result.data
     })
@@ -20,8 +17,8 @@ const getCityPageData = (code, email) => {
     })
 };
 
-const getRequest = url => {
-  return axios.get(url)
+const saveEmail = (email, code) => {
+  return axios.get(`/email/${email}/${code}`)
     .then(result => {
       return result.data
     })
@@ -33,5 +30,5 @@ const getRequest = url => {
 export default {
   getMainPageData,
   getCityPageData,
-  getRequest,
+  saveEmail
 };
