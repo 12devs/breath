@@ -56,6 +56,11 @@
     @media screen and (max-width: $screen-xl - 1) {
         width: calc(100% - 3rem);
     }
+
+    @media screen and (max-width: $screen-lg - 1) {
+        width: calc(100% - 3rem);
+        flex-direction: column;
+    }
 }
 
 .l-air__card-item {
@@ -64,6 +69,15 @@
     &--last {
         border-left: 1px solid $color-background-silver;
         width: 16rem;
+
+        @media screen and (max-width: $screen-lg - 1) {
+            width: 100%;
+            text-align: left;
+        }
+    }
+
+    @media screen and (max-width: $screen-lg - 1) {
+        width: 100%;
     }
 }
 
@@ -113,10 +127,15 @@
     display: flex;
     margin-top: 3.8rem;
     margin-bottom: 3rem;
+
+    @media screen and (max-width: $screen-lg - 1) {
+
+    }
 }
 
 .l-air__card-meta-item {
     width: 33.333%;
+    margin-bottom: 3rem;
     padding-left: 0.7rem;
     text-align: left;
 }
@@ -148,7 +167,15 @@
     padding-top: 3rem;
     height: 100%;
     position: relative;
-    text-align: center;
+
+    @media screen and (max-width: $screen-lg - 1) {
+        display: flex;
+        padding-top: 0;
+        justify-items: center;
+        justify-content: center;
+        align-items: center;
+
+    }
 }
 
 .l-air__card-number-title {
@@ -184,7 +211,11 @@
     }
 
     @media screen and (max-width: $screen-lg - 1) {
-        padding-bottom: 4rem;
+        width: 8rem;
+        margin: 0;
+        padding: 2rem 0;
+        border-radius: 0;
+        height: 100%;
         font-size: $font-size-medium-plus;
     }
 
@@ -197,6 +228,9 @@
     color: $color-text-black;
 
     @media screen and (max-width: $screen-lg - 1) {
+        margin-bottom: 0;
+        width: calc(100% - 12rem);
+        vertical-align: middle;
         font-size: $font-size-medium-plus;
     }
 }

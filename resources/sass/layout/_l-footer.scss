@@ -64,7 +64,7 @@
 
     @media screen and (max-width: $screen-lg - 1) {
         font-size: $font-size-medium-plus;
-        line-height: 9rem;
+        line-height: 7rem;
         color: $color-text-silver;
     }
 }
@@ -116,7 +116,7 @@
 .l-footer__social-url {
     width: 2rem;
     height: 2rem;
-    margin: 0 1rem;
+    margin: 0 3rem;
     opacity: 0.5;
 }
 
