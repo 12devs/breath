@@ -18,6 +18,9 @@ class Mail extends Component {
 
   saveEmail() {
     const { email, code } = this.state;
+    if (!email || !code){
+      return  this.setState({ error: "Please enter your email and zip code", preloader: false })
+    }
     return this.changeState('preloader', true)
       .then(()=>{
         return services.saveEmail(email, code)
