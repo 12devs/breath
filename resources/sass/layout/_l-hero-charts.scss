@@ -40,6 +40,10 @@
     @media screen and (max-width: $screen-xl - 1) {
         font-size: $font-size-medium;
     }
+
+    @media screen and (max-width: $screen-md - 1) {
+        font-size: $font-size-regular;
+    }
 }
 
 .l-hero-charts__city-title {

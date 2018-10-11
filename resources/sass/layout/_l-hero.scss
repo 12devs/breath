@@ -143,6 +143,7 @@
 .l-hero__form-grid {
     margin-top: 2rem;
     display: flex;
+    align-items: baseline;
 
     @media screen and (max-width: $screen-lg - 1) {
         flex-direction: column;

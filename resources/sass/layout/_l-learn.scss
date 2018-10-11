@@ -1,5 +1,9 @@
 .l-learn {
     margin-top: 11.5rem;
+
+    @media screen and (max-width: $screen-md - 1) {
+        margin-top: 5rem;
+    }
 }
 
 .l-learn__wave {

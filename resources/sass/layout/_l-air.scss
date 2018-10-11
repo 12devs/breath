@@ -82,6 +82,7 @@
         @media screen and (max-width: $screen-lg - 1) {
             width: 100%;
             text-align: left;
+            border: none;
         }
     }
 
@@ -174,7 +175,7 @@
     font-weight: $font-weight-light;
 
     @media screen and (max-width: $screen-lg - 1) {
-        font-size: $font-size-regular;
+        font-size: $font-size-medium;
         color: $color-text-black;
     }
 }
@@ -229,11 +230,14 @@
 
     @media screen and (max-width: $screen-lg - 1) {
         width: 8rem;
-        margin: 0;
-        padding: 2rem 0;
-        border-radius: 1rem;
         height: 8rem;
+        margin: 0;
+        padding: 0;
+        border-radius: 1rem;
         font-size: $font-size-medium-plus;
+        align-items: center;
+        align-content: center;
+        line-height: 3.9;
     }
 
 }
