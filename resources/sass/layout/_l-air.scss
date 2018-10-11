@@ -94,6 +94,10 @@
     display: flex;
     margin-top: 3rem;
     align-items: center;
+
+    @media screen and (max-width: $screen-md - 1) {
+        margin-top: 0;
+    }
 }
 
 .l-air__country-img {
