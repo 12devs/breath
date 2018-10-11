@@ -60,15 +60,8 @@ class Cities extends Component {
         <div className="l-air__card-item l-air__card-item--last">
           <div className="l-air__card-number">
             <div className={"l-air__card-number-title " + color}>{src.AQI_Today}</div>
-            <div className="l-air__card-number-index">Air Quality Index</div>
-            <div className="c-button-card c-button-card-ico"
-                 onClick={() => {
-                   this.props.changeState('code', src.Code)
-                     .then(() => {
-                       this.props.getCity();
-                     })
-                 }}
-            />
+            <div className="l-air__card-number-index">AQI</div>
+            <a className="c-button-card c-button-card-ico" href={`/city/${src.Code}`}/>
           </div>
         </div>
       </div>

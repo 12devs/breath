@@ -14,8 +14,9 @@
     background-repeat: no-repeat;
 
     @media screen and (max-width: $screen-lg - 1) {
-        font-size: $font-size-large;
-        line-height: 9rem;
+        height: 8rem;
+        font-size: $font-size-medium-plus;
         text-transform: inherit;
+        background-image: none !important;
     }
 }

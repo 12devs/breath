@@ -3,7 +3,9 @@ import Graphic from './Graphic';
 import GraphicTemperature from './GraphicTemperature';
 import GraphicHumidity from './GraphicHumidity';
 import Footer from "../footer";
+import Preloader from "../Preloader";
 import Item from "./Items";
+import Error from "./Error";
 import logoInside from "./../../assets/img/logo-inside.png";
 import figure from "./../../assets/img/figure.svg";
 import climate01 from "./../../assets/img/climate-01.svg";
@@ -22,25 +24,70 @@ import climate13 from "./../../assets/img/climate-13.svg";
 import climate14 from "./../../assets/img/climate-14.svg";
 import climate15 from "./../../assets/img/climate-15.svg";
 import climate16 from "./../../assets/img/climate-16.svg";
+import services from "./../../services";
+
 
 class City extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      preloader: true,
+      code: props.match.params.code,
+
+    // city:{},
+    };
+    this.getCity = this.getCity.bind(this);
+    this.changeState = this.changeState.bind(this);
+
   }
 
+  componentDidMount() {
+    console.log('city componentDidMount');
+    return this.getCity()
+  }
+
+  getCity() {
+    this.changeState('preloader', true)
+      .then(() => {
+        return services.getCityPageData(this.state.code);
+      })
+      .then(res => {
+        if (res.error) {
+          return this.setState({ city: null, error: res.error, preloader:false})
+        } else {
+          return this.setState({ city: res, error: null, preloader:false})
+        }
+      })
+  }
+
+  changeState(key, value) {
+    return new Promise((resolve) => {
+      this.setState({ [key]: value }, () => {
+        resolve(true)
+      })
+    })
+  }
+
+
   render() {
-    const src = this.props.src.city;
-    console.log(src);
-    if (!src) {
-      return (<h1>{JSON.stringify(this.state.error)}</h1>)
+    console.log('render city');
+    const src = this.state.city;
+    console.log('src', src);
+    if (this.state.preloader){
+      return (<Preloader/>)
     }
+    if (this.state.error) {
+      return (<Error text={this.state.error}/>)
+    }
+    if (!src) {
+      return (<Error text={"No data"}/>)
+    }
+
     return (
 
       <div className={"l-hero__scroll"}>
         <div className="l-hero-charts" style={{ backgroundImage: `url(${src.Img}` }}>
-          <a href={"#"}><img className="l-hero-logo l-hero-logo" src={logoInside} alt=""
-                             onClick={() => this.props.changeState('currentPage', "Main")}/></a>
+          <a href={"/main"}><img className="l-hero-logo l-hero-logo" src={logoInside} alt=""/></a>
           <nav>
             <button className="l-hero__hamburger hamburger hamburger--slider js-hamburger"><span
               className="hamburger-box"><span className="hamburger-inner"></span></span></button>

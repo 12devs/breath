@@ -19,7 +19,7 @@ app.use(cors());
 
 app.use(routes);
 
-app.get(['/', '/main', '/city/:code/:email'], (req, res) => res.render('app'));
+app.get(['/', '/main', '/city/:code'], (req, res) => res.render('app'));
 
 const db = getInstance();
 
