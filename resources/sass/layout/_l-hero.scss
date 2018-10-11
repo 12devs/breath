@@ -4,7 +4,12 @@
     background: $color-background-turquoise;
 
     @media screen and (max-width: $screen-xl - 1) {
-        height: 60rem;
+        height: 40rem;
+        margin-bottom: 5rem;
+    }
+
+    @media screen and (max-width: $screen-lg - 1) {
+        height: 45rem;
         margin-bottom: 5rem;
     }
 }
@@ -85,6 +90,7 @@
         bottom: 0;
         box-shadow: none;
         border-radius: 0;
+        padding: 2rem;
     }
 }
 
@@ -127,6 +133,10 @@
 
     @media screen and (max-width: $screen-lg - 1) {
         font-size: $font-size-large;
+    }
+
+    @media screen and (max-width: $screen-md - 1) {
+        font-size: $font-size-medium;
     }
 }
 

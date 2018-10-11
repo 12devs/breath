@@ -4,6 +4,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+
+    @media screen and (max-width: $screen-md - 1) {
+        padding: 2rem;
+    }
 }
 
 .l-quote__container {
@@ -13,16 +17,27 @@
     background-color: $color-background-brown;
     text-align: center;
     border-radius: 1rem;
+
+    @media screen and (max-width: $screen-md - 1) {
+        max-width: none;
+        width: 100%;
+        padding: 2rem;
+    }
 }
 
 .l-quote__text {
     margin-bottom: 1.3rem;
     font-size: $font-size-medium;
     color: $color-text-white;
+
 }
 
 .l-quote__url {
     color: $color-text-turquoise;
     font-weight: bold;
     font-size: $font-size-large;
+
+    @media screen and (max-width: $screen-md - 1) {
+        font-size: $font-size-medium-plus;
+    }
 }

@@ -14,6 +14,10 @@
         flex-direction: column;
         flex-wrap: nowrap;
     }
+
+    @media screen and (max-width: $screen-md - 1) {
+        font-size: $font-size-small;
+    }
 }
 
 .l-air__title {
@@ -24,9 +28,13 @@
     letter-spacing: 0.1rem;
 
     @media screen and (max-width: $screen-xl - 1) {
-        font-size: $font-size-x-large;
+        font-size: $font-size-large;
         flex-direction: column;
         flex-wrap: nowrap;
+    }
+
+    @media screen and (max-width: $screen-md - 1) {
+        font-size: $font-size-medium-plus;
     }
 }
 
@@ -150,7 +158,7 @@
     font-weight: $font-weight-light;
 
     @media screen and (max-width: $screen-lg - 1) {
-        font-size: $font-size-medium-plus;
+        font-size: $font-size-regular;
     }
 }
 

@@ -51,9 +51,17 @@
     font-size: $font-size-large;
     color: $color-text-black;
     font-weight: $font-weight-bold;
+
+    @media screen and (max-width: $screen-md - 1) {
+        font-size: $font-size-medium;
+    }
 }
 
 .l-learn__quote-text {
     font-size: $font-size-medium;
     color: $color-text-black;
+
+    @media screen and (max-width: $screen-md - 1) {
+        font-size: $font-size-regular;
+    }
 }

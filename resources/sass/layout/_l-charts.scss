@@ -44,6 +44,10 @@
         margin-right: 0;
         margin-left: 0;
     }
+
+    @media screen and (max-width: $screen-md - 1) {
+       padding: 2rem;
+    }
 }
 
 .l-charts__title {
@@ -79,6 +83,10 @@
     width: 13rem;
     height: 13rem;
     position: absolute;
+
+    @media screen and (max-width: $screen-md - 1) {
+        width: 6rem;
+    }
 }
 
 .l-charts__data-number {
@@ -88,6 +96,11 @@
     line-height: 13rem;
 
     @media screen and (max-width: $screen-xl - 1) {
-        font-size: $font-size-xxxxx-large;
+        font-size: $font-size-x-large;
+    }
+
+    @media screen and (max-width: $screen-md - 1) {
+        width: 6rem;
+        margin-left: 8rem;
     }
 }
