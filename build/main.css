@@ -190,6 +190,16 @@ body {
       border-radius: 0;
       padding: 2rem; } }
 
+.l-hero__form-error {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #F3F3F3;
+  color: #1E1E1E;
+  width: 100%;
+  font-size: 1.3rem;
+  font-weight: 300;
+  text-align: center; }
+
 .l-hero__form-img {
   margin: 0 auto;
   position: absolute;

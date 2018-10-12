@@ -94,6 +94,17 @@
     }
 }
 
+.l-hero__form-error {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: $color-background-light-gray;
+    color: $color-text-black;
+    width: 100%;
+    font-size: $font-size-small;
+    font-weight: $font-weight-light;
+    text-align: center;
+}
+
 .l-hero__form-img {
     margin: 0 auto;
     position: absolute;
