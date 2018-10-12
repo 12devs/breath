@@ -31,13 +31,14 @@ const getCurrentLocation = zipCode => {
 };
 
 const getNearbyCities = (ip) => {
-  const url = `http://getnearbycities.geobytes.com/GetNearbyCities?radius=60&locationcode=${ip}&limit=5&minradius=2`;
+  const url = `http://getnearbycities.geobytes.com/GetNearbyCities?radius=70&locationcode=${ip}&limit=6&minradius=2`;
 
   return fetch(url, { method: 'GET' })
     .then(res => res.json())
     .then(res => {
 
       const result = [];
+      if (res.length > 6) res.length = 6;
 
       res.forEach(city => {
         if (city.length) {
