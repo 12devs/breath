@@ -12,6 +12,12 @@
     background-color: $color-background-turquoise;
     background-position: 90% center;
     background-repeat: no-repeat;
+    cursor: pointer;
+    transition: background-color ease-out 0.5s;
+
+    &:hover {
+        background-color: $color-background-black;
+    }
 
     @media screen and (max-width: $screen-md - 1) {
         font-size: $font-size-medium-plus;

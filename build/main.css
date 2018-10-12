@@ -103,7 +103,12 @@ a, a:hover, a:active, a:focus {
   text-decoration: none;
   background-color: #67CECD;
   background-position: 90% center;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  cursor: pointer;
+  -webkit-transition: background-color ease-out 0.5s;
+  transition: background-color ease-out 0.5s; }
+  .c-button:hover {
+    background-color: #1D1D1D; }
   @media screen and (max-width: 767px) {
     .c-button {
       font-size: 2rem;
