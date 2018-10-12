@@ -35,6 +35,7 @@ export default class Radar extends Component {
     const categories = ['North', 'NNE', 'NE', 'ENE', 'East', 'ESE', 'SE', 'SSE',
       'South', 'SSW', 'SW', 'WSW', 'West', 'WNW', 'NW', 'NNW'];
     let arr = Object.values(src.history);
+    console.log(arr);
     const max = Math.max(...arr);
 
     for (let i = 0; i < 16; i++) {
@@ -46,7 +47,13 @@ export default class Radar extends Component {
       count++;
     }
 
-    currentWind[categories.indexOf(src.current.dir)] = [src.current.dir, max];
+    let currentValue = 0;
+    const maxValue = max;
+
+    if(src.current.speed){
+      currentValue = maxValue;
+    }
+    currentWind[categories.indexOf(src.current.dir)] = [src.current.dir, currentValue];
 
     new Highcharts.Chart({
       chart: {
@@ -75,8 +82,12 @@ export default class Radar extends Component {
         enabled: false
       },
       yAxis: {
+        maxPadding: 0.1,
+        // softMax: maxValue * 0.5,
+        // softMin: maxValue,
+        // tickInterval: 10,
         min: 0,
-        max: max - 1,
+        max: maxValue * 0.8,
         labels: {
           formatter: function () {
             return this.value + '%';
@@ -96,16 +107,17 @@ export default class Radar extends Component {
       },
       series: [
         {
-          name: 'Last Year',
+          name: `Last ${src.period} days`,
           data,
           type: 'column',
           color: '#4BC7C9',
         },
         {
-          name: 'Current',
+          name: `Current (${src.current.speed} km/h)`,
           data: currentWind,
           type: 'area',
-          color: 'blue',
+          color: '#5899C9',
+          lineWidth: 3
         }],
     });
   }

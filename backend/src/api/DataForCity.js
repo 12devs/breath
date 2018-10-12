@@ -41,7 +41,7 @@ const historicPollenIndex = (code, days = 360) => {
             }
 
             result.push({
-              Period: (moment(item.Period).format("YYYY-MMM")).toUpperCase(),
+              Period: (moment(item.Period).format("MMM")).toUpperCase(),
               Index: item.Index,
             });
 
@@ -306,7 +306,7 @@ const getHistoricalData = (code, days = 365) => {
           let correctMonth = 0;
           const currentWind = {
             dir: data.history.days[data.history.days.length - 1].summary.wind_dir,
-            speed: data.history.days[data.history.days.length - 1].summary.wind_speed
+            speed: data.history.days[data.history.days.length - 1].summary.wind_speed,
           };
           let windRose = {
             North: 0,
@@ -348,7 +348,7 @@ const getHistoricalData = (code, days = 365) => {
               }
 
               result.push({
-                date: (moment(iso8601).format("YYYY-MMM")).toUpperCase(),
+                date: (moment(iso8601).format("MMM")).toUpperCase(),
                 humidity: summary.humidity,
                 temperature: summary.temperature,
               });
@@ -372,7 +372,7 @@ const getHistoricalData = (code, days = 365) => {
             result[index].temperature = roundValue(result[index].temperature / correctDays, 2);
           }
 
-          return resolve({ Historical: result, windRose: { history: windRose, current: currentWind } });
+          return resolve({ Historical: result, windRose: { history: windRose, current: currentWind, period: data.history.days.length } });
         })
         .catch(err => resolve({}));
     })

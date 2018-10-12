@@ -49,6 +49,13 @@ export default class Test extends Component {
             ticks: {
               beginAtZero: true
             }
+          }],
+          xAxes: [{
+            ticks: {
+              autoSkip: true,
+              maxRotation: 0,
+              minRotation: 0
+            }
           }]
         }
       }
