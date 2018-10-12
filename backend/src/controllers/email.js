@@ -4,12 +4,13 @@ import { Email } from './../models';
 
 const verifyEmail = (email) => {
   return new Promise((resolve, reject) => {
-    emailExistence.check(email, (error, response) => {
+    return emailExistence.check(email.trim(), (error, response) => {
+      console.log(error, response);
       if (error || (!response)) {
-        return reject(new Error(`email ${email} doesn't exist`))
+        return reject(new Error(`Email ${email} doesn't exist`))
+      } else{
+        return resolve(true)
       }
-      return resolve(true)
-
     })
   })
 }
@@ -37,11 +38,11 @@ export default {
           res.status(200).json({ status: 'OK' })
         })
         .catch(err => {
-          console.log(1, err);
+          // console.log(1, err);
           return res.status(500).json({ error: err.message })
         })
     } catch (err) {
-      console.log(2, err);
+      // console.log(2, err);
       return res.status(500).json({ error: err.message })
     }
   }
