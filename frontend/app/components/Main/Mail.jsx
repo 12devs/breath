@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import about from "./../../assets/img/about.png";
+import mail from "./../../assets/img/mail.png";
+import zip from "./../../assets/img/zip.png";
+import nextMini from "./../../assets/img/next_mini.png";
 import services from "../../services";
 import Preloader from "./../Preloader.jsx";
 
@@ -52,10 +55,12 @@ class Mail extends Component {
           <div className="l-hero__form-grid">
             <div className="l-hero__form-item l-hero__form-item--50">
               <input className="c-input c-input--email" type="text" placeholder="yourmail@hellowynd.com"
+                     style={{backgroundImage:`url(${mail})`}}
                      onChange={(event) => this.setState({ email: event.target.value })} value={email}/>
             </div>
             <div className="l-hero__form-item l-hero__form-item--30">
               <input className="c-input c-input--zip" type="number" placeholder="zip code"
+                     style={{backgroundImage:`url(${zip})`}}
                      onChange={(event) => this.setState({ code: event.target.value })} value={code}/>
             </div>
             <div className="l-hero__form-item l-hero__form-item--20">
@@ -63,7 +68,7 @@ class Mail extends Component {
                 if (preloader){
                   return (<button className="c-button" ><Preloader/> </button>)
                 } else{
-                  return (<button className="c-button" onClick={this.saveEmail}>Submit</button>)
+                  return (<button className="c-button" onClick={this.saveEmail} style={{backgroundImage:`url(${nextMini})`}}>Submit</button>)
                 }
               })()}
             </div>
