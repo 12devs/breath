@@ -41,7 +41,7 @@ const historicPollenIndex = (code, days = 360) => {
             }
 
             result.push({
-              Period: (moment(item.Period).format("YYYY-MMM")).toUpperCase(),
+              Period: (moment(item.Period).format("MMM")).toUpperCase(),
               Index: item.Index,
             });
 
@@ -348,7 +348,7 @@ const getHistoricalData = (code, days = 365) => {
               }
 
               result.push({
-                date: (moment(iso8601).format("YYYY-MMM")).toUpperCase(),
+                date: (moment(iso8601).format("MMM")).toUpperCase(),
                 humidity: summary.humidity,
                 temperature: summary.temperature,
               });
