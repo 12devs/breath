@@ -301,29 +301,31 @@ const getHistoricalData = (code, days = 365) => {
         .then(data => {
 
           let index = 0;
+          let count = 0;
           const result = [];
           let correctDays = 0;
           let correctMonth = 0;
           const currentWind = {
-            dir: data.history.days[data.history.days.length-1] .summary.wind_dir,
-            speed: data.history.days[data.history.days.length-1] .summary.wind_speed
-          }
+            dir: data.history.days[data.history.days.length - 1].summary.wind_dir,
+            speed: data.history.days[data.history.days.length - 1].summary.wind_speed
+          };
           let windRose = {
-            North:0,
-            NNE:0,
-            NE:0,
-            ENE:0,
-            East:0,
-            ESE:0,
-            SE:0,
-            SSE:0,
-            South:0,
-            SSW:0,
-            SW:0,WSW:0,
-            West:0,
-            WNW:0,
-            NW:0,
-            NNW:0
+            North: 0,
+            NNE: 0,
+            NE: 0,
+            ENE: 0,
+            East: 0,
+            ESE: 0,
+            SE: 0,
+            SSE: 0,
+            South: 0,
+            SSW: 0,
+            SW: 0,
+            WSW: 0,
+            West: 0,
+            WNW: 0,
+            NW: 0,
+            NNW: 0
           };
 
           data.history.days.forEach((item, step) => {
@@ -331,7 +333,7 @@ const getHistoricalData = (code, days = 365) => {
             const { month, iso8601 } = summary.date;
 
             for (let key in windRose) {
-              if(key === item.summary.wind_dir){
+              if (key === item.summary.wind_dir) {
                 windRose[key]++
               }
             }
@@ -361,10 +363,9 @@ const getHistoricalData = (code, days = 365) => {
             correctDays++;
           });
 
-          let count = 0;
           for (let key in windRose) {
-            windRose[key] = Number((windRose[key]*100/data.history.days.length).toFixed(2));
-            count +=windRose[key]
+            windRose[key] = Number((windRose[key] * 100 / data.history.days.length).toFixed(2));
+            count += windRose[key];
           }
 
           if (result.length) {
@@ -372,7 +373,7 @@ const getHistoricalData = (code, days = 365) => {
             result[index].temperature = roundValue(result[index].temperature / correctDays, 2);
           }
 
-          return resolve({ Historical: result, windRose:{history:windRose, current: currentWind}});
+          return resolve({ Historical: result, windRose: { history: windRose, current: currentWind } });
         })
         .catch(err => resolve({}));
     })
