@@ -274,13 +274,14 @@ a, a:hover, a:active, a:focus {
 
 .l-hero-charts__layer {
   position: absolute;
+  top: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6); }
 
 .l-hero-charts__logo {
   position: absolute;
-  z-index: 1; }
+  z-index: 99; }
 
 .l-hero-charts__city {
   padding: 3rem 3.7rem;
