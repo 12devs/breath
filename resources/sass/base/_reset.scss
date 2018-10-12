@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,900');
+
 * {
 	margin: 0;
 	padding: 0;
@@ -24,6 +25,7 @@ body {
     background: $color-background-body;
 }
 
-a, a:hover, a:active {
+a, a:hover, a:active, a:focus {
     outline: none;
+    outline-offset: 0;
 }
