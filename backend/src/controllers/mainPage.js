@@ -6,7 +6,7 @@ export default {
 
   async mainPageData(req, res) {
 
-    let { codes } = req.query;
+    const { codes } = req.query;
     const stubCodes = ['77001', '94177', '90024', '98093', '33101', '02101'];
     let data;
 
@@ -23,20 +23,20 @@ export default {
 
         data = cityLocations.map(async location => {
           const {code, name} = await getCurrentZipCode(location);
-          return getCityInfoByCodeAndLocation(code, location, name)
+          return getCityInfoByCodeAndLocation(code, location, name);
         });
       }
       else {
         const zipCodes = codes.split(',');
         data = zipCodes.map(async code => {
           const location = await getCurrentLocation(code);
-          return getCityInfoByCodeAndLocation(code, location)
+          return getCityInfoByCodeAndLocation(code, location);
         });
       }
     } catch (err) {
       data = stubCodes.map(async code => {
         const location = await getCurrentLocation(code);
-        return getCityInfoByCodeAndLocation(code, location)
+        return getCityInfoByCodeAndLocation(code, location);
       });
     }
 
