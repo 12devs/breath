@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import figure from './../../assets/img/figure.svg';
 import Highcharts from 'highcharts';
 import HighchartsMore from 'highcharts/highcharts-more';
+import HighchartsExporting from 'highcharts/modules/exporting';
 
 HighchartsMore(Highcharts);
+HighchartsExporting(Highcharts);
 
 export default class Radar extends Component {
   constructor(props) {
@@ -26,25 +28,25 @@ export default class Radar extends Component {
   }
 
   newChart(props) {
-    let {src, label, type} = props;
+    let {src} = props;
     let data = [];
     let count = 0;
-    let mm = [];
-    for (var i = 0; i < 16; i++) {
-      mm[i] = 0;
-    }
+    let currentWind = [];
+    const categories = ['North', 'NNE', 'NE', 'ENE', 'East', 'ESE', 'SE', 'SSE',
+      'South', 'SSW', 'SW', 'WSW', 'West', 'WNW', 'NW', 'NNW'];
+    let arr = Object.values(src.history);
+    const max = Math.max(...arr);
 
-    const categories = ['North', 'NNE', 'NE', 'ENE', 'East', 'ESE', 'SE', 'SSE', 'South', 'SSW', 'SW', 'WSW', 'West', 'WNW', 'NW', 'NNW'];
+    for (let i = 0; i < 16; i++) {
+      currentWind[i] = 0;
+    }
 
     for (let key in src.history) {
       data[count] = [key, src.history[key]];
       count++;
     }
 
-    let arr = Object.values(src.history);
-    let max = Math.max(...arr);
-
-    mm[categories.indexOf(src.current.dir)] = [src.current.dir, max];
+    currentWind[categories.indexOf(src.current.dir)] = [src.current.dir, max];
 
     new Highcharts.Chart({
       chart: {
@@ -54,16 +56,10 @@ export default class Radar extends Component {
       title: {
         text: null
       },
-      tooltip: {
-        enabled: false,
-        formatter: function () {
-          return `${this.y}% for the last year`;
-        }
-      },
       pane: {
         startAngle: 0,
         endAngle: 360,
-        size: '95%'
+        size: '77%'
       },
       xAxis: {
         tickInterval: 45,
@@ -74,6 +70,9 @@ export default class Radar extends Component {
             return categories[this.value / 22.5];
           }
         }
+      },
+      tooltip: {
+        enabled: false
       },
       yAxis: {
         min: 0,
@@ -90,30 +89,31 @@ export default class Radar extends Component {
           pointInterval: 22.5,
           pointPlacement: 'on'
         },
+        column: {
+          pointPadding: 0,
+          groupPadding: 0
+        }
       },
       series: [{
+        name: 'Current',
+        data: currentWind,
+        type: 'area',
+        color: 'blue',
+      }, {
         name: 'Last Year',
         data,
         type: 'column',
         color: '#4BC7C9',
-      }, {
-        name: 'current',
-        data: mm,
-        type: 'area',
-        color: 'blue',
-      }]
+      }],
     });
   }
-
 
   render() {
     return (
       <div className="l-charts__container">
         <div className="l-charts__title">Wind Rose</div>
         <img src={figure} alt=""/>
-        <div style={{border: '1px solid red;'}}>
-          <div id="container"/>
-        </div>
+        <div id="container"/>
       </div>
     );
   }
