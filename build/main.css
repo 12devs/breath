@@ -108,16 +108,14 @@ body {
   margin: 0 2rem; }
 
 .l-hero {
-  height: 53rem;
+  height: 50rem;
   position: relative;
   background: #67CECD; }
   @media screen and (max-width: 1199px) {
     .l-hero {
-      height: 40rem;
       margin-bottom: 5rem; } }
   @media screen and (max-width: 991px) {
     .l-hero {
-      height: 45rem;
       margin-bottom: 5rem; } }
 
 .l-hero__scroll {
