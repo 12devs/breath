@@ -32,7 +32,7 @@ const getCityInfoByCodeAndLocation = (code, location, name) => {
       console.log(err);
       throw new Error(`Cannot get for code ${code}`)
     })
-}
+};
 
 const dailyOzone = (location) => {
   const { lat, lng } = location;
@@ -46,7 +46,7 @@ const dailyOzone = (location) => {
       return { Ozone: ozone };
     })
     .catch(() => ({}));
-}
+};
 
 export {
   dailyOzone,

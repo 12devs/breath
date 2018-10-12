@@ -8,7 +8,6 @@ class Cheker extends Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount cheker' );
     if (localStorage.breathCode){
       location.assign(`/city/${localStorage.breathCode}`)
     } else {

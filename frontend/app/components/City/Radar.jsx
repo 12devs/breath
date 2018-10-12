@@ -28,7 +28,7 @@ export default class Radar extends Component {
   }
 
   newChart(props) {
-    let {src} = props;
+    let { src } = props;
     let data = [];
     let count = 0;
     let currentWind = [];
@@ -94,17 +94,19 @@ export default class Radar extends Component {
           groupPadding: 0
         }
       },
-      series: [{
-        name: 'Current',
-        data: currentWind,
-        type: 'area',
-        color: 'blue',
-      }, {
-        name: 'Last Year',
-        data,
-        type: 'column',
-        color: '#4BC7C9',
-      }],
+      series: [
+        {
+          name: 'Last Year',
+          data,
+          type: 'column',
+          color: '#4BC7C9',
+        },
+        {
+          name: 'Current',
+          data: currentWind,
+          type: 'area',
+          color: 'blue',
+        }],
     });
   }
 
@@ -112,7 +114,7 @@ export default class Radar extends Component {
     return (
       <div className="l-charts__container">
         <div className="l-charts__title">Wind Rose</div>
-        <img src={figure} alt=""/>
+        <img className="l-charts__title-figure" src={figure} alt=""/>
         <div id="container"/>
       </div>
     );

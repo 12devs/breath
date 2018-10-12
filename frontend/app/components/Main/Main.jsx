@@ -45,7 +45,6 @@ class Main extends Component {
 
   render() {
     const src = this.state;
-    console.log(src);
     if (this.state.preloader) {
       return (<Preloader/>)
     }

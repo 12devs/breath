@@ -16,7 +16,6 @@ export default class Test extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log('componentDidUpdate');
     if (this.props !== prevProps) {
       this.newChart(this.props);
     }
@@ -32,14 +31,14 @@ export default class Test extends Component {
         label: "Temperature",
         data: Data,
         backgroundColor: [
-          '#80bec1',
+          '#4BC7C9',
         ],
         borderColor: [
-          '#69a6a7',
+          '#4BC7C9',
         ],
         borderWidth: 1
       }]
-    }
+    };
     const ctx = document.getElementById("myChartTemp").getContext('2d');
     const myChart = new Chart(ctx, {
       type: 'line',
@@ -63,7 +62,7 @@ export default class Test extends Component {
     return (
       <div className="l-charts__container">
         <div className="l-charts__title">Your Temperature</div>
-        <img src={figure} alt=""/>
+        <img className="l-charts__title-figure" src={figure} alt=""/>
         <canvas id="myChartTemp"></canvas>
       </div>
     );
