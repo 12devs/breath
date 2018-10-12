@@ -12,6 +12,7 @@
     background-color: $color-background-turquoise;
     background-position: 90% center;
     background-repeat: no-repeat;
+    outline:none;
 
     @media screen and (max-width: $screen-md - 1) {
         font-size: $font-size-medium-plus;

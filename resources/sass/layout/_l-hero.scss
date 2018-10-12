@@ -1,15 +1,13 @@
 .l-hero {
-    height: 53rem;
+    height: 50rem;
     position: relative;
     background: $color-background-turquoise;
 
     @media screen and (max-width: $screen-xl - 1) {
-        height: 40rem;
         margin-bottom: 5rem;
     }
 
     @media screen and (max-width: $screen-lg - 1) {
-        height: 45rem;
         margin-bottom: 5rem;
     }
 }
@@ -92,6 +90,17 @@
         border-radius: 0;
         padding: 2rem;
     }
+}
+
+.l-hero__form-error {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: $color-background-light-gray;
+    color: $color-text-black;
+    width: 100%;
+    font-size: $font-size-small;
+    font-weight: $font-weight-light;
+    text-align: center;
 }
 
 .l-hero__form-img {
