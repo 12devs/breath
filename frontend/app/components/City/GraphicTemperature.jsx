@@ -16,7 +16,6 @@ export default class Test extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log('componentDidUpdate');
     if (this.props !== prevProps) {
       this.newChart(this.props);
     }
@@ -39,7 +38,7 @@ export default class Test extends Component {
         ],
         borderWidth: 1
       }]
-    }
+    };
     const ctx = document.getElementById("myChartTemp").getContext('2d');
     const myChart = new Chart(ctx, {
       type: 'line',

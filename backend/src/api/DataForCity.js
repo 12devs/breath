@@ -139,7 +139,7 @@ const ozoneData = location => {
       return { ozoneData: res.data };
     })
     .catch(() => ({}));
-}
+};
 
 const COData = location => {
   const url = `https://api.openweathermap.org/pollution/v1/co/${location.lat},${location.lng}/current.json?appid=${openweathermap.api_key}`;
@@ -149,7 +149,7 @@ const COData = location => {
     .then(res => ({ COData: res.data }))
     .catch(() => ({}));
 
-}
+};
 
 const pollenIndex = (code) => {
   return new Promise(resolve => {
@@ -200,7 +200,6 @@ const getPhotoReference = (location) => {
 const getPhoto = (location, maxWidth = 1550) => {
   return new Promise(resolve => {
     getPhotoReference(location).then(ref => {
-      console.log(ref);
       const options = {
         uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=${maxWidth}&photoreference=${ref}&key=${google_api_key}`,
         json: true,
@@ -383,7 +382,7 @@ const getHistoricalData = (code, days = 365) => {
 const roundValue = (value, digits) => {
 
   return parseFloat(value.toFixed(digits));
-}
+};
 
 module.exports = {
   historicPollenIndex,

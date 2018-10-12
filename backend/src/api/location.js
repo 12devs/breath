@@ -11,8 +11,8 @@ const getCurrentLocation = zipCode => {
     .then(res => res.json())
     .then(res => {
 
-      if (res.status !== 'OK') return Promise.reject(new Error(`zip code ${zipCode} not found`));  //@TODO null ?
-      if (!res.results.length) return Promise.reject(new Error(`zip code ${zipCode} not found`));  //@TODO null ?
+      if (res.status !== 'OK') return Promise.reject(new Error(`Zip code ${zipCode} not found`));  //@TODO null ?
+      if (!res.results.length) return Promise.reject(new Error(`Zip code ${zipCode} not found`));  //@TODO null ?
 
       const currentResult = res.results[0];
       const { location } = currentResult.geometry;
@@ -52,7 +52,7 @@ const getNearbyCities = (ip) => {
 
       return result;
     });
-}
+};
 
 const getCurrentZipCode = (location) => {
 
@@ -72,7 +72,7 @@ const getCurrentZipCode = (location) => {
 
       return index === -1 ? null : { code: address_components[index].long_name, name: currentResult.formatted_address.replace(', USA', '')}
     });
-}
+};
 
 export {
   getCurrentLocation,

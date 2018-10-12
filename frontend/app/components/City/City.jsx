@@ -43,7 +43,6 @@ class City extends Component {
   }
 
   componentDidMount() {
-    console.log('city componentDidMount');
     return this.getCity()
   }
 
@@ -71,9 +70,7 @@ class City extends Component {
 
 
   render() {
-    console.log('render city');
     const src = this.state.city;
-    console.log('src', src);
     if (this.state.preloader){
       return (<Preloader/>)
     }
