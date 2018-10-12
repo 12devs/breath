@@ -31,7 +31,7 @@ const getCurrentLocation = zipCode => {
 };
 
 const getNearbyCities = (ip) => {
-  const url = `http://getnearbycities.geobytes.com/GetNearbyCities?radius=50&locationcode=${ip}&limit=5`;
+  const url = `http://getnearbycities.geobytes.com/GetNearbyCities?radius=60&locationcode=${ip}&limit=5&minradius=2`;
 
   return fetch(url, { method: 'GET' })
     .then(res => res.json())

@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const getMainPageData = () => {
-  return axios.get('/mainPage/')
+  return axios.get('/mainPage')
     .then(result => {
       return result.data
-    })
+    });
 };
 
 const getCityPageData = (code) => {
@@ -14,7 +14,7 @@ const getCityPageData = (code) => {
     })
     .catch(result => {
       return result.response.data;
-    })
+    });
 };
 
 const saveEmail = (email, code) => {
@@ -24,7 +24,7 @@ const saveEmail = (email, code) => {
     })
     .catch(result => {
       return result.response.data;
-    })
+    });
 };
 
 export default {
