@@ -18,6 +18,11 @@
         border: 1px solid transparent;
         background-color: $color-background-black;
         background-image: url('../public_html/img/next-card-white.png');
+        outline:none;
+    }
+
+    &:active {
+        outline:none;
     }
 
     @media screen and (max-width: $screen-lg - 1) {

@@ -23,3 +23,7 @@ body {
     font-size: 10px;
     background: $color-background-body;
 }
+
+a, a:hover, a:active {
+    outline: none;
+}
