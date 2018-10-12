@@ -20,11 +20,15 @@ body {
   font-size: 10px;
   background: #F2F2F2; }
 
+a, a:hover, a:active {
+  outline: none; }
+
 .c-input {
   width: 100%;
   border-radius: 0.5rem;
   font-size: 1.3rem;
-  line-height: 6.5rem; }
+  line-height: 6.5rem;
+  outline: none; }
   .c-input--email {
     padding-right: 14.5rem;
     padding-left: 5.2rem;
@@ -65,11 +69,15 @@ body {
   border: 1px solid #ECEBEB;
   border-top-left-radius: 0.5rem;
   border-bottom-right-radius: 1rem;
-  text-align: center; }
+  text-align: center;
+  outline: none; }
   .c-button-card:hover {
     border: 1px solid transparent;
     background-color: #1D1D1D;
-    background-image: url("../public_html/img/next-card-white.png"); }
+    background-image: url("../public_html/img/next-card-white.png");
+    outline: none; }
+  .c-button-card:active {
+    outline: none; }
   @media screen and (max-width: 991px) {
     .c-button-card {
       height: 100%;
@@ -93,7 +101,8 @@ body {
   text-decoration: none;
   background-color: #67CECD;
   background-position: 90% center;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  outline: none; }
   @media screen and (max-width: 767px) {
     .c-button {
       font-size: 2rem;
@@ -108,7 +117,7 @@ body {
   margin: 0 2rem; }
 
 .l-hero {
-  height: 50rem;
+  height: 48rem;
   position: relative;
   background: #67CECD; }
   @media screen and (max-width: 1199px) {
@@ -447,7 +456,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   margin-top: 3.8rem;
-  margin-bottom: 3rem; }
+  margin-bottom: 4rem; }
 
 .l-air__card-meta-item {
   width: 33.333%;
