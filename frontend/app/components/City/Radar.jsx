@@ -114,7 +114,7 @@ export default class Radar extends Component {
     return (
       <div className="l-charts__container">
         <div className="l-charts__title">Wind Rose</div>
-        <img src={figure} alt=""/>
+        <img className="l-charts__title-figure" src={figure} alt=""/>
         <div id="container"/>
       </div>
     );

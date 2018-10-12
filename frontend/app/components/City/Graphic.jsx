@@ -33,10 +33,10 @@ export default class Test extends Component {
         label,
         data: Data,
         backgroundColor: [
-          '#80bec1',
+          '#4BC7C9',
         ],
         borderColor: [
-          '#69a6a7',
+          '#4BC7C9',
         ],
         borderWidth: 1
       }]
@@ -64,7 +64,7 @@ export default class Test extends Component {
     return (
       <div className="l-charts__container">
         <div className="l-charts__title">Pollen Index</div>
-        <img src={figure} alt=""/>
+        <img className="l-charts__title-figure" src={figure} alt=""/>
         <canvas id="myChart"></canvas>
       </div>
     );
