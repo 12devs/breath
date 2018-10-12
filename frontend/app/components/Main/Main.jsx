@@ -49,7 +49,7 @@ class Main extends Component {
       return (<Preloader/>)
     }
     return (
-      <div className={"l-hero__scroll"}>
+      <div>
         <div className="l-hero">
           <a className="l-hero__logo" href="#"><img src={wynd} alt=""/></a>
           <nav>
