@@ -83,7 +83,7 @@ class City extends Component {
 
     return (
 
-      <div className={"l-hero__scroll"}>
+      <div>
         <div className="l-hero-charts" style={{ backgroundImage: `url(${src.Img}` }}>
           <a href={"/main"}><img className="l-hero-logo l-hero-logo" src={logoInside} alt=""/></a>
           <nav>
